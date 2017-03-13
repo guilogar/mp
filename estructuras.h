@@ -11,6 +11,11 @@ typedef struct usuarios {
 	char contraseña[9];
 } usuarios;
 
+
+
+
+
+
 typedef struct alumnos{
 	char id_alum[7];
 	char nombre_alum[21];
