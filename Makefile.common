@@ -1,5 +1,0 @@
-OBJS=${OBJS_DIR}/main.o 
-
-${OBJS_DIR}/main.o: main.cpp
-	${GPP} ${FLAGS} -c main.cpp -o $@
-

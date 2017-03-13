@@ -1,4 +1,0 @@
-Hay dos perfiles de compilación, uno utilizando el comando "make" y el archivo "Makefile" (para sistemas GNU/Linux), y otro utilizando el comando "mingw32-make" y el archivo "Makefile.w32" (para sistemas basados en Windows). Todo esto se configura desde la pestaña "Secuencia" del cuadro de Opciones de Compilación y Ejecución de Proyecto (menú Ejecución->Opciones...). Ambos makefiles mencionados definen variables con los comando y argumentos de compilación, pero incluyen un tercer archivo (Makefile.common) donde se explicitan los fuentes a compilar y sus dependencias de forma común a ambas configuraciones. Puede modificar completamente los makefiles, pero debe asegurarse de que el nombre ejecutable generado coincida con el definido en la pestaña General del cuadro de configuración, para que ZinjaI puede ejecutar correctamente el programa generado.
-
-
-
