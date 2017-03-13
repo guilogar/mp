@@ -1,0 +1,16 @@
+Juan Antonio Muñoz Sanchez
+ - Módulo Usuarios
+ - Módulo Alumnos
+
+Sergio Rivera Martin
+ - Módulo Matriculas
+
+Miguel Ángel Ferral Garrido
+ - Módulo Materias
+
+Guillermo Lopez Garcia
+ - Módulo Calificaciones
+ - Módulo Faltas
+
+Guillermo Giron Garcia
+ - Módulo Horarios
