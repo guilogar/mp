@@ -7,8 +7,8 @@ typedef struct usuarios {
 	char id_usuario[4];
 	char nomb_usuario[21];
 	char perfil_usuario[14];
-	char Usuario[21];
-	char contraseña[9];
+	char usuario[21];
+	char contrasena[9];
 } usuarios;
 
 typedef struct alumnos{
@@ -30,7 +30,7 @@ typedef struct materias{
 
 typedef struct matriculas{
 	char id_matriculas[5];
-	alumnos id_alum;
+	char id_alum[7];
 } matriculas;
 
 //Depende de alumnos y materias
@@ -38,10 +38,10 @@ typedef struct matriculas{
 typedef struct calificaciones{
 	char fecha_calif[11];
 	char descrip_calif[31];
-	materias id_materia;
-	alumnos id_alum;
+	char id_materia[5];
+	char id_alum[7];
 	int valor_calif;
-};
+} calificaciones;
 
 //Depende de alumnos
 
@@ -50,17 +50,17 @@ typedef struct faltas{
 	int hora_falta;
 	char descrip_falta[31];
 	char estado_falta[14];
-	alumnos id_alum;
+	char id_alum[7];
 } faltas;
 
 //Depende de usuarios, alumnos y materias
 
 typedef struct horarios{
-	usuarios id_prof;
+	char id_prof[4];
 	int dia_clase;
 	int hora_clase;
-	materias id_materias;
-	alumnos grupo;
-};
+	char id_materia[5];
+	char grupo[11];
+} horarios;
 
 #endif
