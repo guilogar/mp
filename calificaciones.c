@@ -15,6 +15,7 @@
 
 void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones);
 calificaciones * buscar_por_materia(calificaciones *list_calificaciones, int id_materia);
+calificaciones * buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno);
 
 void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
     
@@ -47,23 +48,38 @@ void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
 
 calificaciones * buscar_por_materia(calificaciones *list_calificaciones, int id_materia) {
     int i, j = 0;
-    calificaciones *new_list_calificaciones[2];
+    static calificaciones new_list_calificaciones[2];
     printf("%li\n", (sizeof(*list_calificaciones) / sizeof(calificaciones)));
     
     for (i = 0; i <= (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
-        puts(list_calificaciones[i].id_materia);
+        //Asi se convierte una cadena a entero. Hay funciones parecidas para
+        //hacer conversiones de cadena a otro tipos numericos.
+        //atoi(list_calificaciones[i].id_materia);
         
         if (atoi(list_calificaciones[i].id_materia) == id_materia) {
-            puts(list_calificaciones[i].id_materia);
-            
-            /*
-             * Modificar para poner en cada punto del registro su valor
-             **new_list_calificaciones[j++] = list_calificaciones[i];
-             */
+            new_list_calificaciones[j++] = list_calificaciones[i];
         }
     }
 
-    return *new_list_calificaciones;
+    return new_list_calificaciones;
+}
+
+calificaciones * buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno) {
+    int i, j = 0;
+    static calificaciones new_list_calificaciones[2];
+    printf("%li\n", (sizeof(*list_calificaciones) / sizeof(calificaciones)));
+    
+    for (i = 0; i <= (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
+        //Asi se convierte una cadena a entero. Hay funciones parecidas para
+        //hacer conversiones de cadena a otro tipos numericos.
+        //atoi(list_calificaciones[i].id_materia);
+        
+        if (atoi(list_calificaciones[i].id_alum) == id_alumno) {
+            new_list_calificaciones[j++] = list_calificaciones[i];
+        }
+    }
+
+    return new_list_calificaciones;
 }
 
 
@@ -77,7 +93,8 @@ int main(void) {
     
     *new_list_calificaciones = buscar_por_materia(list_calificaciones, 2);
     
-    /*puts(new_list_calificaciones[0].fecha_calif);*/
+    // Se puede utilizar el operador -> para trabajar con estructuras y uniones.
+    /*puts(new_list_calificaciones[0] -> descrip_calif);*/
     return 0;
 }
 
