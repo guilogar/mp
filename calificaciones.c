@@ -16,7 +16,7 @@
 void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones);
 calificaciones * buscar_por_materia(calificaciones *list_calificaciones, int id_materia);
 calificaciones * buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno);
-void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones);
+void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char nom_file);
 
 void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
     
