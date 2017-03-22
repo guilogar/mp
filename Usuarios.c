@@ -6,14 +6,13 @@
 static int cont=0; //Marca el número de usuarios que hay
 
 char *leer_campo(int, char*);
+void quitar_saltos(char *cadena);
 
-int main(){
-
-Cad_Usuario *List_Usuario;
-List_Usuario = Carga_Usuario();
-Listar_Usuarios(List_Usuario);
-
-return 0;
+int main() {
+    Cad_Usuario *List_Usuario;
+    List_Usuario = Carga_Usuario();
+    Listar_Usuarios(List_Usuario);
+    return 0;
 }
 
 //Cambia los caracteres de salto de linea por caracteres de final de vector
@@ -26,20 +25,31 @@ void quitar_saltos(char *cadena){
 //Leer una cadena de caracteres del largo que se le pasa por parametro
 char *leer_campo(int largo, char *titulo){
     char *campo;
+
     campo = (char*)calloc(largo+1,sizeof(char));
+
     printf("%s (%d):",titulo,largo);
+
     fflush(stdin);
+
     fgets(campo,largo+1,stdin);
+
     quitar_saltos(campo);
+
     fflush(stdin);
+
     return campo;
 }
 
 Cad_Usuario* Carga_Usuario(){
     Cad_Usuario *List_Usuario;
+
     FILE *fich;
+
     fich=fopen("Usuarios.txt","r"); //Abre el fichero en modo lectura
+
     if(fich==NULL) printf("\nError al cargar el fichero\n");
+
     else{
         while(!feof(fich)){
             if(cont==0){
@@ -58,6 +68,7 @@ Cad_Usuario* Carga_Usuario(){
         }
     }
     fclose(fich);
+
     return List_Usuario;
 }
 
@@ -67,7 +78,9 @@ void Anadir_Usuario(Cad_Usuario *List_Usuario){
     List_Usuario=(Cad_Usuario *)realloc(List_Usuario,(cont+1)*sizeof(Cad_Usuario));
     id = atoi(List_Usuario[cont-1].id); //Transformar a entero el char referente al id
     id+=1;
+
     if(id>=100) itoa(id,List_Usuario[cont].id,10);
+
     else if(id>=10){
         strcat(itoa(id,List_Usuario[cont].id,10),"0");
         //Reordena el valor del indice para que el 0 que concatenamos aparezca delante
@@ -76,6 +89,7 @@ void Anadir_Usuario(Cad_Usuario *List_Usuario){
         List_Usuario[cont].id[1] = List_Usuario[cont].id[0];
         List_Usuario[cont].id[0] = aux;
     }
+
     else {
         strcat(itoa(id,List_Usuario[cont].id,10),"00");
         //Reordena el valor del indice para que 00 aparezca delante del número
@@ -83,11 +97,14 @@ void Anadir_Usuario(Cad_Usuario *List_Usuario){
         List_Usuario[cont].id[0] = List_Usuario[cont].id[2];
         List_Usuario[cont].id[2] = aux;
     }
+
     strcpy(List_Usuario[cont].nombre,leer_campo(20,"Nombre"));
+
     do{
         printf("Perfil: 1.Administrador 2.Profesor ");
         scanf("%i",&op);
     }while(op<1 || op >3);
+
     switch(op){
         case 1:
             strcpy(List_Usuario[cont].perfil,"Administrador");
@@ -96,6 +113,7 @@ void Anadir_Usuario(Cad_Usuario *List_Usuario){
             strcpy(List_Usuario[cont].perfil,"Profesor");
         break;
     }
+
     strcpy(List_Usuario[cont].usser,leer_campo(5,"Usser"));
     strcpy(List_Usuario[cont].pass,leer_campo(8,"Password"));
     cont++;
