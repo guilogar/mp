@@ -5,6 +5,8 @@
 
 static int cont=0; //Marca el número de usuarios que hay
 
+char *leer_campo(int, char*);
+
 int main(){
 
 Cad_Usuario *List_Usuario;
