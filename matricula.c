@@ -3,26 +3,47 @@
 #include "matricula.h"
 #include "estructuras.h"
 
+void cargar_matriculas(FILE * f, matriculas mat[]) {
+    
+    char cadena[100];
+    int i = 0;
+    
+    if((f = fopen("matriculas.txt", "r")) == NULL) {
+        
+        puts("Error fatal: El fichero con la información no existe.\n\n");     
+        return;
+    }
+    
+    while (fgets(cadena, 100, f) != NULL) {
+        strcpy(mat[i].id_matriculas, strtok(cadena,"-"));
+        strcpy(mat[i].id_alum, strtok(NULL,"-"));
+        
+        puts(mat[i].id_matriculas);
+        puts(mat[i].id_alum);
+        
+        i++;
+    }
+}
 
 int contaralumnos(matriculas mat[]){
 
     int i;
     i=0;
-    while(mat[i] != NULL){
+    while(strcmp(mat[i].id_matriculas) != NULL){
         i++;
     }
     return i;
 }
 
-void mostrar(char idmateria, matriculas mat[], alumnos alum[]){
+void mostrar(char idmateria, matriculas mat[], alumnos alu[]){
     
     int i, n, j;
     n = contaralumnos(mat);
     for(i=0;i<n;i++){
-        if(idmateria==mat[i].id_matriculas){
-            while(alum[j] != 0){
-                if(mat[i].id_alum=alum[j].id_alum){
-                    printf(alum[j].nombre_alum);
+        if(strcmp(idmateria, mat[i].id_matriculas)){
+            while(strcmp(alu[j].id_alum) != NULL){
+                if(strcmp(mat[i].id_alum, alu[j].id_alum)){
+                    printf(alu[j].nombre_alum);
                 }
             }
             
