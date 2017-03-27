@@ -2,24 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include "estructuras.h"
-//===================================
-#define ANSI_COLOR_RED     "\x1b[31m"
-#define ANSI_COLOR_GREEN   "\x1b[32m"
-#define ANSI_COLOR_YELLOW  "\x1b[33m"
-#define ANSI_COLOR_BLUE    "\x1b[34m"
-#define ANSI_COLOR_MAGENTA "\x1b[35m"
-#define ANSI_COLOR_CYAN    "\x1b[36m"
-#define ANSI_COLOR_RESET   "\x1b[0m"
-
-//===================================
 
 void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones);
-calificaciones * buscar_por_materia(calificaciones *list_calificaciones, int id_materia);
-calificaciones * buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno);
-void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char nom_file);
+void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones);
+void buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno, calificaciones *new_list_calificaciones);
+void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char *nom_file);
 
 void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
-    
     char cadena[100];
     int i = 0;
     
@@ -37,20 +26,20 @@ void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
         strcpy(list_calificaciones[i].id_alum, strtok(NULL,"-"));
         list_calificaciones[i].valor_calif = atoi(strtok(NULL,"-"));
         
-        puts(list_calificaciones[i].fecha_calif);
-        puts(list_calificaciones[i].descrip_calif);
-        puts(list_calificaciones[i].id_materia);
-        puts(list_calificaciones[i].id_alum);
-        printf("%i\n", list_calificaciones[i].valor_calif);
+        /*
+         *puts(list_calificaciones[i].fecha_calif);
+         *puts(list_calificaciones[i].descrip_calif);
+         *puts(list_calificaciones[i].id_materia);
+         *puts(list_calificaciones[i].id_alum);
+         *printf("%i\n", list_calificaciones[i].valor_calif);
+         */
         
         i++;
     }
 }
 
-calificaciones * buscar_por_materia(calificaciones *list_calificaciones, int id_materia) {
+void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones) {
     int i, j = 0;
-    static calificaciones new_list_calificaciones[2];
-    printf("%li\n", (sizeof(*list_calificaciones) / sizeof(calificaciones)));
     
     for (i = 0; i <= (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
         //Asi se convierte una cadena a entero. Hay funciones parecidas para
@@ -61,14 +50,10 @@ calificaciones * buscar_por_materia(calificaciones *list_calificaciones, int id_
             new_list_calificaciones[j++] = list_calificaciones[i];
         }
     }
-
-    return new_list_calificaciones;
 }
 
-calificaciones * buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno) {
+void buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno, calificaciones *new_list_calificaciones) {
     int i, j = 0;
-    static calificaciones new_list_calificaciones[2];
-    printf("%li\n", (sizeof(*list_calificaciones) / sizeof(calificaciones)));
     
     for (i = 0; i <= (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
         //Asi se convierte una cadena a entero. Hay funciones parecidas para
@@ -79,23 +64,39 @@ calificaciones * buscar_por_alumno(calificaciones *list_calificaciones, int id_a
             new_list_calificaciones[j++] = list_calificaciones[i];
         }
     }
-
-    return new_list_calificaciones;
 }
 
+void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char *nom_file) {
+    
+    f = fopen(nom_file, "a+");
+    
+    char cadena[100];
+    int i= 0;
+    
+    for (i = 0; i < 2; i++) {
+        strcat(cadena, list_calificaciones[i].fecha_calif);
+        strcat(cadena, list_calificaciones[i].descrip_calif);
+        strcat(cadena, list_calificaciones[i].id_materia);
+        strcat(cadena, list_calificaciones[i].id_alum);
+        strcat(cadena, list_calificaciones[i].valor_calif);
+    }
+
+}
 
 int main(void) {
     FILE * f;
     
     calificaciones list_calificaciones[2];
-    calificaciones *new_list_calificaciones[2];
+    calificaciones new_list_calificaciones[2];
+    calificaciones new_list_calificaciones2[2];
     
     cargar_calificaciones(f, list_calificaciones);
     
-    *new_list_calificaciones = buscar_por_materia(list_calificaciones, 2);
+    buscar_por_materia(list_calificaciones, 2,  new_list_calificaciones);
+    buscar_por_alumno(list_calificaciones, 2,  new_list_calificaciones2);
     
     // Se puede utilizar el operador -> para trabajar con estructuras y uniones.
-    /*puts(new_list_calificaciones[0] -> descrip_calif);*/
+    /*puts(new_list_calificaciones[0].descrip_calif);*/
     return 0;
 }
 
