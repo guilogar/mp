@@ -4,8 +4,6 @@ Juan Antonio Muñoz Sanchez
 
 Sergio Rivera Martin
  - Módulo Matriculas
-
-Miguel Ángel Ferral Garrido
  - Módulo Materias
 
 Guillermo Lopez Garcia
