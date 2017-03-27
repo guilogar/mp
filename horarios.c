@@ -41,9 +41,14 @@ int i = 0;
 char linea[MAX_LINEA];
   FILE * fichero = fopen("horarios.txt", "r");
 
-  if (fichero == NULL)
-    exit(EXIT_FAILURE);
-	
+  if (fichero == NULL){
+   /* exit(EXIT_FAILURE); Dejar para mas tarde y poner un mensaje de error simplemente */
+	   puts(ANSI_COLOR_RED);
+        puts("Error fatal: El fichero con la información no existe.\n\n");
+        puts(ANSI_COLOR_RESET);
+        return;
+      }
+
 	//Reserva progresiva de memoria para almacenar cada
 	//horario en el vector
   while (fgets (linea, sizeof linea, fichero)) {
@@ -56,3 +61,8 @@ char linea[MAX_LINEA];
 
   return i;
 }
+
+
+/* Por hacer:
+  -Función listar horarios por id de profesor en menu admin.
+  -Funciones que añadan, eliminen, modifiquen, o eliminen horarios.
