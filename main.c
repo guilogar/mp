@@ -23,15 +23,17 @@ void guardar();
 //Contadores de lineas de .txt
 //Si sobra o falta alguno añadir o eliminar
 
-int n_horarios, n_alumnos, n_usuarios;
+int *n_horarios, n_alumnos, n_usuarios;
 int n_materias, n_matriculas, n_faltas, n_calificaciones; 
 
-/* Proposición de hacer globales los vectores que
+/* 
+	Proposición de hacer globales los vectores que
 	apuntan a una estructura con los datos de cada 
 	archivo .txt. Ej: 
+*/
 
 horario **arr_horario
-*/
+
 
 int main()
 {
