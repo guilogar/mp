@@ -12,3 +12,4 @@ Guillermo Lopez Garcia
 
 Guillermo Giron Garcia
  - Módulo Horarios
+ - Documentación

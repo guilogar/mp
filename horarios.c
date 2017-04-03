@@ -52,7 +52,7 @@ char linea[MAX_LINEA];
 	//Reserva progresiva de memoria para almacenar cada
 	//horario en el vector
   while (fgets (linea, sizeof linea, fichero)) {
-    arr[i] = malloc (sizeof (horario));
+    arr[i] = malloc (sizeof (horarios));
     leer_horario(linea, arr[i]);
     i++;
   }
@@ -70,7 +70,7 @@ char linea[MAX_LINEA];
 */
 void listar_horarios_prof (horarios ** arr, int *n, usuarios id) {
   int i = 0, num= *num;
-  from (i; i<num; i++) {
+  for (i; i<num; i++) {
     if (strcmp(arr[i]->id_prof, usuarios id))
     {
       printf("Horarios\n=========================================================\n");
@@ -87,7 +87,7 @@ void listar_horarios_prof (horarios ** arr, int *n, usuarios id) {
 */
 void listar_horarios_admin (horarios ** arr, int *n) {
   int i = 0, num = *n;
-  from (i; i<num; i++) {
+  for (i; i<num; i++) {
     printf("Horarios\n=========================================================\n");
     printf("%s-%d-%d-%s-%s\n", arr[i]->id_prof, arr[i]->dia_clase, arr[i]->hora_clase, arr[i]->id_materia, arr[i]->grupo );
     printf("=========================================================\n");
@@ -153,11 +153,11 @@ while (bol != 0) {
   printf("Introduzca hora: \n");
   scanf("%d", &hora);
   printf("Introduzca hora: \n");
-  scanf("%s", materia);
+  scanf("%s", id_m);
   printf("Introduzcamateria: \n");
-  scanf("%s", grupo);
-  from(i=0; i<num; i++) {
-    if (strcmp (arr_horarios[i]->id_prof, id_p) == 0 && arr_horarios[i]->dia_clase == dia && arr_horarios[i]->hora_clase == hora && strcmp(arr_horarios[i]->id_materia, materia) && strcmp(arr_horarios[i]->grupo, gr)) {
+  scanf("%s", gr);
+  for(i=0; i<num; i++) {
+    if (strcmp (arr_horarios[i]->id_prof, id_p) == 0 && arr_horarios[i]->dia_clase == dia && arr_horarios[i]->hora_clase == hora && strcmp(arr_horarios[i]->id_materia, id_m) && strcmp(arr_horarios[i]->grupo, gr)) {
       bol--;
       break;
     }
@@ -171,7 +171,7 @@ while(i < num) {
 
 // Inseguro de como reducir la reserva de memoria
 
-arr_horarios = realloc(arr_horarios, (num-1) * sizeof *horarios)
+arr_horarios = realloc(arr_horarios, (num-1) * sizeof *horarios);
 arr_horarios = malloc (sizeof(horarios));
 
 *n = num--;
@@ -182,7 +182,7 @@ arr_horarios = malloc (sizeof(horarios));
   Precondición: vector de puntero a estructura incializado
   Postcondición: modifica los parametros de un determinado horario
 */
-void modificar_horario (horario **arr_horarios, int *n) {
+void modificar_horario (horarios **arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
 char id_p[IDP], id_m[IDM], gr[GRUPO]; 
@@ -196,11 +196,11 @@ while (bol != 0) {
   printf("Introduzca hora: \n");
   scanf("%d", &hora);
   printf("Introduzca hora: \n");
-  scanf("%s", materia);
+  scanf("%s", id_m);
   printf("Introduzcamateria: \n");
   scanf("%s", grupo);
   from(i=0; i<num; i++) {
-    if (strcmp (arr_horarios[i]->id_prof, id_p) == 0 && arr_horarios[i]->dia_clase == dia && arr_horarios[i]->hora_clase == hora && strcmp(arr_horarios[i]->id_materia, materia) && strcmp(arr_horarios[i]->grupo, gr)) {
+    if (strcmp (arr_horarios[i]->id_prof, id_p) == 0 && arr_horarios[i]->dia_clase == dia && arr_horarios[i]->hora_clase == hora && strcmp(arr_horarios[i]->id_materia, id_m) && strcmp(arr_horarios[i]->grupo, gr)) {
       bol--;
       break;
     }
@@ -223,5 +223,30 @@ printf("Introduzca grupo: \n");
 scanf("%s", arr_horarios[i]->grupo);
 
 }
+
+/*
+  Cabecera: horarios **arr_horarios, int *n
+  Precondición: vector de puntero a estructura inicializado
+  Postcondición: escribe toda la información del vector rn un fichero de texto
+*/
+void volcado_horarios(horarios **arr_horarios, int *n) {
+  
+int i, n_horarios= *n;  
+FILE * fichero = fopen("horarios.txt", "w");
+
+if (fichero == NULL){
+  puts(ANSI_COLOR_RED);
+  puts("Error fatal: El fichero con la información no existe.\n\n");
+  puts(ANSI_COLOR_RESET);
+  return;
+}
+    
+for (i = 0; i < n_horarios; i++) {
+  fprintf(fichero, "%s-%d-%d-%s-%s\n", arr_horarios[i]->id_prof, arr_horarios[i]->dia_clase, arr_horarios[i]->hora_clase, arr_horarios[i]->id_materia, arr_horarios[i]->grupo);        
+}
+fclose(fichero);
+
+}
 /* Por hacer:
   -Funciones que modifiquen horarios.
+*/
