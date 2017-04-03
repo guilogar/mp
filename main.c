@@ -32,7 +32,7 @@ int n_materias, n_matriculas, n_faltas, n_calificaciones;
 	archivo .txt. Ej: 
 */
 
-horario **arr_horario
+horarios **arr_horario;
 
 
 int main()

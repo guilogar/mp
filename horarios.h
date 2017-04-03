@@ -6,6 +6,7 @@
 #define GRUPO 11
 #define IDP 4
 #define IDM 5
+#define MAx_LINEA 30
 
 /*
    Cabecera: char *, horario *
@@ -13,7 +14,7 @@
    Postcondicion: lee una linea y guardo todos sus atributos en una
    estructura horario
 */
-void leer_horario (char * linea, horario * h);
+void leer_horario (char * linea, horarios * h);
 
 /*
 	Cabecera: horario **
@@ -56,6 +57,13 @@ void eliminar_horario (horarios **arr_horarios, int n);
   Precondición: vector de puntero a estructura incializado
   Postcondición: modifica los parametros de un determinado horario
 */
-void modificar_horario (horario **arr_horarios, int *n);
+void modificar_horario (horarios **arr_horarios, int *n);
+
+/*
+  Cabecera: horarios **arr_horarios, int *n
+  Precondición: vector de puntero a estructura inicializado
+  Postcondición: escribe toda la información del vector rn un fichero de texto
+*/
+void volcado_horarios(horarios **arr_horarios, int *n);
 
 #endif
