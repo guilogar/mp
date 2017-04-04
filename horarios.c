@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "horarios.h"
 #include "estructuras.h"
+#include "horarios.h"
 
 /*
    Cabecera: char *, horario *
@@ -34,7 +34,7 @@ void leer_horario (char * linea, horarios * h) {
 	Precondición: puntero a vector de estructura declarado e inicializado
 	Postcondición: Lee todos los horarios que se encuetran en el fichero horarios.tt
 	y los guarda en un vector de punteros a estructura tipo horario
-*/ 
+*/
 int leer_horarios (horarios ** arr) {
 
 int i = 0;
@@ -101,7 +101,7 @@ void listar_horarios_admin (horarios ** arr, int *n) {
 */
 void añadir_horario (horarios **arr_horarios, int *n) {
   int dia, hora, i, bol=1, num = *n;
-  char id_p[IDP], id_m[IDM], gr[GRUPO]; 
+  char id_p[IDP], id_m[IDM], gr[GRUPO];
   listar_horarios_admin(arr_horarios, n);
 
   arr_horarios = realloc(arr_horarios, (num+1) * sizeof *horarios)
@@ -116,7 +116,7 @@ void añadir_horario (horarios **arr_horarios, int *n) {
     from(i=0; i<num-1; i++) {
       if (strcmp (arr_horarios[num]->id_prof, id_p) == 0 )
         bol = 0;
-    } 
+    }
   }
   printf("Introduzca día: \n");
   scanf("%d", &dia);
@@ -142,7 +142,7 @@ void añadir_horario (horarios **arr_horarios, int *n) {
 void eliminar_horario(horarios **arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
-char id_p[IDP], id_m[IDM], gr[GRUPO]; 
+char id_p[IDP], id_m[IDM], gr[GRUPO];
 listar_horarios_admin(arr_horarios, num);
 
 while (bol != 0) {
@@ -185,7 +185,7 @@ arr_horarios = malloc (sizeof(horarios));
 void modificar_horario (horarios **arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
-char id_p[IDP], id_m[IDM], gr[GRUPO]; 
+char id_p[IDP], id_m[IDM], gr[GRUPO];
 listar_horarios_admin(arr_horarios, num);
 
 while (bol != 0) {
@@ -230,8 +230,8 @@ scanf("%s", arr_horarios[i]->grupo);
   Postcondición: escribe toda la información del vector rn un fichero de texto
 */
 void volcado_horarios(horarios **arr_horarios, int *n) {
-  
-int i, n_horarios= *n;  
+
+int i, n_horarios= *n;
 FILE * fichero = fopen("horarios.txt", "w");
 
 if (fichero == NULL){
@@ -240,9 +240,9 @@ if (fichero == NULL){
   puts(ANSI_COLOR_RESET);
   return;
 }
-    
+
 for (i = 0; i < n_horarios; i++) {
-  fprintf(fichero, "%s-%d-%d-%s-%s\n", arr_horarios[i]->id_prof, arr_horarios[i]->dia_clase, arr_horarios[i]->hora_clase, arr_horarios[i]->id_materia, arr_horarios[i]->grupo);        
+  fprintf(fichero, "%s-%d-%d-%s-%s\n", arr_horarios[i]->id_prof, arr_horarios[i]->dia_clase, arr_horarios[i]->hora_clase, arr_horarios[i]->id_materia, arr_horarios[i]->grupo);
 }
 fclose(fichero);
 
