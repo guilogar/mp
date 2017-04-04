@@ -7,16 +7,24 @@
 #define TOO_LONG 2
 
 void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones);
-void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones);
-void buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno, calificaciones *new_list_calificaciones);
-void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char *nom_file);
-void menu_calificaciones(calificaciones *list_calificaciones, int id_alumno);
-int get_line (char *prmpt, char *buff, size_t sz);
-void print_calificaciones_por_alumno(calificaciones *list_calificaciones, int id_alumno);
-void print_calificaciones_por_materia(calificaciones *list_calificaciones, int id_materia);
 
-void modificar_calificacion(calificaciones *list_calificaciones, int id_calificacion);
-void borrar_calificacion(calificaciones *list_calificaciones, int id_calificacion);
+void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones, int longitud_array);
+
+void buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno, calificaciones *new_list_calificaciones, int longitud_array);
+
+void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char *nom_file, int longitud_array);
+
+void menu_calificaciones(calificaciones *list_calificaciones, int id_alumno, int longitud_array);
+
+int get_line (char *prmpt, char *buff, size_t sz);
+
+void print_calificaciones_por_alumno(calificaciones *list_calificaciones, int id_alumno, int longitud_array);
+
+void print_calificaciones_por_materia(calificaciones *list_calificaciones, int id_materia, int longitud_array);
+
+void modificar_calificacion(calificaciones *list_calificaciones, int id_calificacion, int longitud_array);
+
+void borrar_calificacion(calificaciones *list_calificaciones, int id_calificacion, int longitud_array);
 
 
 int get_line (char *prmpt, char *buff, size_t sz) {
@@ -64,10 +72,10 @@ void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
     }
 }
 
-void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones) {
+void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones, int longitud_array) {
     int i, j = 0;
     
-    for (i = 0; i <= (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
+    for (i = 0; i <= (sizeof(list_calificaciones) / sizeof(calificaciones)); i++) {
         //Asi se convierte una cadena a entero. Hay funciones parecidas para
         //hacer conversiones de cadena a otro tipos numericos.
         //atoi(list_calificaciones[i].id_materia);
@@ -78,10 +86,10 @@ void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, cal
     }
 }
 
-void buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno, calificaciones *new_list_calificaciones) {
+void buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno, calificaciones *new_list_calificaciones, int longitud_array) {
     int i, j = 0;
     
-    for (i = 0; i <= (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
+    for (i = 0; i <= (sizeof(list_calificaciones) / sizeof(calificaciones)); i++) {
         //Asi se convierte una cadena a entero. Hay funciones parecidas para
         //hacer conversiones de cadena a otro tipos numericos.
         //atoi(list_calificaciones[i].id_materia);
@@ -92,7 +100,7 @@ void buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno, calif
     }
 }
 
-void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char *nom_file) {
+void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char *nom_file, int longitud_array) {
     
     f = fopen(nom_file, "w");
     
@@ -126,10 +134,10 @@ void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char 
     fclose(f);
 }
 
-void print_calificaciones_por_materia(calificaciones *list_calificaciones, int id_materia) {
+void print_calificaciones_por_materia(calificaciones *list_calificaciones, int id_materia, int longitud_array) {
     
     int i;
-    for (i = 0; i <= (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
+    for (i = 0; i <= (sizeof(list_calificaciones) / sizeof(calificaciones)); i++) {
         
         if (atoi(list_calificaciones[i].id_materia) == id_materia) {
             printf("%dº) ", i+1);
@@ -142,10 +150,10 @@ void print_calificaciones_por_materia(calificaciones *list_calificaciones, int i
         }
     }
 }
-void print_calificaciones_por_alumno(calificaciones *list_calificaciones, int id_alumno) {
+void print_calificaciones_por_alumno(calificaciones *list_calificaciones, int id_alumno, int longitud_array) {
     
     int i;
-    for (i = 0; i <= (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
+    for (i = 0; i <= (sizeof(list_calificaciones) / sizeof(calificaciones)); i++) {
         
         if (atoi(list_calificaciones[i].id_alum) == id_alumno) {
             printf("%dº) ", i+1);
@@ -159,7 +167,7 @@ void print_calificaciones_por_alumno(calificaciones *list_calificaciones, int id
     }
 }
 
-void menu_calificaciones(calificaciones *list_calificaciones, int id_alumno) {
+void menu_calificaciones(calificaciones *list_calificaciones, int id_alumno, int longitud_array) {
     
     int rc;
     char buff[100];
@@ -197,22 +205,22 @@ void menu_calificaciones(calificaciones *list_calificaciones, int id_alumno) {
                     puts("Se muestran a continuación todas las calificaciones del alumno.");
                     puts("===============================================================");
                     puts("");
-                    print_calificaciones_por_alumno(list_calificaciones, id_alumno);
+                    print_calificaciones_por_alumno(list_calificaciones, id_alumno, longitud_array);
                     puts("");
                     get_line ("Eliga una calificación para modificar (0 para no modificar ninguna)> ", buff_num_calif, sizeof(buff_num_calif));
                     puts("");
-                    modificar_calificacion(list_calificaciones, atoi(buff_num_calif)-1);
+                    modificar_calificacion(list_calificaciones, atoi(buff_num_calif)-1, longitud_array);
                 }
               break;
             case 2:
                     puts("Se muestran a continuación todas las calificaciones del alumno.");
                     puts("===============================================================");
                     puts("");
-                    print_calificaciones_por_alumno(list_calificaciones, id_alumno);
+                    print_calificaciones_por_alumno(list_calificaciones, id_alumno, longitud_array);
                     puts("");
                     get_line ("Eliga una calificación para borrar (0 para no borrar ninguna)> ", buff_num_calif, sizeof(buff_num_calif));
                     puts("");
-                    /*borrar_calificacion(list_calificaciones, atoi(buff_num_calif)-1);*/
+                    borrar_calificacion(list_calificaciones, atoi(buff_num_calif)-1, longitud_array);
               break;
             case 3:
                 printf ("Input too long [%s]\n", buff);
@@ -226,12 +234,48 @@ void menu_calificaciones(calificaciones *list_calificaciones, int id_alumno) {
     return;
 }
 
-void modificar_calificacion(calificaciones *list_calificaciones, int id_calificacion) {
+void borrar_calificacion(calificaciones *list_calificaciones, int id_calificacion, int longitud_array) {
+    if(id_calificacion < 0) {
+        return;
+    }
+    printf("%li", (sizeof(list_calificaciones) / sizeof(calificaciones)));
+    if(id_calificacion > (sizeof(list_calificaciones) / sizeof(calificaciones))) {
+        puts("El alumno no tiene tantas calificaciones. Escoje un número que este entre 1 y el número maximo de calificaciones que posea.");
+        puts("");
+        return;
+    }
+    char election[100];
+    int i;
+    
+    puts("Información Calificación");
+    puts("=========================");
+    puts("");
+    
+    printf("Fecha de Calificación => %s.\n\n", list_calificaciones[id_calificacion].fecha_calif);
+    printf("Descripción de la Calificación => %s.\n\n", list_calificaciones[id_calificacion].descrip_calif);
+    printf("Id de la Materia => %s.\n\n", list_calificaciones[id_calificacion].id_materia);
+    printf("Id Alumno => %s.\n\n", list_calificaciones[id_calificacion].id_alum);
+    printf("Valor de la Calificación => %d.\n\n", list_calificaciones[id_calificacion].valor_calif);
+    puts("");
+    
+    get_line ("¿Está seguro de que quiere borrar esta calificación del alumno?(y/n)> ", election, sizeof(election));
+    if(strcmp("y", election) == 0 || strcmp("yes", election)) {
+        for(i = id_calificacion; i < (sizeof(*list_calificaciones) / sizeof(calificaciones)); i++) {
+            list_calificaciones[id_calificacion] = list_calificaciones[id_calificacion+1];
+        }
+        /*printf("=>>>>>>>>>>>>>>>>%li<<<<<<<<<<<<<<<=", (sizeof(*list_calificaciones) / sizeof(calificaciones))-1);*/
+    }
+    
+    /*list_calificaciones = (calificaciones *) realloc(list_calificaciones, (sizeof(*list_calificaciones) / sizeof(calificaciones))-1);*/
+    return;
+}
+
+void modificar_calificacion(calificaciones *list_calificaciones, int id_calificacion, int longitud_array) {
     
     if(id_calificacion < 0) {
         return;
     }
-    if(id_calificacion > (sizeof(*list_calificaciones) / sizeof(calificaciones))) {
+    if(id_calificacion > (sizeof(list_calificaciones) / sizeof(calificaciones))) {
         puts("El alumno no tiene tantas calificaciones. Escoje un número que este entre 1 y el número maximo de calificaciones que posea.");
         puts("");
         return;
@@ -254,7 +298,7 @@ void modificar_calificacion(calificaciones *list_calificaciones, int id_califica
     if(atoi(new_value_calif) < 0 || atoi(new_value_calif) > 10) {
         puts("No se admite como nota un valor inferior a 0 o superior a 10. Vuelva a intentarlo.");
         puts("");
-        modificar_calificacion(list_calificaciones, id_calificacion);
+        modificar_calificacion(list_calificaciones, id_calificacion, longitud_array);
         return;
     }
     
@@ -267,18 +311,17 @@ int main(void) {
     // Se puede utilizar el operador -> para trabajar con estructuras y uniones.
     /*puts(new_list_calificaciones[0].descrip_calif);*/
     
-    calificaciones list_calificaciones[2];
+    calificaciones list_calificaciones[9];
     calificaciones new_list_calificaciones[2];
     calificaciones new_list_calificaciones2[2];
     
     cargar_calificaciones(f, list_calificaciones);
-    buscar_por_alumno(list_calificaciones, 342312, new_list_calificaciones);
     
+    /*buscar_por_alumno(list_calificaciones, 342312, new_list_calificaciones);*/
     /*buscar_por_materia(list_calificaciones, 2,  new_list_calificaciones);*/
     /*volcado_calificaciones(f, list_calificaciones, "calificaciones.txt");*/
     
-    menu_calificaciones(new_list_calificaciones, 342312);
-    
+    menu_calificaciones(new_list_calificaciones, 342312, (sizeof(list_calificaciones) / sizeof(calificaciones)));
     
     return 0;
 }
