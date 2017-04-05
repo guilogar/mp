@@ -5,6 +5,58 @@
 #include "horarios.h"
 
 /*
+	Cabecera: ninguna
+	Precondición: ninguna
+	Postcondición: permite el manejo de la información de horarios
+*/
+void menu_horarios(){
+    int op;
+
+    system("cls");
+    printf("1. Aniadir horas\n");
+    printf("2. Eliminar horas\n");
+    printf("3. Modificar horas\n");
+    printf("4. Listar horario\n");
+    printf("5. Salir\n\n");
+
+    printf("Op: ");
+    scanf("%d",&op);
+
+    while(op!=5){
+        switch(op){
+            case 1:
+                system("cls");
+                añadir_horario(arr_horario,n_horarios);
+                op=5;
+            break;
+            case 2:
+                system("cls");
+                eliminar_horario(arr_horario,n_horarios);
+                op=5;
+            break;
+            case 3:
+                system("cls");
+                modificar_horario(arr_horario,n_horarios);
+                op=5;
+            break;
+            case 4:
+                system("cls");
+                listar_horarios_admin(arr_horario,n_horarios);
+                op=5;
+            break;
+            default:
+                printf("\nOpción incorrecta\n");
+            break;
+        }
+
+        if(op!=5){
+            printf("Op: ");
+            scanf("%d",&op);
+        }
+    }
+}
+
+/*
    Cabecera: char *, horario *
    Precondicion: vectores declarados e inicializados
    Postcondicion: lee una linea y guardo todos sus atributos en una

@@ -8,6 +8,8 @@
 #define IDM 5
 #define MAx_LINEA 30
 
+void menu_horarios();
+
 /*
    Cabecera: char *, horario *
    Precondicion: vectores declarados e inicializados
@@ -21,7 +23,7 @@ void leer_horario (char * linea, horarios * h);
 	Precondición: puntero a vector de estructura declarado e inicializado
 	Postcondición: Lee todos los horarios que se encuetran en el fichero horarios.tt
 	y los guarda en un vector de punteros a estructura tipo horario
-*/ 
+*/
 int leer_horarios (horarios ** arr);
 
 /*
@@ -29,7 +31,7 @@ int leer_horarios (horarios ** arr);
   Precondición: vector que apunta a estructura inicializado
   Postcondición: lista todos los horarios de un profesor
 */
-void listar_horarios (horarios ** arr, int n, usuarios id);
+void listar_horarios_prof (horarios ** arr, int n, usuarios id);
 
 /*
   Cabecera: horario ** arr, int n

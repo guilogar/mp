@@ -7,6 +7,7 @@ void Anadir_Usuario(usuarios *);
 void Listar_Usuarios(usuarios *);
 void Modificar_Usuario(usuarios *);
 void Baja_Usuario(usuarios *);
+void menu_usuarios();
 
 
 
