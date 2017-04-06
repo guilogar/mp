@@ -8,7 +8,7 @@ int conta=0; //Marca el número de alumnos que hay
 
 void quitar_saltosA(char *);
 char *leer_campo_A(int, char*);
-void Modificar_Alumno_ficha(int);
+void Modificar_Alumno_ficha(alumnos *,int);
 
 //Cambia los caracteres de salto de linea por caracteres de final de vector
 void quitar_saltosA(char *cadena){
@@ -30,6 +30,7 @@ char *leer_campo_A(int largo, char *titulo){
 }
 
 alumnos* Carga_Alumno(){
+    conta = 0;
     alumnos *List_Alumno;
     FILE *fichAlum;
     fichAlum=fopen("Alumnos.txt","r"); //Abre el fichero en modo lectura
@@ -56,7 +57,7 @@ alumnos* Carga_Alumno(){
     return List_Alumno;
 }
 
-void menu_alumnos(){
+void menu_alumnos(alumnos *arr_alumnos){
     int op;
 
     system("cls");
@@ -64,7 +65,7 @@ void menu_alumnos(){
     printf("2. Baja alumno\n");
     printf("3. Modificar alumno\n");
     printf("4. Listar alumnos\n");
-    printf("5. Revisar matricula");
+    printf("5. Revisar matricula\n");
     printf("6. Salir\n\n");
 
     printf("Op: ");
@@ -94,7 +95,7 @@ void menu_alumnos(){
             break;
             case 5:
                 system("cls");
-                ver_matricula(); //Falta implementación
+//                ver_matricula(); //Falta implementación
                 op=6;
             break;
             default:
@@ -109,14 +110,14 @@ void menu_alumnos(){
     }
 }
 
-void listar_alumnos_prof(char* id){
+char* listar_alumnos_prof(alumnos* List_Alumno, char* id){
     int i=0;
 
     while(strcmp(List_Alumno[i].id_alum,id)!=0){ i++; }
-    printf("%s. %s\n",List_Alumno[i].id_alum,List_Alumno[i].nombre_alum);
+    return List_Alumno[i].nombre_alum;
 }
 
-void ficha_alum(char* cod){
+void ficha_alum(alumnos *List_Alumno, char* cod){
     int i=0, op;
     char car;
 
@@ -129,11 +130,11 @@ void ficha_alum(char* cod){
         printf("\n\nEditar datos[s/n]: ");
         scanf("%c",&car);
     }
-    if(car=='s') Modificar_Alumno_ficha(i);
-    else if(car=='n')
+    if(car=='s') Modificar_Alumno_ficha(List_Alumno,i);
+    else if(car=='n') printf("Donde fue el comentario?");
 }
 
-void Modificar_Alumno_ficha(int i){
+void Modificar_Alumno_ficha(alumnos *List_Alumno,int i){
     printf("\n----INTRODUCIR NUEVOS VALORES----\n");
     strcpy(List_Alumno[i].nombre_alum,leer_campo_A(20,"Nombre"));
     strcpy(List_Alumno[i].direc_alum,leer_campo_A(30,"Direccion"));

@@ -1,4 +1,4 @@
-#include <stdlib.h>
+﻿#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -132,12 +132,12 @@ void menu_admin(){
         switch(op){
             case 1:
                 system("cls");
-                menu_usuarios();
+                menu_usuarios(arr_usuarios);
                 op=5;
             break;
             case 2:
                 system("cls");
-                menu_alumnos();
+                menu_alumnos(arr_alumnos);
                 op=5;
             break;
             case 3:

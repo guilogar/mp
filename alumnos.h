@@ -8,12 +8,12 @@ void Listar_Alumno(alumnos *);
 void Modificar_Alumno(alumnos *);
 void Baja_Alumno(alumnos *);
 void menu_alumnos();
-void ficha_alum(char*);
+void ficha_alum(alumnos *,char*);
 
 /*
-  Cabecera: char*
-  Precondición: cadena que se le pasa debe coincidir con un alumno existente
-  Postcondición: dado el identificador de un alumno imprime su nombre
+  Cabecera: alumnos*, char*
+  Precondición: existe estructura y contiene elementos, cadena debe coincidir con un alumno existente
+  Postcondición: dado el identificador de un alumno devuelve su nombre
 */
-void listar_alumno_prof(char*)
+char* listar_alumnos_prof(alumnos *,char*);
 
