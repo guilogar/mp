@@ -10,7 +10,7 @@
 #include "alumnos.h"
 #include "matricula.h"
 #include "usuarios.h"
-//#include "horarios.h"
+#include "horarios.h"
 
 
 //	Sección de importación (incompleta a falta de revisión)
@@ -19,10 +19,8 @@ void menu_principal();
 void menu_admin();
 void menu_prof();
 void guardar();
-void menu_usuarios();
-void menu_alumnos();
-void menu_materias();
-void menu_horarios();
+
+
 void quitar_saltos(char *);
 char *leer_campo(int, char *);
 
@@ -40,7 +38,7 @@ int n_materias, n_matriculas, n_faltas, n_calificaciones;
 	archivo .txt. Ej:
 */
 
-//  horario **arr_horario
+  horario **arr_horario
   usuarios *arr_usuarios;
   alumnos *arr_alumnos;
 
@@ -56,15 +54,15 @@ int main()
     n_alumnos = cuenta_lineas("alumnos.txt");
 	n_usuarios = cuenta_lineas("usuarios.txt");
 	n_materias = cuenta_lineas("materias.txt");
-//	n_matriculas = cuenta_lineas("materias.txt");
-//	n_faltas = cuenta_lineas("faltas.txt");
-//	n_calificaciones = cuenta_lineas("calificaciones.txt");
+	n_matriculas = cuenta_lineas("materias.txt");
+	n_faltas = cuenta_lineas("faltas.txt");
+	n_calificaciones = cuenta_lineas("calificaciones.txt");
 
-//    arr_horario = malloc(n_horarios * sizeof(horario*));
+    arr_horario = malloc(n_horarios * sizeof(horario*));
     arr_usuarios = Carga_Usuario();
     arr_alumnos = Carga_Alumno();
 
-    //leer_horarios(arr_horario);
+    leer_horarios(arr_horario);
 
 	menu_principal();
 
@@ -111,7 +109,7 @@ void menu_principal(){
                 menu_admin();
             break;
             case 2:
-                menu_prof();
+                menu_prof(i);
             break;
         }
     }
@@ -144,12 +142,12 @@ void menu_admin(){
             break;
             case 3:
                 system("cls");
-                menu_materias();
+                menu_materias(); //Falta implementación
                 op=5;
             break;
             case 4:
                 system("cls");
- //               menu_horarios();
+                menu_horarios();
                 op=5;
             break;
             default:
@@ -163,204 +161,64 @@ void menu_admin(){
     }
 }
 
-void menu_usuarios(){
-    int op;
+
+void menu_prof(int i){
+    int op, al;
+    char cod[7];
+    system("cls");
+    //Se necesita que esta función tambien permita seleccionar un grupo de la lista
+    listar_horarios_prof(arr_horario,n_horarios,arr_usuarios[i].id_usuario);
 
     system("cls");
-    printf("1. Alta usuario\n");
-    printf("2. Baja usuario\n");
-    printf("3. Modificar usuario\n");
-    printf("4. Listar usuarios\n");
-    printf("5. Salir\n\n");
+//id = posición del grupo seleccionado de la función anterior.
+//pos = posición de la matería cuyo id coincide con el id de la materia del grupo seleccionado de la función anterior
+    printf("GRUPO %s MATERIA %s",arr_horario[/*id*/].grupo,arr_materia[/*pos*/].nombre_materia);
+    printf("  1.- Lista de alumnos\n");
+    printf("  2.- Cambiar de grupo\n\n");
 
     printf("Op: ");
     scanf("%d",&op);
 
-    while(op!=5){
-        switch(op){
-            case 1:
-                system("cls");
-                Anadir_Usuario(arr_usuarios);
-                op=5;
-            break;
-            case 2:
-                system("cls");
-                Baja_Usuario(arr_usuarios);
-                op=5;
-            break;
-            case 3:
-                system("cls");
-                Modificar_Usuario(arr_usuarios);
-                op=5;
-            break;
-            case 4:
-                system("cls");
-                Listar_Usuarios(arr_usuarios);
-                op=5;
-            break;
-            default:
-                printf("\nOpción incorrecta\n");
-            break;
-        }
+    switch(op){
+        case 1:
+            printf("\n\n");
+            strcpy(cod,listar_alumnos_materia())
+            //falta implementación de listar_alumnos_materia. Creo que debería ir en el módulo matrícula
+            //En el módulo alumnos se ha implementado una función que dado el id de un alumno muestra su id y su nombre
+            printf("ALUMNO:--------\n");
+            printf("1.  Ficha del alumno\n");
+            printf("2.  Calificaciones del alumno\n");
+            printf("3.  Faltas de asistencia\n");
+            printf("4.  Volver\n\n");
 
-        if(op!=5){
             printf("Op: ");
-            scanf("%d",&op);
-        }
+            scanf("%d",&al);
+
+            switch(op){
+                case 1:
+                    ficha_alum(cod);
+                break;
+                case 2:
+                    califica_alum(cod);
+                break;
+                case 3:
+                    faltas_alum(cod);
+                break;
+                case 4:
+                    //No tengo claro como conseguir esta parte tal y como está el código
+                break;
+                default:
+                    printf("\nOpción incorrecta\n");
+                break;
+            }
+        break;
+        case 2:
+            menu_prof(i);
+        break;
+        default:
+            printf("\nOpción incorrecta\n");
+        break;
     }
-}
-
-
-void menu_alumnos(){
-    int op;
-
-    system("cls");
-    printf("1. Alta alumno\n");
-    printf("2. Baja alumno\n");
-    printf("3. Modificar alumno\n");
-    printf("4. Listar alumnos\n");
-    printf("5. Revisar matricula");
-    printf("6. Salir\n\n");
-
-    printf("Op: ");
-    scanf("%d",&op);
-
-    while(op!=6){
-        switch(op){
-            case 1:
-                system("cls");
-                Anadir_Alumno(arr_alumnos);
-                op=6;
-            break;
-            case 2:
-                system("cls");
-                Baja_Alumno(arr_alumnos);
-                op=6;
-            break;
-            case 3:
-                system("cls");
-                Modificar_Alumno(arr_alumnos);
-                op=6;
-            break;
-            case 4:
-                system("cls");
-                Listar_Alumno(arr_alumnos);
-                op=6;
-            break;
-            case 5:
-                system("cls");
-                //ver matricula
-                op=6;
-            break;
-            default:
-                printf("\nOpción incorrecta\n");
-            break;
-        }
-
-        if(op!=6){
-            printf("Op: ");
-            scanf("%d",&op);
-        }
-    }
-}
-
-void menu_materias(){
-    int op;
-
-    system("cls");
-    printf("1. Alta materia\n");
-    printf("2. Baja materia\n");
-    printf("3. Modificar materia\n");
-    printf("4. Listar materias\n");
-    printf("5. Salir\n\n");
-
-    printf("Op: ");
-    scanf("%d",&op);
-
-    while(op!=5){
-        switch(op){
-            case 1:
-                system("cls");
-                //ALTA MATERIA
-                op=5;
-            break;
-            case 2:
-                system("cls");
-                //BAJA MATERIA
-                op=5;
-            break;
-            case 3:
-                system("cls");
-                //MODIFICAR MATERIA
-                op=5;
-            break;
-            case 4:
-                system("cls");
-                //LISTAR MATERIAS
-                op=5;
-            break;
-            default:
-                printf("\nOpción incorrecta\n");
-            break;
-        }
-
-        if(op!=5){
-            printf("Op: ");
-            scanf("%d",&op);
-        }
-    }
-}
-/*
-void menu_horarios(){
-    int op;
-
-    system("cls");
-    printf("1. Aniadir horas\n");
-    printf("2. Eliminar horas\n");
-    printf("3. Modificar horas\n");
-    printf("4. Listar horario\n");
-    printf("5. Salir\n\n");
-
-    printf("Op: ");
-    scanf("%d",&op);
-
-    while(op!=5){
-        switch(op){
-            case 1:
-                system("cls");
-                añadir_horario(arr_horario,n_horarios);
-                op=5;
-            break;
-            case 2:
-                system("cls");
-                eliminar_horario(arr_horario,n_horarios);
-                op=5;
-            break;
-            case 3:
-                system("cls");
-                modificar_horario(arr_horario,n_horarios);
-                op=5;
-            break;
-            case 4:
-                system("cls");
-                listar_horarios_admin(arr_horario,n_horarios);
-                op=5;
-            break;
-            default:
-                printf("\nOpción incorrecta\n");
-            break;
-        }
-
-        if(op!=5){
-            printf("Op: ");
-            scanf("%d",&op);
-        }
-    }
-}
-*/
-void menu_prof(){
-    system("cls");
-
 }
 
 

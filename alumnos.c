@@ -8,6 +8,7 @@ int conta=0; //Marca el número de alumnos que hay
 
 void quitar_saltosA(char *);
 char *leer_campo_A(int, char*);
+void Modificar_Alumno_ficha(int);
 
 //Cambia los caracteres de salto de linea por caracteres de final de vector
 void quitar_saltosA(char *cadena){
@@ -55,6 +56,92 @@ alumnos* Carga_Alumno(){
     return List_Alumno;
 }
 
+void menu_alumnos(){
+    int op;
+
+    system("cls");
+    printf("1. Alta alumno\n");
+    printf("2. Baja alumno\n");
+    printf("3. Modificar alumno\n");
+    printf("4. Listar alumnos\n");
+    printf("5. Revisar matricula");
+    printf("6. Salir\n\n");
+
+    printf("Op: ");
+    scanf("%d",&op);
+
+    while(op!=6){
+        switch(op){
+            case 1:
+                system("cls");
+                Anadir_Alumno(arr_alumnos);
+                op=6;
+            break;
+            case 2:
+                system("cls");
+                Baja_Alumno(arr_alumnos);
+                op=6;
+            break;
+            case 3:
+                system("cls");
+                Modificar_Alumno(arr_alumnos);
+                op=6;
+            break;
+            case 4:
+                system("cls");
+                Listar_Alumno(arr_alumnos);
+                op=6;
+            break;
+            case 5:
+                system("cls");
+                ver_matricula(); //Falta implementación
+                op=6;
+            break;
+            default:
+                printf("\nOpción incorrecta\n");
+            break;
+        }
+
+        if(op!=6){
+            printf("Op: ");
+            scanf("%d",&op);
+        }
+    }
+}
+
+void listar_alumnos_prof(char* id){
+    int i=0;
+
+    while(strcmp(List_Alumno[i].id_alum,id)!=0){ i++; }
+    printf("%s. %s\n",List_Alumno[i].id_alum,List_Alumno[i].nombre_alum);
+}
+
+void ficha_alum(char* cod){
+    int i=0, op;
+    char car;
+
+    while(strcmp(List_Alumno[i].id_alum,cod)!=0){ i++; }
+    printf("%s-%s-%s-%s-%s-%s\n",List_Alumno[i].id_alum,List_Alumno[i].nombre_alum,List_Alumno[i].direc_alum,List_Alumno[i].local_alum,List_Alumno[i].curso,List_Alumno[i].grupo);
+
+    printf("\n\nEditar datos[s/n]: ");
+    scanf("%c",&car);
+    while(car!='s' && car!='n'){
+        printf("\n\nEditar datos[s/n]: ");
+        scanf("%c",&car);
+    }
+    if(car=='s') Modificar_Alumno_ficha(i);
+    else if(car=='n')
+}
+
+void Modificar_Alumno_ficha(int i){
+    printf("\n----INTRODUCIR NUEVOS VALORES----\n");
+    strcpy(List_Alumno[i].nombre_alum,leer_campo_A(20,"Nombre"));
+    strcpy(List_Alumno[i].direc_alum,leer_campo_A(30,"Direccion"));
+    strcpy(List_Alumno[i].local_alum,leer_campo_A(30,"Localidad"));
+    strcpy(List_Alumno[i].curso,leer_campo_A(30,"Curso"));
+    strcpy(List_Alumno[i].grupo,leer_campo_A(10,"Grupo"));
+}
+
 void Anadir_Alumno(alumnos *List_Alumno){
     //HAY QUE ASIGNAR EL ID
     strcpy(List_Alumno[conta].id_alum,leer_campo_A(6,"ID"));
@@ -74,7 +161,7 @@ void Listar_Alumno(alumnos *List_Alumno){
 
 void Modificar_Alumno(alumnos *List_Alumno){
     int i=0, pos_mod;
-    char us[5];
+    char us[6];
     strcpy(us,leer_campo_A(5,"Introduce el codigo del alumno a modificar"));
     while(i<conta){
         if(!strcmp(List_Alumno[i].id_alum,us)) pos_mod = i;
