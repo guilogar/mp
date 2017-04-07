@@ -6,7 +6,7 @@
 #define GRUPO 11
 #define IDP 4
 #define IDM 5
-#define MAx_LINEA 30
+#define MAX_LINEA 30
 
 void menu_horarios();
 
@@ -31,28 +31,28 @@ int leer_horarios (horarios ** arr);
   Precondición: vector que apunta a estructura inicializado
   Postcondición: lista todos los horarios de un profesor
 */
-void listar_horarios_prof (horarios ** arr, int n, usuarios id);
+void listar_horarios_prof (horarios ** arr, int *n, char id_p);
 
 /*
   Cabecera: horario ** arr, int n
   Precondición: vector que apunta a estructura inicializado
   Postcondición: lista todos los horarios de todos los profesores
 */
-void listar_horarios_admin (horarios ** arr, int n);
+void listar_horarios_admin (horarios ** arr, int *n);
 
 /*
   Cabecera: horarios **arr_horarios, int n
   Precondición: vector que apunta a estructuras inicializado, y nunero de datos contabilizado
   Postcondición: Permite añadir un nuevo horario a un determinado usuario del sistema
 */
-void añadir_horario (horarios **arr_horarios, int n);
+void aniadir_horario (horarios **arr_horarios, int *n);
 
 /*
   Cabecera: horarios **arr_horarios, int n
   Precondición: vector de punteros a estructura inicializado
   Postcondición: elimina un horario de la lista.
 */
-void eliminar_horario (horarios **arr_horarios, int n);
+void eliminar_horario (horarios **arr_horarios, int *n);
 
 /*
   Cabecera: horarios **arr_horarios, int *n

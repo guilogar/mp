@@ -38,7 +38,7 @@ int n_materias, n_matriculas, n_faltas, n_calificaciones;
 	archivo .txt. Ej:
 */
 
-  horario **arr_horario
+  horarios **arr_horario
   usuarios *arr_usuarios;
   alumnos *arr_alumnos;
 
@@ -147,7 +147,7 @@ void menu_admin(){
             break;
             case 4:
                 system("cls");
-                menu_horarios();
+                menu_horarios(arr_horario, n_horarios); 
                 op=5;
             break;
             default:

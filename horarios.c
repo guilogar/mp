@@ -3,13 +3,14 @@
 #include <string.h>
 #include "estructuras.h"
 #include "horarios.h"
+#include "auxiliar.h"
 
 /*
 	Cabecera: ninguna
 	Precondición: ninguna
 	Postcondición: permite el manejo de la información de horarios
 */
-void menu_horarios(){
+void menu_horarios(horarios **arr_horarios, int n_horarios){
     int op;
 
     system("cls");
@@ -26,7 +27,7 @@ void menu_horarios(){
         switch(op){
             case 1:
                 system("cls");
-                añadir_horario(arr_horario,n_horarios);
+                aniadir_horario(arr_horario,n_horarios);
                 op=5;
             break;
             case 2:
@@ -120,10 +121,10 @@ char linea[MAX_LINEA];
   Precondición: vector que apunta a estructura inicializado
   Postcondición: lista todos los horarios de un profesor
 */
-void listar_horarios_prof (horarios ** arr, int *n, usuarios id) {
-  int i = 0, num= *num;
+void listar_horarios_prof (horarios **arr, int *n, char id_p) {
+  int i = 0, num= *n;
   for (i; i<num; i++) {
-    if (strcmp(arr[i]->id_prof, usuarios id))
+    if (strcmp(arr[i]->id_prof, id_p))
     {
       printf("Horarios\n=========================================================\n");
       printf("%s-%d-%d-%s-%s\n", arr[i]->id_prof, arr[i]->dia_clase, arr[i]->hora_clase, arr[i]->id_materia, arr[i]->grupo );
@@ -151,12 +152,12 @@ void listar_horarios_admin (horarios ** arr, int *n) {
   Precondición: vector que apunta a estructuras inicializado, y nunero de datos contabilizado
   Postcondición: Permite añadir un nuevo horario a un determinado usuario del sistema
 */
-void añadir_horario (horarios **arr_horarios, int *n) {
+void aniadir_horario (horarios **arr_horarios, int *n) {
   int dia, hora, i, bol=1, num = *n;
   char id_p[IDP], id_m[IDM], gr[GRUPO];
   listar_horarios_admin(arr_horarios, n);
 
-  arr_horarios = realloc(arr_horarios, (num+1) * sizeof *horarios)
+  arr_horarios = realloc(arr_horarios, (num+1) * sizeof (horarios*);
   arr_horarios = malloc (sizeof(horarios));
 
   num++;
@@ -165,7 +166,7 @@ void añadir_horario (horarios **arr_horarios, int *n) {
   while (bol != 0) {
     printf("Id_prof: \n");
     scanf("%s", id_p);
-    from(i=0; i<num-1; i++) {
+    for(i=0; i<num-1; i++) {
       if (strcmp (arr_horarios[num]->id_prof, id_p) == 0 )
         bol = 0;
     }
@@ -177,7 +178,7 @@ void añadir_horario (horarios **arr_horarios, int *n) {
   printf("Introduzca materia: \n");
   scanf("%s", id_m);
   printf("Introduzca grupo: \n");
-  scanf("%s", grupo);
+  scanf("%s", gr);
   strcpy(arr_horarios[num]->id_prof, id_p);
   strcpy(arr_horarios[num]->id_materia, id_m);
   strcpy(arr_horarios[num]->grupo, gr);
@@ -223,7 +224,7 @@ while(i < num) {
 
 // Inseguro de como reducir la reserva de memoria
 
-arr_horarios = realloc(arr_horarios, (num-1) * sizeof *horarios);
+arr_horarios = realloc(arr_horarios, (num-1) * sizeof (horarios*));
 arr_horarios = malloc (sizeof(horarios));
 
 *n = num--;
@@ -250,8 +251,8 @@ while (bol != 0) {
   printf("Introduzca hora: \n");
   scanf("%s", id_m);
   printf("Introduzcamateria: \n");
-  scanf("%s", grupo);
-  from(i=0; i<num; i++) {
+  scanf("%s", gr);
+  for(i=0; i<num; i++) {
     if (strcmp (arr_horarios[i]->id_prof, id_p) == 0 && arr_horarios[i]->dia_clase == dia && arr_horarios[i]->hora_clase == hora && strcmp(arr_horarios[i]->id_materia, id_m) && strcmp(arr_horarios[i]->grupo, gr)) {
       bol--;
       break;
@@ -260,7 +261,7 @@ while (bol != 0) {
 }
 
 memset(arr_horarios[i]->id_prof,'/0', IDP);
-memset(arr_horarios[i]->materia, '/0', IDM);
+memset(arr_horarios[i]->id_materia, '/0', IDM);
 memset(arr_horarios[i]->grupo, '/0', GRUPO);
 
 printf("Introduzca los nuevos campos del horario\nIntroduzca identificador del profesor: \n");
