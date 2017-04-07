@@ -282,6 +282,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                     /*get_line ("Escriba el id de la materia de la calificación a modificar> ", buff_id_materia, sizeof(buff_id_materia));*/
                     /*get_line ("Escriba el id del alumno de la calificación a modificar> ", buff_id_alum, sizeof(buff_id_alum));*/
                     puts("");
+                    str_replace(buff_fecha_calif, "-", "/");
                     strcpy(datos_calif[0], buff_fecha_calif);
                     sprintf(datos_calif[1], "%d", array_datos[0]);
                     sprintf(datos_calif[2], "%d", array_datos[1]);
@@ -299,6 +300,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                     /*get_line ("Escriba el id de la materia de la calificación a borrar> ", buff_id_materia, sizeof(buff_id_materia));*/
                     /*get_line ("Escriba el id del alumno de la calificación a borrar> ", buff_id_alum, sizeof(buff_id_alum));*/
                     puts("");
+                    str_replace(buff_fecha_calif, "-", "/");
                     strcpy(datos_calif[0], buff_fecha_calif);
                     sprintf(datos_calif[1], "%d", array_datos[0]);
                     sprintf(datos_calif[2], "%d", array_datos[1]);
@@ -320,6 +322,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                         continue;
                     }
                     puts("");
+                    str_replace(buff_fecha_calif, "-", "/");
                     strcpy(datos_calif[0], buff_fecha_calif);
                     sprintf(datos_calif[1], "%d", array_datos[0]);
                     sprintf(datos_calif[2], "%d", array_datos[1]);
@@ -360,8 +363,6 @@ void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char 
     
     int i= 0;
     
-    calificaciones *new_list = (calificaciones *) calloc((longitud_array), sizeof(calificaciones));
-    
     for (i = 0; i < longitud_array; i++) {
         memset(cadena[i], 0, strlen(cadena[i]));
         
@@ -386,7 +387,7 @@ void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char 
         strcat(cadena[i], aux_valor_calif);
         strcat(cadena[i], "\n");
         
-        puts(cadena[i]);
+        /*puts(cadena[i]);*/
         fprintf(f, "%s", cadena[i]);
     }
     fclose(f);
@@ -442,10 +443,11 @@ int main(void) {
      *puts(prueba);
      *return 0;
      */
-    
+    /*printf("<<%d>>\n", get_longitud_array_calificaciones());*/
     new_list = menu_calificaciones(list_calificaciones, array_datos, get_longitud_array_calificaciones());
+    /*printf("<<%d>>\n", get_longitud_array_calificaciones());*/
     
-    volcado_calificaciones(f, list_calificaciones, "calificaciones.txt", get_longitud_array_calificaciones());
+    /*volcado_calificaciones(f, new_list, "calificaciones.txt", get_longitud_array_calificaciones());*/
     return 0;
 }
 
