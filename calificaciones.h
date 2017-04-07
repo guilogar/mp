@@ -18,6 +18,7 @@ void print_calificaciones_criba(calificaciones *list_calificaciones, int *array_
 void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones, int longitud_array);
 void buscar_por_alumno (calificaciones *list_calificaciones, int id_alumno,  calificaciones *new_list_calificaciones, int longitud_array);
 
+int get_longitud_array_calificaciones();
 int get_line(char *prmpt, char *buff, size_t sz);
 int nota_valida(int nota, char *msg_error);
 #endif

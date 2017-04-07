@@ -3,6 +3,8 @@
 #include <string.h>
 #include <regex.h>
 #include "estructuras.h"
+#include "auxiliar.c"
+
 #define MSG_ERROR_NOTA "No se admite como nota un valor inferior a 0 o superior a 10. Vuelva a intentarlo."
 int LONGITUD_ARRAY_CALIFICACIONES;
 
@@ -22,8 +24,63 @@ void print_calificaciones_criba(calificaciones *list_calificaciones, int *array_
 void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones, int longitud_array);
 void buscar_por_alumno (calificaciones *list_calificaciones, int id_alumno,  calificaciones *new_list_calificaciones, int longitud_array);
 
-int get_line(char *prmpt, char *buff, size_t sz);
+/*int get_line(char *prmpt, char *buff, size_t sz);*/
 int nota_valida(int nota, char *msg_error);
+int get_longitud_array_calificaciones();
+/*
+ *int fecha_correcta(char * fecha);
+ *void str_replace(char *target, const char *needle, const char *replacement);
+ */
+
+/*
+ *void str_replace(char *target, const char *needle, const char *replacement){
+ *    char buffer[1024] = { 0 };
+ *    char *insert_point = &buffer[0];
+ *    const char *tmp = target;
+ *    size_t needle_len = strlen(needle);
+ *    size_t repl_len = strlen(replacement);
+ *
+ *    while (1) {
+ *        const char *p = strstr(tmp, needle);
+ *        if (p == NULL) {
+ *            strcpy(insert_point, tmp);
+ *            break;
+ *        }
+ *        memcpy(insert_point, tmp, p - tmp);
+ *        insert_point += p - tmp;
+ *        memcpy(insert_point, replacement, repl_len);
+ *        insert_point += repl_len;
+ *        tmp = p + needle_len;
+ *    }
+ *    strcpy(target, buffer);
+ *}
+ *
+ *int fecha_correcta(char * fecha) {
+ *    regex_t regex;
+ *    
+ *    int reti;
+ *    char msgbuf[100];
+ *
+ *    reti = regcomp(&regex, "[0-9][0-9][/-][0-9][0-9][/-][0-9][0-9][0-9][0-9]", 0);
+ *    if (reti) {
+ *        fprintf(stderr, "Could not compile regex\n");
+ *    }
+ *    reti = regexec(&regex, fecha, 0, NULL, 0);
+ *    if (!reti) { return 1; }
+ *    else if (reti == REG_NOMATCH) {
+ *        puts("Esta fecha no puede ser valida, intentelo de nuevo.");
+ *    }
+ *    else {
+ *        regerror(reti, &regex, msgbuf, sizeof(msgbuf));
+ *        fprintf(stderr, "Regex match failed: %s\n", msgbuf);
+ *    }
+ *    return 0;
+ *}
+ */
+
+int get_longitud_array_calificaciones() {
+    return LONGITUD_ARRAY_CALIFICACIONES;
+}
 
 int nota_valida(int nota, char *msg_error) {
     if(nota < 0 || nota > 10) {
@@ -34,25 +91,27 @@ int nota_valida(int nota, char *msg_error) {
     return 1;
 }
 
-int get_line (char *prmpt, char *buff, size_t sz) {
-    int ch, extra;
-    if (prmpt != NULL) {
-        printf ("%s", prmpt);
-        fflush (stdout);
-    }
-    if (fgets (buff, sz, stdin) == NULL)
-        return NO_INPUT;
-
-    if (buff[strlen(buff)-1] != '\n') {
-        extra = 0;
-        while (((ch = getchar()) != '\n') && (ch != EOF))
-            extra = 1;
-        return (extra == 1) ? TOO_LONG : OK;
-    }
-    
-    buff[strlen(buff)-1] = '\0';
-    return OK;
-}
+/*
+ *int get_line (char *prmpt, char *buff, size_t sz) {
+ *    int ch, extra;
+ *    if (prmpt != NULL) {
+ *        printf ("%s", prmpt);
+ *        fflush (stdout);
+ *    }
+ *    if (fgets (buff, sz, stdin) == NULL)
+ *        return NO_INPUT;
+ *
+ *    if (buff[strlen(buff)-1] != '\n') {
+ *        extra = 0;
+ *        while (((ch = getchar()) != '\n') && (ch != EOF))
+ *            extra = 1;
+ *        return (extra == 1) ? TOO_LONG : OK;
+ *    }
+ *    
+ *    buff[strlen(buff)-1] = '\0';
+ *    return OK;
+ *}
+ */
 
 void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones, int longitud_array) {
     int i, j = 0;
@@ -112,19 +171,16 @@ void print_calificaciones_por_alumno(calificaciones *list_calificaciones, int id
 void print_calificaciones_criba(calificaciones *list_calificaciones, int *array_datos, int longitud_array) {
     int i, j = 0;
     for (i = 0; i < longitud_array; i++) {
-        /*
-         *if (atoi(list_calificaciones[i].id_alum) == array_datos[0] &&
-         *    atoi(list_calificaciones[i].id_materia) == array_datos[1]) {
-         */
-            /*printf("%dº) ", ++j);*/
-            printf("%dº) ", i+1);
+        if (atoi(list_calificaciones[i].id_alum) == array_datos[0] &&
+            atoi(list_calificaciones[i].id_materia) == array_datos[1]) {
+            printf("%dº) ", ++j);
             printf("%s-", list_calificaciones[i].fecha_calif);
             printf("%s-", list_calificaciones[i].descrip_calif);
             printf("%s-", list_calificaciones[i].id_materia);
             printf("%s-", list_calificaciones[i].id_alum);
             printf("%d", list_calificaciones[i].valor_calif);
             puts("");
-        /*}*/
+        }
     }
 }
 
@@ -135,9 +191,9 @@ calificaciones * anadir_calificacion(calificaciones **list_calificaciones, char 
     puts("");
     
     printf("Fecha de Calificación => %s.\n\n", datos[0]);
-    printf("Descripción de la Calificación => %s.\n\n", datos[1]);
+    printf("Id Alumno => %s.\n\n", datos[1]);
     printf("Id de la Materia => %s.\n\n", datos[2]);
-    printf("Id Alumno => %s.\n\n", datos[3]);
+    printf("Descripción de la Calificación => %s.\n\n", datos[3]);
     printf("Valor de la Calificación => %d.\n\n", atoi(datos[4]));
     puts("");
     char election[100];
@@ -146,42 +202,23 @@ calificaciones * anadir_calificacion(calificaciones **list_calificaciones, char 
     get_line ("¿Está seguro de que quiere añadir esta calificación al alumno?(y/n)> ", election, sizeof(election));
     if(strcmp("y", election) == 0 || strcmp("yes", election) == 0) {
         
-        regex_t regex;
-        int reti;
-        char msgbuf[100];
-
-        reti = regcomp(&regex, "[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]", 0);
-        if (reti) {
-            fprintf(stderr, "Could not compile regex\n");
-            return *list_calificaciones;
-        }
         *(longitud_array) += 1;
         calificaciones *new_list = (calificaciones *) calloc(*(longitud_array), sizeof(calificaciones));
         for(i = 0; i < *longitud_array - 1; i++) {
-            reti = regexec(&regex, (*list_calificaciones + i)->fecha_calif, 0, NULL, 0);
-            if (!reti) {
+            if(fecha_correcta((*list_calificaciones + i)->fecha_calif)) {
                 strcpy(new_list[i].fecha_calif, (*list_calificaciones + i)->fecha_calif);
                 strcpy(new_list[i].id_materia, (*list_calificaciones + i)->id_materia);
                 strcpy(new_list[i].id_alum, (*list_calificaciones + i)->id_alum);
                 strcpy(new_list[i].descrip_calif, (*list_calificaciones + i)->descrip_calif);
                 new_list[i].valor_calif = (*list_calificaciones + i)->valor_calif;
             }
-            else if (reti == REG_NOMATCH) {
-                continue;
-            }
-            else {
-                regerror(reti, &regex, msgbuf, sizeof(msgbuf));
-                fprintf(stderr, "Regex match failed: %s\n", msgbuf);
-            }
-            
         }
+        str_replace(datos[0], "-", "/");
         strcpy(new_list[*longitud_array - 1].fecha_calif, datos[0]);
         strcpy(new_list[*longitud_array - 1].id_materia, datos[2]);
         strcpy(new_list[*longitud_array - 1].id_alum, datos[1]);
         strcpy(new_list[*longitud_array - 1].descrip_calif, datos[3]);
         new_list[*longitud_array - 1].valor_calif = atoi(datos[4]);
-        
-        regfree(&regex);
         
         return new_list;
     }
@@ -259,15 +296,6 @@ calificaciones * borrar_calificacion(calificaciones **list_calificaciones, char 
     get_line ("¿Está seguro de que quiere borrar esta calificación del alumno?(y/n)> ", election, sizeof(election));
     if(strcmp("y", election) == 0 || strcmp("yes", election) == 0) {
         
-        regex_t regex;
-        int reti;
-        char msgbuf[100];
-
-        reti = regcomp(&regex, "[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]", 0);
-        if (reti) {
-            fprintf(stderr, "Could not compile regex\n");
-            return *list_calificaciones;
-        }
         *(longitud_array) -= 1;
         calificaciones *new_list = (calificaciones *) calloc(*(longitud_array), sizeof(calificaciones));
         for(i = 0, j = 0; j < *longitud_array; i++, j++) {
@@ -275,24 +303,15 @@ calificaciones * borrar_calificacion(calificaciones **list_calificaciones, char 
                 --j;
                 continue;
             }
-            reti = regexec(&regex, (*list_calificaciones + i)->fecha_calif, 0, NULL, 0);
-            if (!reti) {
+            if(fecha_correcta((*list_calificaciones + i)->fecha_calif)) {
                 strcpy(new_list[j].fecha_calif, (*list_calificaciones + i)->fecha_calif);
                 strcpy(new_list[j].id_materia, (*list_calificaciones + i)->id_materia);
                 strcpy(new_list[j].id_alum, (*list_calificaciones + i)->id_alum);
                 strcpy(new_list[j].descrip_calif, (*list_calificaciones + i)->descrip_calif);
                 new_list[j].valor_calif = (*list_calificaciones + i)->valor_calif;
             }
-            else if (reti == REG_NOMATCH) {
-                continue;
-            }
-            else {
-                regerror(reti, &regex, msgbuf, sizeof(msgbuf));
-                fprintf(stderr, "Regex match failed: %s\n", msgbuf);
-            }
         }
         
-        regfree(&regex);
         return new_list;
     }
     
@@ -371,6 +390,9 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
             case 4: {
                     puts("");
                     get_line ("Escriba una fecha para añadir una calificación (DD/MM/YYYY)> ", buff_fecha_calif, sizeof(buff_fecha_calif));
+                    if(!fecha_correcta(buff_fecha_calif)) {
+                        continue;
+                    }
                     /*get_line ("Escriba el id de la materia para añadir la calificación> ", buff_id_materia, sizeof(buff_id_materia));*/
                     /*get_line ("Escriba el id del alumno para añadir la calificación> ", buff_id_alum, sizeof(buff_id_alum));*/
                     get_line ("Escriba la descripción para añadir la calificación> ", buff_descrip_calif, sizeof(buff_descrip_calif));
@@ -491,6 +513,8 @@ void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
         
         i++;
     }
+
+    LONGITUD_ARRAY_CALIFICACIONES = i;
 }
 
 int main(void) {
@@ -499,23 +523,23 @@ int main(void) {
     
     FILE * f;
     
-    calificaciones list_calificaciones[6];
+    calificaciones list_calificaciones[cuenta_lineas("calificaciones.txt")];
     calificaciones * new_list;
     
     cargar_calificaciones(f, list_calificaciones);
+    
     int array_datos[2];
     /*
      *array_datos[0] = 342312;
      *array_datos[1] = 1;
      */
     array_datos[0] = 123456;
-    array_datos[1] = 2;
-    new_list = menu_calificaciones(list_calificaciones, array_datos, (sizeof(list_calificaciones) / sizeof(calificaciones)));
+    array_datos[1] = 3;
+    new_list = menu_calificaciones(list_calificaciones, array_datos, get_longitud_array_calificaciones());
     
-    print_calificaciones_criba(new_list, array_datos, LONGITUD_ARRAY_CALIFICACIONES);
+    print_calificaciones_criba(new_list, array_datos, get_longitud_array_calificaciones());
     
-    /*volcado_calificaciones(f, list_calificaciones, "calificaciones_prueba.txt", 10);*/
-    /*volcado_calificaciones(f, list_calificaciones, "calificaciones_prueba.txt", (sizeof(list_calificaciones) / sizeof(calificaciones)));*/
+    volcado_calificaciones(f, list_calificaciones, "calificaciones_prueba.txt", get_longitud_array_calificaciones());
     return 0;
 }
 
