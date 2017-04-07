@@ -6,25 +6,38 @@
 #include "auxiliar.h"
 #include "estructuras.h"
 
-int get_line(char *prmpt, char *buff, size_t sz);
 int cuenta_lineas(char * nombre_fichero);
 int fecha_correcta(char * fecha);
 void str_replace(char *target, const char *needle, const char *replacement);
+void convertir_digito_cadena(char * target, char * longitud_cadena, int numero);
+int get_line(char *prmpt, char *buff, size_t sz);
 
-// Devuelve el numero de lienas en un fichero de texto.
-int cuenta_lineas(char * nombre_fichero) {
-    FILE * fp = fopen(nombre_fichero, "r");
-    
-    char ch;
-    int n_lineas = 0;
-    
-    while(! feof(fp)) {
-        ch = fgetc(fp);
-        if(ch == '\n')
-            n_lineas++;
+int get_line (char *prmpt, char *buff, size_t sz) {
+    int ch, extra;
+    if (prmpt != NULL) {
+        printf ("%s", prmpt);
+        fflush (stdout);
+    }
+    if (fgets (buff, sz, stdin) == NULL)
+        return NO_INPUT;
+
+    if (buff[strlen(buff)-1] != '\n') {
+        extra = 0;
+        while (((ch = getchar()) != '\n') && (ch != EOF))
+            extra = 1;
+        return (extra == 1) ? TOO_LONG : OK;
     }
     
-    return n_lineas;
+    buff[strlen(buff)-1] = '\0';
+    return OK;
+}
+
+void convertir_digito_cadena(char * target, char * longitud_cadena, int numero) {
+    char aux[100];
+    strcpy(aux, "%0");
+    strcat(aux, longitud_cadena);
+    strcat(aux, "d");
+    sprintf(target, aux, numero);
 }
 
 void str_replace(char *target, const char *needle, const char *replacement){
@@ -71,22 +84,18 @@ int fecha_correcta(char * fecha) {
     return 0;
 }
 
-int get_line (char *prmpt, char *buff, size_t sz) {
-    int ch, extra;
-    if (prmpt != NULL) {
-        printf ("%s", prmpt);
-        fflush (stdout);
-    }
-    if (fgets (buff, sz, stdin) == NULL)
-        return NO_INPUT;
-
-    if (buff[strlen(buff)-1] != '\n') {
-        extra = 0;
-        while (((ch = getchar()) != '\n') && (ch != EOF))
-            extra = 1;
-        return (extra == 1) ? TOO_LONG : OK;
+// Devuelve el numero de lienas en un fichero de texto.
+int cuenta_lineas(char * nombre_fichero) {
+    FILE * fp = fopen(nombre_fichero, "r");
+    
+    char ch;
+    int n_lineas = 0;
+    
+    while(! feof(fp)) {
+        ch = fgetc(fp);
+        if(ch == '\n')
+            n_lineas++;
     }
     
-    buff[strlen(buff)-1] = '\0';
-    return OK;
+    return n_lineas;
 }

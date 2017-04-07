@@ -24,59 +24,8 @@ void print_calificaciones_criba(calificaciones *list_calificaciones, int *array_
 void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones, int longitud_array);
 void buscar_por_alumno (calificaciones *list_calificaciones, int id_alumno,  calificaciones *new_list_calificaciones, int longitud_array);
 
-/*int get_line(char *prmpt, char *buff, size_t sz);*/
 int nota_valida(int nota, char *msg_error);
 int get_longitud_array_calificaciones();
-/*
- *int fecha_correcta(char * fecha);
- *void str_replace(char *target, const char *needle, const char *replacement);
- */
-
-/*
- *void str_replace(char *target, const char *needle, const char *replacement){
- *    char buffer[1024] = { 0 };
- *    char *insert_point = &buffer[0];
- *    const char *tmp = target;
- *    size_t needle_len = strlen(needle);
- *    size_t repl_len = strlen(replacement);
- *
- *    while (1) {
- *        const char *p = strstr(tmp, needle);
- *        if (p == NULL) {
- *            strcpy(insert_point, tmp);
- *            break;
- *        }
- *        memcpy(insert_point, tmp, p - tmp);
- *        insert_point += p - tmp;
- *        memcpy(insert_point, replacement, repl_len);
- *        insert_point += repl_len;
- *        tmp = p + needle_len;
- *    }
- *    strcpy(target, buffer);
- *}
- *
- *int fecha_correcta(char * fecha) {
- *    regex_t regex;
- *    
- *    int reti;
- *    char msgbuf[100];
- *
- *    reti = regcomp(&regex, "[0-9][0-9][/-][0-9][0-9][/-][0-9][0-9][0-9][0-9]", 0);
- *    if (reti) {
- *        fprintf(stderr, "Could not compile regex\n");
- *    }
- *    reti = regexec(&regex, fecha, 0, NULL, 0);
- *    if (!reti) { return 1; }
- *    else if (reti == REG_NOMATCH) {
- *        puts("Esta fecha no puede ser valida, intentelo de nuevo.");
- *    }
- *    else {
- *        regerror(reti, &regex, msgbuf, sizeof(msgbuf));
- *        fprintf(stderr, "Regex match failed: %s\n", msgbuf);
- *    }
- *    return 0;
- *}
- */
 
 int get_longitud_array_calificaciones() {
     return LONGITUD_ARRAY_CALIFICACIONES;
@@ -91,35 +40,9 @@ int nota_valida(int nota, char *msg_error) {
     return 1;
 }
 
-/*
- *int get_line (char *prmpt, char *buff, size_t sz) {
- *    int ch, extra;
- *    if (prmpt != NULL) {
- *        printf ("%s", prmpt);
- *        fflush (stdout);
- *    }
- *    if (fgets (buff, sz, stdin) == NULL)
- *        return NO_INPUT;
- *
- *    if (buff[strlen(buff)-1] != '\n') {
- *        extra = 0;
- *        while (((ch = getchar()) != '\n') && (ch != EOF))
- *            extra = 1;
- *        return (extra == 1) ? TOO_LONG : OK;
- *    }
- *    
- *    buff[strlen(buff)-1] = '\0';
- *    return OK;
- *}
- */
-
 void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones, int longitud_array) {
     int i, j = 0;
     for (i = 0; i <= longitud_array; i++) {
-        //Asi se convierte una cadena a entero. Hay funciones parecidas para
-        //hacer conversiones de cadena a otro tipos numericos.
-        //atoi(list_calificaciones[i].id_materia);
-        
         if (atoi(list_calificaciones[i].id_materia) == id_materia) {
             new_list_calificaciones[j++] = list_calificaciones[i];
         }
@@ -129,10 +52,6 @@ void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, cal
 void buscar_por_alumno(calificaciones *list_calificaciones, int id_alumno, calificaciones *new_list_calificaciones, int longitud_array) {
     int i, j = 0;
     for (i = 0; i <= longitud_array; i++) {
-        //Asi se convierte una cadena a entero. Hay funciones parecidas para
-        //hacer conversiones de cadena a otro tipos numericos.
-        //atoi(list_calificaciones[i].id_materia);
-        
         if (atoi(list_calificaciones[i].id_alum) == id_alumno) {
             new_list_calificaciones[j++] = list_calificaciones[i];
         }
@@ -363,6 +282,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                     /*get_line ("Escriba el id de la materia de la calificación a modificar> ", buff_id_materia, sizeof(buff_id_materia));*/
                     /*get_line ("Escriba el id del alumno de la calificación a modificar> ", buff_id_alum, sizeof(buff_id_alum));*/
                     puts("");
+                    str_replace(buff_fecha_calif, "-", "/");
                     strcpy(datos_calif[0], buff_fecha_calif);
                     sprintf(datos_calif[1], "%d", array_datos[0]);
                     sprintf(datos_calif[2], "%d", array_datos[1]);
@@ -380,6 +300,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                     /*get_line ("Escriba el id de la materia de la calificación a borrar> ", buff_id_materia, sizeof(buff_id_materia));*/
                     /*get_line ("Escriba el id del alumno de la calificación a borrar> ", buff_id_alum, sizeof(buff_id_alum));*/
                     puts("");
+                    str_replace(buff_fecha_calif, "-", "/");
                     strcpy(datos_calif[0], buff_fecha_calif);
                     sprintf(datos_calif[1], "%d", array_datos[0]);
                     sprintf(datos_calif[2], "%d", array_datos[1]);
@@ -401,6 +322,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                         continue;
                     }
                     puts("");
+                    str_replace(buff_fecha_calif, "-", "/");
                     strcpy(datos_calif[0], buff_fecha_calif);
                     sprintf(datos_calif[1], "%d", array_datos[0]);
                     sprintf(datos_calif[2], "%d", array_datos[1]);
@@ -438,58 +360,36 @@ void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char 
     
     char cadena[longitud_array][100];
     char aux_valor_calif[20];
-    char msgbuf[100];
     
     int i= 0;
-    int reti;
-    
-    regex_t regex;
-
-    reti = regcomp(&regex, "[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]", 0);
-    if (reti) {
-        fprintf(stderr, "Could not compile regex\n");
-        return;
-    }
-    calificaciones *new_list = (calificaciones *) calloc((longitud_array), sizeof(calificaciones));
     
     for (i = 0; i < longitud_array; i++) {
-        memset(cadena, 0, strlen(cadena[i]));
+        memset(cadena[i], 0, strlen(cadena[i]));
         
-        reti = regexec(&regex, list_calificaciones[i].fecha_calif, 0, NULL, 0);
-        if(!reti) {
-        } else if (reti == REG_NOMATCH) {
+        if(!fecha_correcta(list_calificaciones[i].fecha_calif)) {
             continue;
-        } else {
-            regerror(reti, &regex, msgbuf, sizeof(msgbuf));
-            fprintf(stderr, "Regex match failed: %s\n", msgbuf);
-            break;
         }
+        
         strcat(cadena[i], list_calificaciones[i].fecha_calif);
         strcat(cadena[i], "-");
-        puts(cadena[i]);
         
         strcat(cadena[i], list_calificaciones[i].descrip_calif);
         strcat(cadena[i], "-");
-        puts(cadena[i]);
         
         strcat(cadena[i], list_calificaciones[i].id_materia);
         strcat(cadena[i], "-");
-        puts(cadena[i]);
         
         strcat(cadena[i], list_calificaciones[i].id_alum);
         strcat(cadena[i], "-");
-        puts(cadena[i]);
         
         sprintf(aux_valor_calif, "%d", list_calificaciones[i].valor_calif);
         
         strcat(cadena[i], aux_valor_calif);
         strcat(cadena[i], "\n");
-        puts(cadena[i]);
         
-        puts(cadena[i]);
-        /*fprintf(f, "%s", cadena[i]);*/
+        /*puts(cadena[i]);*/
+        fprintf(f, "%s", cadena[i]);
     }
-    regfree(&regex);
     fclose(f);
 }
 
@@ -525,7 +425,6 @@ int main(void) {
     
     calificaciones list_calificaciones[cuenta_lineas("calificaciones.txt")];
     calificaciones * new_list;
-    
     cargar_calificaciones(f, list_calificaciones);
     
     int array_datos[2];
@@ -535,11 +434,20 @@ int main(void) {
      */
     array_datos[0] = 123456;
     array_datos[1] = 3;
+    
+    /*
+     *\// Codigo ejemplo para ver como se convierte un digito a una cadena de caracteres
+     *
+     *char prueba[15];
+     *convertir_digito_cadena(prueba, "4", array_datos[1]);
+     *puts(prueba);
+     *return 0;
+     */
+    /*printf("<<%d>>\n", get_longitud_array_calificaciones());*/
     new_list = menu_calificaciones(list_calificaciones, array_datos, get_longitud_array_calificaciones());
+    /*printf("<<%d>>\n", get_longitud_array_calificaciones());*/
     
-    print_calificaciones_criba(new_list, array_datos, get_longitud_array_calificaciones());
-    
-    volcado_calificaciones(f, list_calificaciones, "calificaciones_prueba.txt", get_longitud_array_calificaciones());
+    /*volcado_calificaciones(f, new_list, "calificaciones.txt", get_longitud_array_calificaciones());*/
     return 0;
 }
 
