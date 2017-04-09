@@ -10,7 +10,7 @@
 	Precondición: ninguna
 	Postcondición: permite el manejo de la información de horarios
 */
-void menu_horarios(horarios **arr_horarios, int n_horarios){
+void menu_horarios(horarios **arr_horarios, int* n_horarios){
     int op;
 
     system("cls");
@@ -46,7 +46,7 @@ void menu_horarios(horarios **arr_horarios, int n_horarios){
                 op=5;
             break;
             default:
-                printf("\nOpción incorrecta\n");
+                printf("\nOpcion incorrecta\n");
             break;
         }
 
@@ -72,9 +72,9 @@ void leer_horario (char * linea, horarios * h) {
     else {
       strcpy(h->id_prof, strtok (linea,"-"));
 
-      strcpy(h->dia_clase, strtok (NULL,"-"));
+      h->dia_clase = atoi( strtok (NULL,"-"));
 
-      strcpy(h->hora_clase, strtok (NULL,"-"));
+      h->hora_clase = atoi( strtok (NULL,"-"));
 
       strcpy(h->id_materia, strtok (NULL,"-"));
 
@@ -97,9 +97,9 @@ char linea[MAX_LINEA];
   if (fichero == NULL){
    /* exit(EXIT_FAILURE); Dejar para mas tarde y poner un mensaje de error simplemente */
 	   puts(ANSI_COLOR_RED);
-        puts("Error fatal: El fichero con la información no existe.\n\n");
+        puts("Error fatal: El fichero con la informacion no existe.\n\n");
         puts(ANSI_COLOR_RESET);
-        return;
+        return 0;
       }
 
 	//Reserva progresiva de memoria para almacenar cada
@@ -124,7 +124,7 @@ char linea[MAX_LINEA];
 void listar_horarios_prof (horarios **arr, int *n, char id_p) {
   int i = 0, num= *n;
   for (i; i<num; i++) {
-    if (strcmp(arr[i]->id_prof, id_p))
+    if (strcmp(arr[i]->id_prof, &id_p))
     {
       printf("Horarios\n=========================================================\n");
       printf("%s-%d-%d-%s-%s\n", arr[i]->id_prof, arr[i]->dia_clase, arr[i]->hora_clase, arr[i]->id_materia, arr[i]->grupo );
@@ -157,7 +157,7 @@ void aniadir_horario (horarios **arr_horarios, int *n) {
   char id_p[IDP], id_m[IDM], gr[GRUPO];
   listar_horarios_admin(arr_horarios, n);
 
-  arr_horarios = realloc(arr_horarios, (num+1) * sizeof (horarios*);
+  arr_horarios = realloc(arr_horarios, (num+1) * sizeof (horarios*));
   arr_horarios = malloc (sizeof(horarios));
 
   num++;
@@ -171,7 +171,7 @@ void aniadir_horario (horarios **arr_horarios, int *n) {
         bol = 0;
     }
   }
-  printf("Introduzca día: \n");
+  printf("Introduzca dia: \n");
   scanf("%d", &dia);
   printf("Introduzca hora: \n");
   scanf("%d", &hora);
@@ -196,12 +196,12 @@ void eliminar_horario(horarios **arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
 char id_p[IDP], id_m[IDM], gr[GRUPO];
-listar_horarios_admin(arr_horarios, num);
+listar_horarios_admin(arr_horarios, n);
 
 while (bol != 0) {
   printf("Introduzca identificador de profesor: \n");
   scanf("%s", id_p);
-  printf("Introduzca día: \n");
+  printf("Introduzca dia: \n");
   scanf("%d", &dia);
   printf("Introduzca hora: \n");
   scanf("%d", &hora);
@@ -239,12 +239,12 @@ void modificar_horario (horarios **arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
 char id_p[IDP], id_m[IDM], gr[GRUPO];
-listar_horarios_admin(arr_horarios, num);
+listar_horarios_admin(arr_horarios, n);
 
 while (bol != 0) {
   printf("Escriba campo a campo el horario que quiera modificar\nIntroduzca identificador de profesor: \n");
   scanf("%s", id_p);
-  printf("Introduzca día: \n");
+  printf("Introduzca dia: \n");
   scanf("%d", &dia);
   printf("Introduzca hora: \n");
   scanf("%d", &hora);
@@ -289,7 +289,7 @@ FILE * fichero = fopen("horarios.txt", "w");
 
 if (fichero == NULL){
   puts(ANSI_COLOR_RED);
-  puts("Error fatal: El fichero con la información no existe.\n\n");
+  puts("Error fatal: El fichero con la informacion no existe.\n\n");
   puts(ANSI_COLOR_RESET);
   return;
 }
@@ -300,6 +300,9 @@ for (i = 0; i < n_horarios; i++) {
 fclose(fichero);
 
 }
-/* Por hacer:
-  -Funciones que modifiquen horarios.
-*/
+
+int main(){
+	menu_horarios();
+	return 0;
+}
+
