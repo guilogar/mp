@@ -222,8 +222,6 @@ while(i < num) {
   i++;
 }
 
-// Inseguro de como reducir la reserva de memoria
-
 arr_horarios = realloc(arr_horarios, (num-1) * sizeof (horarios*));
 arr_horarios = malloc (sizeof(horarios));
 
@@ -301,8 +299,53 @@ fclose(fichero);
 
 }
 
+/*
+  Cabecera: horarios **arr_horarios, int *n, materias **arr_materias, int n_materias, int arr_horas_mat
+  Precondición: arr_horarios, arr_materias y n inicializados
+  Postcondición: devuelve un vector con las horas en las que se imparta una determinada materia
+*/
+void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, int n_materias, int arr_horas_mat[]) {
+  
+  int i, j= 0, k;
+  
+    for(i=0; i<n; i++) {
+      if (strcmp (arr_materias[n_materias]->id_materia, arr_horarios[i]->id_materia) == 0){
+        arr_horas_mat[j] = arr_horarios[i]->hora_clase;
+        j++;
+      }
+  }
+  for (int i = 1; i < j; ++i) {
+    for (int k = 0; k < i; ++k) {
+      if (arr_horas_mat[k] == arr_horas_mat[i] && arr_horas_mat[k] != 0) {
+        arr_horas_mat[k] = 0;
+      }
+    }
+  }
+  for (int i = 0; i < j-1; ++i) {
+    if (arr_horas_mat[i] == 0 && arr_horas_mat[i+1] != 0) {
+      arr_horas_mat[i] = arr_horas_mat[i+1];
+      arr_horas_mat[i+1] = 0;
+    }
+    else {
+      k = i;
+      while(arr_horas_mat[i] == 0 && i < j-1)
+        i++;
+      arr_horas_mat[k] = arr_horas_mat[i];
+      arr_horas_mat[i] = 0;
+    }
+  }
+
+i=0;
+
+while(arr_horas_mat[i] != 0)
+  i++;
+
+arr_horas_mat = realloc(arr_horas_mat, (j-i) * sizeof (int*));
+arr_horas_mat = malloc (sizeof(int));
+}
+
+
 int main(){
 	menu_horarios();
 	return 0;
 }
-
