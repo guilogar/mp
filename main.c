@@ -6,7 +6,7 @@
 //Incompleta a falta de varios archivos.h, ¡¡REVISAR!!
 
 #include "estructuras.h"
-#include "ficheros.h"
+#include "auxiliar.c"
 #include "alumnos.h"
 #include "matricula.h"
 #include "usuarios.h"
