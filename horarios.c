@@ -10,7 +10,7 @@
 	Precondición: ninguna
 	Postcondición: permite el manejo de la información de horarios
 */
-void menu_horarios(horarios **arr_horarios, int* n_horarios){
+void menu_horarios(horarios **arr_horarios, int* n_horarios) {
     int op;
 
     system("cls");
@@ -258,9 +258,9 @@ while (bol != 0) {
   }
 }
 
-memset(arr_horarios[i]->id_prof,'/0', IDP);
-memset(arr_horarios[i]->id_materia, '/0', IDM);
-memset(arr_horarios[i]->grupo, '/0', GRUPO);
+memset(arr_horarios[i]->id_prof,'\0', IDP);
+memset(arr_horarios[i]->id_materia, '\0', IDM);
+memset(arr_horarios[i]->grupo, '\0', GRUPO);
 
 printf("Introduzca los nuevos campos del horario\nIntroduzca identificador del profesor: \n");
 scanf("%s", arr_horarios[i]->id_prof);
@@ -308,7 +308,7 @@ void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, in
   
   int i, j= 0, k;
   
-    for(i=0; i<n; i++) {
+    for(i=0; i < *n; i++) {
       if (strcmp (arr_materias[n_materias]->id_materia, arr_horarios[i]->id_materia) == 0){
         arr_horas_mat[j] = arr_horarios[i]->hora_clase;
         j++;
@@ -346,6 +346,6 @@ arr_horas_mat = malloc (sizeof(int));
 
 
 int main(){
-	menu_horarios();
+	/*menu_horarios();*/
 	return 0;
 }

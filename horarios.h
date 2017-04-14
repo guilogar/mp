@@ -73,6 +73,6 @@ void volcado_horarios(horarios **arr_horarios, int *n);
   Precondición: arr_horarios, arr_materias y n inicializados
   Postcondición: devuelve un vector con las horas en las que se imparta una determinada materia
 */
-int horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, int n_materias, int arr_horas_mat[]
+void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, int n_materias, int arr_horas_mat[]);
 
 #endif
