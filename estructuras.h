@@ -45,7 +45,7 @@ typedef struct materias{
 //Depende de alumnos
 
 typedef struct matriculas{
-	char id_matriculas[5];
+	char id_materias[5];
 	char id_alum[7];
 } matriculas;
 
