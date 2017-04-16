@@ -314,14 +314,14 @@ void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, in
           j++;
         }
     }
-    for (int i = 1; i < j; ++i) {
-      for (int k = 0; k < i; ++k) {
+    for (i = 1; i < j; ++i) {
+      for (k = 0; k < i; ++k) {
         if (arr_horas_mat[k] == arr_horas_mat[i] && arr_horas_mat[k] != 0) {
           arr_horas_mat[k] = 0;
         }
       }
     }
-    for (int i = 0; i < j-1; ++i) {
+    for ( i = 0; i < j-1; ++i) {
       if (arr_horas_mat[i] == 0 && arr_horas_mat[i+1] != 0) {
         arr_horas_mat[i] = arr_horas_mat[i+1];
         arr_horas_mat[i+1] = 0;
@@ -345,13 +345,13 @@ void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, in
 }
 
 
-/*
- *int main(){
- *    
- *    int size = cuenta_lineas("horarios.txt");
- *    horarios * array_horarios[size];
- *    
- *    menu_horarios(array_horarios, &size);
- *    return 0;
- *}
- */
+
+ int main(){
+     
+     int size = cuenta_lineas("horarios.txt");
+     horarios * array_horarios[size];
+     
+     menu_horarios(array_horarios, &size);
+     return 0;
+ }
+ 
