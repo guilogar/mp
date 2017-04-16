@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-/*#include "estructuras.h"*/
-#include "auxiliar.c"
+#include "estructuras.h"
+#include "auxiliar.h"
 #include "calificaciones.h"
 
 #define MSG_ERROR_NOTA "No se admite como nota un valor inferior a 0 o superior a 10. Vuelva a intentarlo."
@@ -418,5 +418,5 @@ void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
  *    volcado_calificaciones(f, new_list, "calificaciones.txt", get_longitud_array_calificaciones());
  *    return 0;
  *}
+ *
  */
-

@@ -7,7 +7,6 @@
 int cont=0; //Marca el número de usuarios que hay
 
 void quitar_saltosU(char *);
-char *leer_campo(int largo, char *titulo);
 
 //Cambia los caracteres de salto de linea por caracteres de final de vector
 void quitar_saltosU(char *cadena){
@@ -31,7 +30,7 @@ char *leer_campo(int largo, char *titulo){
 usuarios* Carga_Usuario(){
     usuarios *List_Usuario;
     FILE *fich;
-    fich=fopen("Usuarios.txt","r"); //Abre el fichero en modo lectura
+    fich=fopen("usuarios.txt","r"); //Abre el fichero en modo lectura
     if(fich==NULL) printf("\nError al cargar el fichero\n");
     else{
         while(!feof(fich)){

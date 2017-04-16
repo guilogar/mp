@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-/*#include "estructuras.h"*/
-#include "auxiliar.c"
+#include "estructuras.h"
+#include "auxiliar.h"
 #include "faltas.h"
 
 #define MSG_ERROR_TRAMO_HORARIO "No se admite un tramo horario inferior a 1 o superior a 6. Vuelva a intentarlo."

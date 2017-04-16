@@ -33,7 +33,7 @@ alumnos* Carga_Alumno(){
     conta = 0;
     alumnos *List_Alumno;
     FILE *fichAlum;
-    fichAlum=fopen("Alumnos.txt","r"); //Abre el fichero en modo lectura
+    fichAlum=fopen("alumnos.txt","r"); //Abre el fichero en modo lectura
     if(fichAlum==NULL) printf("\nError al cargar el fichero\n");
     else{
         while(!feof(fichAlum)){

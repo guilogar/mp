@@ -6,16 +6,16 @@
 //Incompleta a falta de varios archivos.h, ¡¡REVISAR!!
 
 #include "estructuras.h"
-#include "auxiliar.h"
-#include "matricula.h"
+#include "auxiliar.c"
+/*#include "matricula.c"*/
 
-#include "alumnos.h"
-#include "usuarios.h"
+#include "alumnos.c"
+#include "usuarios.c"
 
-#include "horarios.h"
+#include "horarios.c"
 
-#include "calificaciones.h"
-#include "faltas.h"
+#include "calificaciones.c"
+#include "faltas.c"
 
 //	Sección de importación (incompleta a falta de revisión)
 
@@ -62,7 +62,7 @@ int main() {
     arr_usuarios = Carga_Usuario();
     arr_alumnos = Carga_Alumno();
 
-    leer_horarios(arr_horario);
+    /*leer_horarios(arr_horario);*/
 
 	menu_principal();
 
@@ -81,29 +81,27 @@ void menu_principal(){
 
     get_line("Usuario>", usser, 20);
 
-	while(sw)
-    {
+	while(sw) {
         if(i >= n_usuarios) sw = 0;
         else if(strcmp(usser,arr_usuarios[i].usuario) == 0) sw = 0;
         else i++;
     }
-    if(i>=n_usuarios){
+    if(i>=n_usuarios) {
         printf("El usuario introducido no existe.");
-        system("pause");
         i = 0;
+        system("pause");
         system("cls");
-        get_line("Usuario>", usser, 20);
-    }else{
-        do{
-            get_line("Contraseña>", usser, 8);
-            if(strcmp(arr_usuarios[i].contrasena,pass)!=0){
+    } else {
+        do {
+            get_line("Contraseña>", pass, 9);
+            if(strcmp(arr_usuarios[i].contrasena,pass) != 0) {
                 printf("Contrasena erronea");
             }
-        }while(strcmp(arr_usuarios[i].contrasena,pass)!=0);
-
-        if(strcmp(arr_usuarios[i].perfil_usuario,"Administrador")==0) op = 1;
+        } while(strcmp(arr_usuarios[i].contrasena,pass)!=0);
+        
+        if(strcmp(arr_usuarios[i].perfil_usuario, "administrador") == 0) op = 1;
         else op = 2;
-
+        
         switch(op){
             case 1:
                 menu_admin();
@@ -113,21 +111,22 @@ void menu_principal(){
             break;
         }
     }
+    menu_principal();
 }
 
 void menu_admin(){
     int op;
-
+    
     system("cls");
     printf("1. Usuarios\n");
     printf("2. Alumnos\n");
     printf("3. Materias\n");
     printf("4. Horarios\n");
     printf("5. Salir\n\n");
-
+    
     printf("Op: ");
     scanf("%d",&op);
-
+    
     while(op!=5){
         switch(op){
             case 1:
@@ -165,38 +164,51 @@ void menu_admin(){
 void menu_prof(int i){
     int op, al;
     char cod[7];
+    FILE * f;
     
     int size_calif = cuenta_lineas("calificaciones.txt");
     int size_faltas = cuenta_lineas("faltas.txt");
+    
     calificaciones list_calif[size_calif];
     faltas list_faltas[size_faltas];
     
+    calificaciones * new_list_calif;
+    faltas * new_list_faltas;
+    
+    cargar_calificaciones(f, list_calif);
+    cargar_faltas(f, list_faltas);
+    
     int array_datos[2];
     array_datos[0] = 123456;
-    array_datos[1] = 3;
+    array_datos[1] = 2;
     
-    system("cls");
+    /*system("cls");*/
     //Se necesita que esta función tambien permita seleccionar un grupo de la lista
-    listar_horarios_prof(arr_horario, &n_horarios, *arr_usuarios[i].id_usuario);
-
-    system("cls");
+    /*listar_horarios_prof(arr_horario, &n_horarios, *arr_usuarios[i].id_usuario);*/
+    
+    /*system("cls");*/
     
     //id = posición del grupo seleccionado de la función anterior.
     //pos = posición de la matería cuyo id coincide con el id de la materia del grupo seleccionado de la función anterior
     
     //printf("GRUPO %s MATERIA %s",arr_horario[/*id*/].grupo, arr_materia[/*pos*/].nombre_materia);
-    printf("  1.- Lista de alumnos\n");
-    printf("  2.- Cambiar de grupo\n\n");
-
+    printf("GRUPO %s MATERIA %s\n","Random", "Random"); // No ha dado tiempo de implementarlo mejor
+    puts("  1.- Lista de alumnos");
+    puts("  2.- Cambiar de grupo");
+    puts("  3.- Salir");
+    
     printf("Op: ");
     scanf("%d",&op);
-
+    fflush(stdin);
+    
     switch(op){
         case 1:
             printf("\n\n");
             /*strcpy(cod, listar_alumnos_materia())*/
+            
             //falta implementación de listar_alumnos_materia. Creo que debería ir en el módulo matrícula
             //En el módulo alumnos se ha implementado una función que dado el id de un alumno muestra su id y su nombre
+            
             puts("ALUMNO:--------");
             printf("1.  Ficha del alumno\n");
             printf("2.  Calificaciones del alumno\n");
@@ -205,19 +217,27 @@ void menu_prof(int i){
 
             printf("Op: ");
             scanf("%d",&al);
+            fflush(stdin);
 
-            switch(op){
+            switch(al){
                 case 1:
-                    /*ficha_alum(cod);*/
+                    sprintf(cod, "%d", array_datos[0]);
+                    ficha_alum(arr_alumnos, cod);
                 break;
                 case 2:
-                    menu_calificaciones(list_calif, array_datos, get_longitud_array_calificaciones());
+                    new_list_calif = menu_calificaciones(list_calif, array_datos, get_longitud_array_calificaciones());
+                    /*print_calificaciones_criba(new_list_calif, array_datos, get_longitud_array_calificaciones());*/
+                    volcado_calificaciones(f, new_list_calif, "calificaciones.txt", get_longitud_array_calificaciones());
                 break;
                 case 3:
-                    menu_faltas(list_faltas, array_datos, get_longitud_array_calificaciones());
+                    new_list_faltas = menu_faltas(list_faltas, array_datos, get_longitud_array_faltas());
+                    /*print_faltas_criba(new_list_faltas, array_datos, get_longitud_array_faltas());*/
+                    volcado_faltas(f, new_list_faltas, "faltas.txt", get_longitud_array_faltas());
                 break;
                 case 4:
                     //No tengo claro como conseguir esta parte tal y como está el código
+                    //Pues Juan Antonio, nada tan facil como nuestra amiga la recursividad.
+                    menu_prof(i);
                 break;
                 default:
                     printf("\nOpción incorrecta\n");
@@ -227,10 +247,15 @@ void menu_prof(int i){
         case 2:
             menu_prof(i);
         break;
+        case 3:
+            return;
+        break;
         default:
             printf("\nOpción incorrecta\n");
         break;
     }
+    
+    menu_prof(i);
 }
 
 
