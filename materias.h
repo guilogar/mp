@@ -1,5 +1,6 @@
 #ifndef MATERIAS_H
 #define MATERIAS_H
+#include "estructuras.h"
 
 //Cabecera: int contarmaterias(materias *mater)
 //Precondición: Estructura materias creada, con todos los datos cargados.

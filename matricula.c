@@ -89,7 +89,7 @@ void lista_matricula(char *id_alum, matriculas *mat, materias *mater){
 }
 
 //Leer una cadena de caracteres del largo que se le pasa por parametro
-char *leer_campo(int largo){
+char *leer_campo_m(int largo){
     char *campo;
     campo = (char*)calloc(largo+1,sizeof(char));
     fflush(stdin);
@@ -105,7 +105,7 @@ void Anadir_Matricula(matriculas *mat, char *id_alum){
     mat =(matriculas *)realloc(mat,(contar_matriculas(mat)+1)*sizeof(matriculas));
     strcpy(mat[n].id_alum, id_alum);
     printf("Introduzca el id de la materia en la que matriculara al alumno. \n");
-    strcpy(mat[n].id_materias, leer_campo(4));
+    strcpy(mat[n].id_materias, leer_campo_m(4));
 }
 
 
@@ -127,11 +127,11 @@ void Modificar_matricula(matriculas *mat, char *id_alum, materias *mater){
         }
     }
     printf("Introduzca el id de la materia que quiere modificar");
-    strcpy(id_materia,leer_campo(4));
+    strcpy(id_materia,leer_campo_m(4));
     for(k=0;k<contarmaterias(mater);k++){
         if((strcmp(id_materia, mat[k].id_materias) == 0) && (strcmp(id_alum, mat[k].id_alum) == 0)){
             printf("Introduzca el id de la materia que desea matricular");
-            strcpy(mat[k].id_materias, leer_campo(4));
+            strcpy(mat[k].id_materias, leer_campo_m(4));
             sprintf(mensaje, "%s-%s", mat[k].id_alum, mat[k].id_materias);
             puts(mensaje);
         }
@@ -155,7 +155,7 @@ void Eliminar_matricula(matriculas *mat, char *id_alum, materias *mater){
         }
     }
     printf("Introduzca el id de la materia que quiere eliminar");
-    strcpy(id_materia, leer_campo(4));
+    strcpy(id_materia, leer_campo_m(4));
     for(k=0;k<contar_matriculas(mat);k++){
         if((strcmp(id_materia, mat[k].id_materias) == 0) && (strcmp(id_alum, mat[k].id_alum) == 0)){
             strcpy(mat[k].id_alum, NULL);
@@ -178,7 +178,7 @@ void menu_matriculas(char *id_alum, matriculas *mat, materias *mater){
     printf("1. Listar asignaturas matriculadas\n");
     printf("2. Modificar matricula\n");
     printf("3. Eliminar matricula\n");
-    printf("4. Añadir matricula\n");
+    printf("4. Anadir matricula\n");
     printf("5. Salir\n\n");
 
     printf("Op: ");

@@ -72,11 +72,11 @@ void Anadir_materia(materias *mater){
     n = 1+contarmaterias(mater);
     mater =(materias *)realloc(mater,(n)*sizeof(materias));
     printf("Introduzca el id de la nueva materia: ");
-    strcpy(mater[n].id_materia, leer_campo(4));
+    strcpy(mater[n].id_materia, leer_campo_m(4));
     printf("Introduzca el nombre de la materia: ");
-    strcpy(mater[n].nombre_materia, leer_campo(50));
+    strcpy(mater[n].nombre_materia, leer_campo_m(50));
     printf("Introduzca la abreviatura de la materia: ");
-    strcpy(mater[n].abrev_materia, leer_campo(3));
+    strcpy(mater[n].abrev_materia, leer_campo_m(3));
     sprintf(mensaje, "%s-%s-%s", mater[n].id_materia, mater[n].nombre_materia, mater[n].abrev_materia);
     puts(mensaje);
 }
@@ -87,7 +87,7 @@ void Modificar_materia(materias *mater){
     char id_mater[4], mensaje[100];
     listar_materias(mater);
     printf("Introduzca el id de la materia que desea modificar: ");
-    strcpy(id_mater, leer_campo(4));
+    strcpy(id_mater, leer_campo_m(4));
     for(i=0;i<contarmaterias(mater);i++){
         if(strcmp(id_mater, mater[i].id_materia) == 0){
             
@@ -104,15 +104,15 @@ void Modificar_materia(materias *mater){
                 switch(op){
                     case 1: 
                         printf("Introduzca el nuevo id de la materia: ");
-                        strcpy(mater[i].id_materia, leer_campo(4));
+                        strcpy(mater[i].id_materia, leer_campo_m(4));
                         break;
                     case 2: 
                         printf("Introduzca el nuevo nombre de la materia: ");
-                        strcpy(mater[i].nombre_materia, leer_campo(50));
+                        strcpy(mater[i].nombre_materia, leer_campo_m(50));
                         break;
                     case 3: 
                         printf("Introduzca la nueva abreviatura de la materia: ");
-                        strcpy(mater[i].abrev_materia, leer_campo(3));
+                        strcpy(mater[i].abrev_materia, leer_campo_m(3));
                         break;
                     default: 
                         printf("ERROR");
@@ -134,7 +134,7 @@ void Eliminar_materia(materias *mater){
     int i, j;
     char id_mater[4];
     printf("Introduzca el id de la materia que quiere eliminar");
-    strcpy(id_mater, leer_campo(4));
+    strcpy(id_mater, leer_campo_m(4));
     for(i=0;i<contarmaterias(mater);i++){
         if(strcmp(id_mater, mater[i].id_materia) == 0){
             strcpy(mater[i].id_materia, NULL);
