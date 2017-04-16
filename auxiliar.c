@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <regex.h>
+/*#include <regex.h>*/
 #include "auxiliar.h"
 
 int get_line (char *prmpt, char *buff, size_t sz) {
@@ -56,25 +56,28 @@ void str_replace(char *target, const char *needle, const char *replacement){
 }
 
 int fecha_correcta(char * fecha) {
-    regex_t regex;
-    
-    int reti;
-    char msgbuf[100];
-
-    reti = regcomp(&regex, "[0-9][0-9][/-][0-9][0-9][/-][0-9][0-9][0-9][0-9]", 0);
-    if (reti) {
-        fprintf(stderr, "Could not compile regex\n");
-    }
-    reti = regexec(&regex, fecha, 0, NULL, 0);
-    if (!reti) { return 1; }
-    else if (reti == REG_NOMATCH) {
-        puts("Esta fecha no puede ser valida, intentelo de nuevo.");
-    }
-    else {
-        regerror(reti, &regex, msgbuf, sizeof(msgbuf));
-        fprintf(stderr, "Regex match failed: %s\n", msgbuf);
-    }
-    return 0;
+    return 1;
+/*
+ *    regex_t regex;
+ *    
+ *    int reti;
+ *    char msgbuf[100];
+ *
+ *    reti = regcomp(&regex, "[0-9][0-9][/-][0-9][0-9][/-][0-9][0-9][0-9][0-9]", 0);
+ *    if (reti) {
+ *        fprintf(stderr, "Could not compile regex\n");
+ *    }
+ *    reti = regexec(&regex, fecha, 0, NULL, 0);
+ *    if (!reti) { return 1; }
+ *    else if (reti == REG_NOMATCH) {
+ *        puts("Esta fecha no puede ser valida, intentelo de nuevo.");
+ *    }
+ *    else {
+ *        regerror(reti, &regex, msgbuf, sizeof(msgbuf));
+ *        fprintf(stderr, "Regex match failed: %s\n", msgbuf);
+ *    }
+ *    return 0;
+ */
 }
 
 // Devuelve el numero de lienas en un fichero de texto.
