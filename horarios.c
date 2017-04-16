@@ -3,7 +3,7 @@
 #include <string.h>
 #include "estructuras.h"
 #include "horarios.h"
-#include "auxiliar.h"
+#include "auxiliar.c"
 
 /*
 	Cabecera: ninguna
@@ -346,6 +346,10 @@ void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, in
 
 
 int main(){
-	/*menu_horarios();*/
+    
+    int size = cuenta_lineas("horarios.txt");
+    horarios * array_horarios[size];
+    
+	menu_horarios(array_horarios, &size);
 	return 0;
 }

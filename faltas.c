@@ -1,29 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "estructuras.h"
+/*#include "estructuras.h"*/
 #include "auxiliar.c"
+#include "faltas.h"
 
 #define MSG_ERROR_TRAMO_HORARIO "No se admite un tramo horario inferior a 1 o superior a 6. Vuelva a intentarlo."
 int LONGITUD_ARRAY_FALTAS;
-
-void cargar_faltas(FILE * f, faltas *list_faltas);
-void volcado_faltas(FILE * f, faltas *list_faltas, char *nom_file, int longitud_array);
-
-faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array);
-
-faltas * anadir_falta   (faltas ** list_faltas, char datos[][100], int *longitud_array);
-void             modificar_falta(faltas *  list_faltas, char datos[][100], int  longitud_array);
-faltas * borrar_falta   (faltas ** list_faltas, char datos[][100], int *longitud_array);
-
-void print_faltas_por_alumno (faltas *list_faltas, int id_alumno,  int longitud_array);
-void print_faltas_criba(faltas *list_faltas, int *array_datos, int longitud_array);
-
-//void buscar_por_materia(faltas *list_faltas, int id_materia, faltas *new_list_faltas, int longitud_array);
-//void buscar_por_alumno (faltas *list_faltas, int id_alumno,  faltas *new_list_faltas, int longitud_array);
-
-int hora_valida(int hora, char *msg_error);
-int get_longitud_array_faltas();
 
 int get_longitud_array_faltas() {
     return LONGITUD_ARRAY_FALTAS;
@@ -37,26 +20,6 @@ int hora_valida(int hora, char *msg_error) {
     }
     return 1;
 }
-
-/*
- *void buscar_por_materia(faltas *list_faltas, int id_materia, faltas *new_list_faltas, int longitud_array) {
- *    int i, j = 0;
- *    for (i = 0; i <= longitud_array; i++) {
- *        if (atoi(list_faltas[i].id_materia) == id_materia) {
- *            new_list_faltas[j++] = list_faltas[i];
- *        }
- *    }
- *}
- *
- *void buscar_por_alumno(faltas *list_faltas, int id_alumno, faltas *new_list_faltas, int longitud_array) {
- *    int i, j = 0;
- *    for (i = 0; i <= longitud_array; i++) {
- *        if (atoi(list_faltas[i].id_alum) == id_alumno) {
- *            new_list_faltas[j++] = list_faltas[i];
- *        }
- *    }
- *}
- */
 
 void print_faltas_por_alumno(faltas *list_faltas, int id_alumno, int longitud_array) {
     int i, j = 0;
@@ -88,7 +51,7 @@ void print_faltas_criba(faltas *list_faltas, int *array_datos, int longitud_arra
     }
 }
 
-faltas * anadir_calificacion(faltas **list_faltas, char datos[][100], int *longitud_array) {
+faltas * anadir_falta(faltas **list_faltas, char datos[][100], int *longitud_array) {
     
     puts("Información Falta");
     puts("=========================");
@@ -133,7 +96,7 @@ faltas * anadir_calificacion(faltas **list_faltas, char datos[][100], int *longi
     return *list_faltas;
 }
 
-void modificar_calificacion(faltas *list_faltas, char datos[][100], int longitud_array) {
+void modificar_falta(faltas *list_faltas, char datos[][100], int longitud_array) {
     int id_falta = -1, i;
     for (int i= 0; i < longitud_array; i++) {
         if(strcmp(datos[0], list_faltas[i].fecha_falta) == 0 &&
@@ -172,7 +135,7 @@ void modificar_calificacion(faltas *list_faltas, char datos[][100], int longitud
     strcpy(list_faltas[id_falta].estado_falta, new_value_estado_falta);
 }
 
-faltas * borrar_calificacion(faltas **list_faltas, char datos[][100], int *longitud_array) {
+faltas * borrar_falta(faltas **list_faltas, char datos[][100], int *longitud_array) {
     int id_falta = -1, i, j;
     for (int i = 0; i < *(longitud_array); i++) {
         if(strcmp(datos[0], (*list_faltas + i)->fecha_falta) == 0 &&
@@ -272,7 +235,7 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
                     sprintf(datos_falta[1], "%d", array_datos[0]);
                     sprintf(datos_falta[2], "%d", array_datos[1]);
                     
-                    modificar_calificacion(list_faltas, datos_falta, longitud_array);
+                    modificar_falta(list_faltas, datos_falta, longitud_array);
                 }
               break;
             case 3: {
@@ -288,7 +251,7 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
                     sprintf(datos_falta[1], "%d", array_datos[0]);
                     sprintf(datos_falta[2], "%d", array_datos[1]);
                     
-                    list_faltas= borrar_calificacion(&list_faltas, datos_falta, &longitud_array);
+                    list_faltas= borrar_falta(&list_faltas, datos_falta, &longitud_array);
                 }
               break;
             case 4: {
@@ -313,7 +276,7 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
                     strcpy(datos_falta[3], buff_descrip_falta);
                     strcpy(datos_falta[4], buff_hora_falta);
                     
-                    list_faltas = anadir_calificacion(&list_faltas, datos_falta, &longitud_array);
+                    list_faltas = anadir_falta(&list_faltas, datos_falta, &longitud_array);
                 }
               break;
             case 5: break;
@@ -397,24 +360,22 @@ void cargar_faltas(FILE * f, faltas *list_faltas) {
     fclose(f);
 }
 
-int main(void) {
-    
-    FILE * f;
-    faltas list_faltas[cuenta_lineas("faltas.txt")];
-    faltas *new_list;
-    cargar_faltas(f, list_faltas);
-    
-    int array_datos[2];
-    /*
-     *array_datos[0] = 342312;
-     *array_datos[1] = 1;
-     */
-    array_datos[0] = 123456;
-    array_datos[1] = 3;
-    
-    new_list = menu_faltas(list_faltas, array_datos, get_longitud_array_faltas());
-    
-    volcado_faltas(f, new_list, "faltas.txt", get_longitud_array_faltas());
-    return 0;
-}
-
+/*
+ *int main(void) {
+ *    
+ *    FILE * f;
+ *    int array_datos[2];
+ *    array_datos[0] = 123456;
+ *    array_datos[1] = 3;
+ *    
+ *    faltas list_faltas[cuenta_lineas("faltas.txt")];
+ *    faltas *new_list;
+ *    
+ *    cargar_faltas(f, list_faltas);
+ *    new_list = menu_faltas(list_faltas, array_datos, get_longitud_array_faltas());
+ *    
+ *    volcado_faltas(f, new_list, "faltas.txt", get_longitud_array_faltas());
+ *    return 0;
+ *}
+ *
+ */

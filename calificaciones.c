@@ -1,30 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "estructuras.h"
+/*#include "estructuras.h"*/
 #include "auxiliar.c"
+#include "calificaciones.h"
 
 #define MSG_ERROR_NOTA "No se admite como nota un valor inferior a 0 o superior a 10. Vuelva a intentarlo."
 int LONGITUD_ARRAY_CALIFICACIONES;
-
-void cargar_calificaciones (FILE * f, calificaciones *list_calificaciones);
-void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char *nom_file, int longitud_array);
-
-calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *array_datos, int longitud_array);
-
-calificaciones * anadir_calificacion   (calificaciones ** list_calificaciones, char datos[][100], int *longitud_array);
-void             modificar_calificacion(calificaciones *  list_calificaciones, char datos[][100], int  longitud_array);
-calificaciones * borrar_calificacion   (calificaciones ** list_calificaciones, char datos[][100], int *longitud_array);
-
-void print_calificaciones_por_alumno (calificaciones *list_calificaciones, int id_alumno,  int longitud_array);
-void print_calificaciones_por_materia(calificaciones *list_calificaciones, int id_materia, int longitud_array);
-void print_calificaciones_criba(calificaciones *list_calificaciones, int *array_datos, int longitud_array);
-
-void buscar_por_materia(calificaciones *list_calificaciones, int id_materia, calificaciones *new_list_calificaciones, int longitud_array);
-void buscar_por_alumno (calificaciones *list_calificaciones, int id_alumno,  calificaciones *new_list_calificaciones, int longitud_array);
-
-int nota_valida(int nota, char *msg_error);
-int get_longitud_array_calificaciones();
 
 int get_longitud_array_calificaciones() {
     return LONGITUD_ARRAY_CALIFICACIONES;
@@ -416,37 +398,25 @@ void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
     LONGITUD_ARRAY_CALIFICACIONES = i;
 }
 
-int main(void) {
-    
-    //Para calcular el tamaño que tiene un array: (sizeof(list_calificaciones) / sizeof(calificaciones))
-    
-    FILE * f;
-    
-    calificaciones list_calificaciones[cuenta_lineas("calificaciones.txt")];
-    calificaciones * new_list;
-    cargar_calificaciones(f, list_calificaciones);
-    
-    int array_datos[2];
-    /*
-     *array_datos[0] = 342312;
-     *array_datos[1] = 1;
-     */
-    array_datos[0] = 123456;
-    array_datos[1] = 3;
-    
-    /*
-     *\// Codigo ejemplo para ver como se convierte un digito a una cadena de caracteres
-     *
-     *char prueba[15];
-     *convertir_digito_cadena(prueba, "4", array_datos[1]);
-     *puts(prueba);
-     *return 0;
-     */
-    /*printf("<<%d>>\n", get_longitud_array_calificaciones());*/
-    new_list = menu_calificaciones(list_calificaciones, array_datos, get_longitud_array_calificaciones());
-    /*printf("<<%d>>\n", get_longitud_array_calificaciones());*/
-    
-    /*volcado_calificaciones(f, new_list, "calificaciones.txt", get_longitud_array_calificaciones());*/
-    return 0;
-}
+/*
+ *int main(void) {
+ *    
+ *    //Para calcular el tamaño que tiene un array: (sizeof(list_calificaciones) / sizeof(calificaciones))
+ *    
+ *    FILE * f;
+ *    
+ *    int array_datos[2];
+ *    array_datos[0] = 123456;
+ *    array_datos[1] = 3;
+ *    
+ *    calificaciones list_calificaciones[cuenta_lineas("calificaciones.txt")];
+ *    calificaciones * new_list;
+ *    
+ *    cargar_calificaciones(f, list_calificaciones);
+ *    new_list = menu_calificaciones(list_calificaciones, array_datos, get_longitud_array_calificaciones());
+ *    
+ *    volcado_calificaciones(f, new_list, "calificaciones.txt", get_longitud_array_calificaciones());
+ *    return 0;
+ *}
+ */
 

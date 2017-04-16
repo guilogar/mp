@@ -1,7 +1,8 @@
 #include <stdlib.h>
-#ifndef _CALIFICACIONES
-#define _CALIFICACIONES
+#ifndef _FALTAS
+#define _FALTAS
 
+void cargar_faltas(FILE * f, faltas *list_faltas);
 void volcado_faltas(FILE * f, faltas *list_faltas, char *nom_file, int longitud_array);
 
 faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array);
