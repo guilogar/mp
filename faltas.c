@@ -52,11 +52,11 @@ void print_faltas_criba(faltas *list_faltas, int *array_datos, int longitud_arra
 }
 
 faltas * anadir_falta(faltas **list_faltas, char datos[][100], int *longitud_array) {
-    
+
     puts("Información Falta");
     puts("=========================");
     puts("");
-    
+
     printf("Fecha de falta => %s.\n\n", datos[0]);
     printf("Id Alumno => %s.\n\n", datos[1]);
     printf("Estado de la Falta => %s.\n\n", datos[2]);
@@ -65,32 +65,32 @@ faltas * anadir_falta(faltas **list_faltas, char datos[][100], int *longitud_arr
     puts("");
     char election[100];
     int i;
-    
+
     get_line ("¿Está seguro de que quiere añadir esta calificación al alumno?(y/n)> ", election, sizeof(election));
     if(strcmp("y", election) == 0 || strcmp("yes", election) == 0) {
-        
+
         *(longitud_array) += 1;
         faltas *new_list = (faltas *) calloc(*(longitud_array), sizeof(faltas));
         for(i = 0; i < *longitud_array - 1; i++) {
             if(fecha_correcta((*list_faltas + i)->fecha_falta)) {
                 strcpy(new_list[i].fecha_falta, (*list_faltas + i)->fecha_falta);
-                
+
                 new_list[i].hora_falta = (*list_faltas + i)->hora_falta;
-                
+
                 strcpy(new_list[i].estado_falta, (*list_faltas + i)->estado_falta);
                 strcpy(new_list[i].id_alum, (*list_faltas + i)->id_alum);
                 strcpy(new_list[i].descrip_falta, (*list_faltas + i)->descrip_falta);
             }
         }
         str_replace(datos[0], "-", "/");
-        
+
         strcpy(new_list[*longitud_array - 1].fecha_falta, datos[0]);
         strcpy(new_list[*longitud_array - 1].id_alum, datos[1]);
         strcpy(new_list[*longitud_array - 1].estado_falta, datos[2]);
         strcpy(new_list[*longitud_array - 1].descrip_falta, datos[3]);
-        
+
         new_list[*longitud_array - 1].hora_falta = atoi(datos[4]);
-        
+
         return new_list;
     }
     return *list_faltas;
@@ -98,10 +98,10 @@ faltas * anadir_falta(faltas **list_faltas, char datos[][100], int *longitud_arr
 
 void modificar_falta(faltas *list_faltas, char datos[][100], int longitud_array) {
     int id_falta = -1, i;
-    for (int i= 0; i < longitud_array; i++) {
+    for (i= 0; i < longitud_array; i++) {
         if(strcmp(datos[0], list_faltas[i].fecha_falta) == 0 &&
            atoi(list_faltas[i].id_alum) == atoi(datos[1])      ) {
-            
+
             id_falta = i;
             break;
         }
@@ -112,18 +112,18 @@ void modificar_falta(faltas *list_faltas, char datos[][100], int longitud_array)
         return;
     }
     char new_value_estado_falta[100];
-    
+
     puts("Información Falta");
     puts("=========================");
     puts("");
-    
+
     printf("Fecha de la Falta => %s.\n\n", list_faltas[id_falta].fecha_falta);
     printf("Descripción de la Falta => %s.\n\n", list_faltas[id_falta].descrip_falta);
     printf("Estado de la Falta => %s.\n\n", list_faltas[id_falta].estado_falta);
     printf("Tramo horario => %d.\n\n", list_faltas[id_falta].hora_falta);
     printf("Id Alumno => %s.\n\n", list_faltas[id_falta].id_alum);
     puts("");
-    
+
     get_line ("Inserte el nuevo estado para la falta> ", new_value_estado_falta, sizeof(new_value_estado_falta));
     puts("");
     /*
@@ -137,10 +137,10 @@ void modificar_falta(faltas *list_faltas, char datos[][100], int longitud_array)
 
 faltas * borrar_falta(faltas **list_faltas, char datos[][100], int *longitud_array) {
     int id_falta = -1, i, j;
-    for (int i = 0; i < *(longitud_array); i++) {
+    for (i = 0; i < *(longitud_array); i++) {
         if(strcmp(datos[0], (*list_faltas + i)->fecha_falta) == 0 &&
            atoi((*list_faltas + i)->id_alum) == atoi(datos[1])      ) {
-            
+
             id_falta = i;
             break;
         }
@@ -151,21 +151,21 @@ faltas * borrar_falta(faltas **list_faltas, char datos[][100], int *longitud_arr
         return *list_faltas;
     }
     char election[100];
-    
+
     puts("Información Falta");
     puts("=========================");
     puts("");
-    
+
     printf("Fecha de Falta => %s.\n\n", (*list_faltas +id_falta)->fecha_falta);
     printf("Descripción de la Falta => %s.\n\n", (*list_faltas + id_falta)->descrip_falta);
     printf("Id Alumno => %s.\n\n", (*list_faltas + id_falta)->id_alum);
     printf("Estado falta => %s.\n\n", (*list_faltas + id_falta)->estado_falta);
     printf("Tramo Horario => %d.\n\n", (*list_faltas + id_falta)->hora_falta);
     puts("");
-    
+
     get_line ("¿Está seguro de que quiere borrar esta falta del alumno?(y/n)> ", election, sizeof(election));
     if(strcmp("y", election) == 0 || strcmp("yes", election) == 0) {
-        
+
         *(longitud_array) -= 1;
         faltas *new_list = (faltas *) calloc(*(longitud_array), sizeof(faltas));
         for(i = 0, j = 0; j < *longitud_array; i++, j++) {
@@ -181,27 +181,27 @@ faltas * borrar_falta(faltas **list_faltas, char datos[][100], int *longitud_arr
                 new_list[j].hora_falta = (*list_faltas + i)->hora_falta;
             }
         }
-        
+
         return new_list;
     }
-    
+
     return *list_faltas;
 }
 
 faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) {
-    
+
     int rc;
     char buff[100];
-    
+
     char datos_falta[5][100];
     char buff_fecha_falta[100];
     char buff_descrip_falta[100];
     char buff_estado_falta[100];
     char buff_hora_falta[100];
-    
+
     puts("Bienvenido al menu de modificar faltas.");
     puts("===============================================");
-    
+
     do {
         puts("");
         puts("Opciones.");
@@ -211,7 +211,7 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
         puts("4º) Añadir una nueva falta.");
         puts("5º) Salir de este menú.");
         puts("");
-        
+
         rc = get_line ("Eliga una opción> ", buff, sizeof(buff));
         puts("");
         switch (atoi(buff)) {
@@ -234,7 +234,7 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
                     strcpy(datos_falta[0], buff_fecha_falta);
                     sprintf(datos_falta[1], "%d", array_datos[0]);
                     sprintf(datos_falta[2], "%d", array_datos[1]);
-                    
+
                     modificar_falta(list_faltas, datos_falta, longitud_array);
                 }
               break;
@@ -250,7 +250,7 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
                     strcpy(datos_falta[0], buff_fecha_falta);
                     sprintf(datos_falta[1], "%d", array_datos[0]);
                     sprintf(datos_falta[2], "%d", array_datos[1]);
-                    
+
                     list_faltas= borrar_falta(&list_faltas, datos_falta, &longitud_array);
                 }
               break;
@@ -269,13 +269,13 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
                     puts("");
                     str_replace(buff_fecha_falta, "-", "/");
                     strcpy(datos_falta[0], buff_fecha_falta);
-                    
+
                     sprintf(datos_falta[1], "%d", array_datos[0]);
-                    
+
                     strcpy(datos_falta[2], buff_estado_falta);
                     strcpy(datos_falta[3], buff_descrip_falta);
                     strcpy(datos_falta[4], buff_hora_falta);
-                    
+
                     list_faltas = anadir_falta(&list_faltas, datos_falta, &longitud_array);
                 }
               break;
@@ -284,7 +284,7 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
                 puts("Error en la selección de la opción. Intentelo otra vez.");
         }
     } while (rc != OK || atoi(buff) != 5);
-    
+
     int i = 0;
     faltas *new_list = (faltas *) calloc((longitud_array), sizeof(faltas));
     for(i = 0; i < longitud_array; i++) {
@@ -295,7 +295,7 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
         new_list[i].hora_falta = (list_faltas + i)->hora_falta;
     }
     /*print_faltas_criba(new_list, array_datos, longitud_array);*/
-    
+
     LONGITUD_ARRAY_FALTAS = longitud_array;
     return new_list;
 }
@@ -303,34 +303,34 @@ faltas * menu_faltas(faltas *list_faltas, int *array_datos, int longitud_array) 
 void volcado_faltas(FILE * f, faltas *list_faltas, char *nom_file, int longitud_array) {
     puts("");
     f = fopen(nom_file, "w");
-    
+
     char cadena[longitud_array][100];
     char aux_hora_falta[20];
     int i;
-    
+
     for (i = 0; i < longitud_array; i++) {
         memset(cadena[i], 0, strlen(cadena[i]));
-        
+
         if(!fecha_correcta(list_faltas[i].fecha_falta)) {
             continue;
         }
-        
+
         strcat(cadena[i], list_faltas[i].fecha_falta);
         strcat(cadena[i], "-");
-        
+
         sprintf(aux_hora_falta, "%d", list_faltas[i].hora_falta);
         strcat(cadena[i], aux_hora_falta);
         strcat(cadena[i], "-");
-        
+
         strcat(cadena[i], list_faltas[i].descrip_falta);
         strcat(cadena[i], "-");
-        
+
         strcat(cadena[i], list_faltas[i].estado_falta);
         strcat(cadena[i], "-");
-        
+
         strcat(cadena[i], list_faltas[i].id_alum);
         strcat(cadena[i], "\n");
-        
+
         fprintf(f, "%s", cadena[i]);
     }
     fclose(f);
@@ -346,14 +346,14 @@ void cargar_faltas(FILE * f, faltas *list_faltas) {
         puts(ANSI_COLOR_RESET);
         return;
     }
-    
+
     while (fgets(cadena, 100, f) != NULL) {
         strcpy(list_faltas[i].fecha_falta, strtok(cadena,"-"));
         list_faltas[i].hora_falta = atoi(strtok(NULL,"-"));
         strcpy(list_faltas[i].descrip_falta, strtok(NULL,"-"));
         strcpy(list_faltas[i].estado_falta, strtok(NULL,"-"));
         strcpy(list_faltas[i].id_alum, strtok(NULL,"\n"));
-        
+
         i++;
     }
     LONGITUD_ARRAY_FALTAS = i;
@@ -362,18 +362,18 @@ void cargar_faltas(FILE * f, faltas *list_faltas) {
 
 /*
  *int main(void) {
- *    
+ *
  *    FILE * f;
  *    int array_datos[2];
  *    array_datos[0] = 123456;
  *    array_datos[1] = 3;
- *    
+ *
  *    faltas list_faltas[cuenta_lineas("faltas.txt")];
  *    faltas *new_list;
- *    
+ *
  *    cargar_faltas(f, list_faltas);
  *    new_list = menu_faltas(list_faltas, array_datos, get_longitud_array_faltas());
- *    
+ *
  *    volcado_faltas(f, new_list, "faltas.txt", get_longitud_array_faltas());
  *    return 0;
  *}

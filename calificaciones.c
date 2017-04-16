@@ -85,11 +85,11 @@ void print_calificaciones_criba(calificaciones *list_calificaciones, int *array_
 }
 
 calificaciones * anadir_calificacion(calificaciones **list_calificaciones, char datos[][100], int *longitud_array) {
-    
+
     puts("Información Calificación");
     puts("=========================");
     puts("");
-    
+
     printf("Fecha de Calificación => %s.\n\n", datos[0]);
     printf("Id Alumno => %s.\n\n", datos[1]);
     printf("Id de la Materia => %s.\n\n", datos[2]);
@@ -98,10 +98,10 @@ calificaciones * anadir_calificacion(calificaciones **list_calificaciones, char 
     puts("");
     char election[100];
     int i;
-    
+
     get_line ("¿Está seguro de que quiere añadir esta calificación al alumno?(y/n)> ", election, sizeof(election));
     if(strcmp("y", election) == 0 || strcmp("yes", election) == 0) {
-        
+
         *(longitud_array) += 1;
         calificaciones *new_list = (calificaciones *) calloc(*(longitud_array), sizeof(calificaciones));
         for(i = 0; i < *longitud_array - 1; i++) {
@@ -119,7 +119,7 @@ calificaciones * anadir_calificacion(calificaciones **list_calificaciones, char 
         strcpy(new_list[*longitud_array - 1].id_alum, datos[1]);
         strcpy(new_list[*longitud_array - 1].descrip_calif, datos[3]);
         new_list[*longitud_array - 1].valor_calif = atoi(datos[4]);
-        
+
         return new_list;
     }
     return *list_calificaciones;
@@ -127,11 +127,11 @@ calificaciones * anadir_calificacion(calificaciones **list_calificaciones, char 
 
 void modificar_calificacion(calificaciones *list_calificaciones, char datos[][100], int longitud_array) {
     int id_calificacion = -1, i;
-    for (int i= 0; i < longitud_array; i++) {
+    for (i = 0; i < longitud_array; i++) {
         if(strcmp(datos[0], list_calificaciones[i].fecha_calif) == 0 &&
            atoi(list_calificaciones[i].id_materia) == atoi(datos[2]) &&
            atoi(list_calificaciones[i].id_alum) == atoi(datos[1])      ) {
-            
+
             id_calificacion = i;
             break;
         }
@@ -142,35 +142,35 @@ void modificar_calificacion(calificaciones *list_calificaciones, char datos[][10
         return;
     }
     char new_value_calif[100];
-    
+
     puts("Información Calificación");
     puts("=========================");
     puts("");
-    
+
     printf("Fecha de Calificación => %s.\n\n", list_calificaciones[id_calificacion].fecha_calif);
     printf("Descripción de la Calificación => %s.\n\n", list_calificaciones[id_calificacion].descrip_calif);
     printf("Id de la Materia => %s.\n\n", list_calificaciones[id_calificacion].id_materia);
     printf("Id Alumno => %s.\n\n", list_calificaciones[id_calificacion].id_alum);
     printf("Valor de la Calificación => %d.\n\n", list_calificaciones[id_calificacion].valor_calif);
     puts("");
-    
+
     get_line ("Inserte el nuevo valor de la calificación> ", new_value_calif, sizeof(new_value_calif));
     puts("");
     if(!nota_valida(atoi(new_value_calif), MSG_ERROR_NOTA)) {
         modificar_calificacion(list_calificaciones, datos, longitud_array);
         return;
     }
-    
+
     list_calificaciones[id_calificacion].valor_calif = atoi(new_value_calif);
 }
 
 calificaciones * borrar_calificacion(calificaciones **list_calificaciones, char datos[][100], int *longitud_array) {
     int id_calificacion = -1, i, j;
-    for (int i = 0; i < *(longitud_array); i++) {
+    for (i = 0; i < *(longitud_array); i++) {
         if(strcmp(datos[0], (*list_calificaciones + i)->fecha_calif) == 0 &&
            atoi((*list_calificaciones + i)->id_materia) == atoi(datos[2]) &&
            atoi((*list_calificaciones + i)->id_alum) == atoi(datos[1])      ) {
-            
+
             id_calificacion = i;
             break;
         }
@@ -181,21 +181,21 @@ calificaciones * borrar_calificacion(calificaciones **list_calificaciones, char 
         return *list_calificaciones;
     }
     char election[100];
-    
+
     puts("Información Calificación");
     puts("=========================");
     puts("");
-    
+
     printf("Fecha de Calificación => %s.\n\n", (*list_calificaciones +id_calificacion)->fecha_calif);
     printf("Descripción de la Calificación => %s.\n\n", (*list_calificaciones + id_calificacion)->descrip_calif);
     printf("Id de la Materia => %s.\n\n", (*list_calificaciones + id_calificacion)->id_materia);
     printf("Id Alumno => %s.\n\n", (*list_calificaciones + id_calificacion)->id_alum);
     printf("Valor de la Calificación => %d.\n\n", (*list_calificaciones + id_calificacion)->valor_calif);
     puts("");
-    
+
     get_line ("¿Está seguro de que quiere borrar esta calificación del alumno?(y/n)> ", election, sizeof(election));
     if(strcmp("y", election) == 0 || strcmp("yes", election) == 0) {
-        
+
         *(longitud_array) -= 1;
         calificaciones *new_list = (calificaciones *) calloc(*(longitud_array), sizeof(calificaciones));
         for(i = 0, j = 0; j < *longitud_array; i++, j++) {
@@ -211,28 +211,28 @@ calificaciones * borrar_calificacion(calificaciones **list_calificaciones, char 
                 new_list[j].valor_calif = (*list_calificaciones + i)->valor_calif;
             }
         }
-        
+
         return new_list;
     }
-    
+
     return *list_calificaciones;
 }
 
 calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *array_datos, int longitud_array) {
-    
+
     int rc;
     char buff[100];
-    
+
     char datos_calif[5][100];
     char buff_fecha_calif[100];
     char buff_id_materia[100];
     char buff_id_alum[100];
     char buff_descrip_calif[100];
     char buff_valor_calif[100];
-    
+
     puts("Bienvenido al menu de modificar calificaciones.");
     puts("===============================================");
-    
+
     do {
         puts("");
         puts("Opciones.");
@@ -242,7 +242,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
         puts("4º) Añadir una nueva Calificación.");
         puts("5º) Salir de este menú.");
         puts("");
-        
+
         rc = get_line ("Eliga una opción> ", buff, sizeof(buff));
         puts("");
         switch (atoi(buff)) {
@@ -267,7 +267,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                     strcpy(datos_calif[0], buff_fecha_calif);
                     sprintf(datos_calif[1], "%d", array_datos[0]);
                     sprintf(datos_calif[2], "%d", array_datos[1]);
-                    
+
                     modificar_calificacion(list_calificaciones, datos_calif, longitud_array);
                 }
               break;
@@ -285,7 +285,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                     strcpy(datos_calif[0], buff_fecha_calif);
                     sprintf(datos_calif[1], "%d", array_datos[0]);
                     sprintf(datos_calif[2], "%d", array_datos[1]);
-                    
+
                     list_calificaciones= borrar_calificacion(&list_calificaciones, datos_calif, &longitud_array);
                 }
               break;
@@ -309,7 +309,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                     sprintf(datos_calif[2], "%d", array_datos[1]);
                     strcpy(datos_calif[3], buff_descrip_calif);
                     strcpy(datos_calif[4], buff_valor_calif);
-                    
+
                     list_calificaciones = anadir_calificacion(&list_calificaciones, datos_calif, &longitud_array);
                     /*printf(">>>%li<<<\n", (sizeof(list_calificaciones) / sizeof(calificaciones)));*/
                 }
@@ -319,7 +319,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
                 puts("Error en la selección de la opción. Intentelo otra vez.");
         }
     } while (rc != OK || atoi(buff) != 5);
-    
+
     int i = 0;
     calificaciones *new_list = (calificaciones *) calloc((longitud_array), sizeof(calificaciones));
     for(i = 0; i < longitud_array; i++) {
@@ -330,7 +330,7 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
         new_list[i].valor_calif = (list_calificaciones + i)->valor_calif;
     }
     /*print_calificaciones_criba(new_list, array_datos, longitud_array);*/
-    
+
     LONGITUD_ARRAY_CALIFICACIONES = longitud_array;
     return new_list;
 }
@@ -338,36 +338,36 @@ calificaciones * menu_calificaciones(calificaciones *list_calificaciones, int *a
 void volcado_calificaciones(FILE * f, calificaciones *list_calificaciones, char *nom_file, int longitud_array) {
     puts("");
     f = fopen(nom_file, "w");
-    
+
     char cadena[longitud_array][100];
     char aux_valor_calif[20];
-    
+
     int i= 0;
-    
+
     for (i = 0; i < longitud_array; i++) {
         memset(cadena[i], 0, strlen(cadena[i]));
-        
+
         if(!fecha_correcta(list_calificaciones[i].fecha_calif)) {
             continue;
         }
-        
+
         strcat(cadena[i], list_calificaciones[i].fecha_calif);
         strcat(cadena[i], "-");
-        
+
         strcat(cadena[i], list_calificaciones[i].descrip_calif);
         strcat(cadena[i], "-");
-        
+
         strcat(cadena[i], list_calificaciones[i].id_materia);
         strcat(cadena[i], "-");
-        
+
         strcat(cadena[i], list_calificaciones[i].id_alum);
         strcat(cadena[i], "-");
-        
+
         sprintf(aux_valor_calif, "%d", list_calificaciones[i].valor_calif);
-        
+
         strcat(cadena[i], aux_valor_calif);
         strcat(cadena[i], "\n");
-        
+
         /*puts(cadena[i]);*/
         fprintf(f, "%s", cadena[i]);
     }
@@ -384,14 +384,14 @@ void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
         puts(ANSI_COLOR_RESET);
         return;
     }
-    
+
     while (fgets(cadena, 100, f) != NULL) {
         strcpy(list_calificaciones[i].fecha_calif, strtok(cadena,"-"));
         strcpy(list_calificaciones[i].descrip_calif, strtok(NULL,"-"));
         strcpy(list_calificaciones[i].id_materia, strtok(NULL,"-"));
         strcpy(list_calificaciones[i].id_alum, strtok(NULL,"-"));
         list_calificaciones[i].valor_calif = atoi(strtok(NULL,"-"));
-        
+
         i++;
     }
 
@@ -400,21 +400,21 @@ void cargar_calificaciones(FILE * f, calificaciones *list_calificaciones) {
 
 /*
  *int main(void) {
- *    
+ *
  *    //Para calcular el tamaño que tiene un array: (sizeof(list_calificaciones) / sizeof(calificaciones))
- *    
+ *
  *    FILE * f;
- *    
+ *
  *    int array_datos[2];
  *    array_datos[0] = 123456;
  *    array_datos[1] = 3;
- *    
+ *
  *    calificaciones list_calificaciones[cuenta_lineas("calificaciones.txt")];
  *    calificaciones * new_list;
- *    
+ *
  *    cargar_calificaciones(f, list_calificaciones);
  *    new_list = menu_calificaciones(list_calificaciones, array_datos, get_longitud_array_calificaciones());
- *    
+ *
  *    volcado_calificaciones(f, new_list, "calificaciones.txt", get_longitud_array_calificaciones());
  *    return 0;
  *}
