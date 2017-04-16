@@ -164,6 +164,8 @@ void menu_admin(){
 void menu_prof(int i){
     int op, al;
     char cod[7];
+    char id_p[4];
+
     FILE * f;
     
     int size_calif = cuenta_lineas("calificaciones.txt");
@@ -184,7 +186,10 @@ void menu_prof(int i){
     
     /*system("cls");*/
     //Se necesita que esta función tambien permita seleccionar un grupo de la lista
-    /*listar_horarios_prof(arr_horario, &n_horarios, *arr_usuarios[i].id_usuario);*/
+    
+    strcpy(id_p, arr_usuarios[i]->id_usuario)
+    
+    listar_horarios_prof(arr_horario, &n_horarios, id_p);
     
     /*system("cls");*/
     
