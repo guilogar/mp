@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <regex.h>
 #include "estructuras.h"
 #include "auxiliar.c"
 
@@ -170,8 +169,6 @@ void modificar_calificacion(faltas *list_faltas, char datos[][100], int longitud
      *    return;
      *}
      */
-    printf("<<%d>>\n", id_falta);
-    puts(new_value_estado_falta);
     strcpy(list_faltas[id_falta].estado_falta, new_value_estado_falta);
 }
 
