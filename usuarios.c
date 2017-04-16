@@ -7,6 +7,7 @@
 int cont=0; //Marca el número de usuarios que hay
 
 void quitar_saltosU(char *);
+char *leer_campoU(int, char *);
 
 //Cambia los caracteres de salto de linea por caracteres de final de vector
 void quitar_saltosU(char *cadena){
@@ -16,7 +17,7 @@ void quitar_saltosU(char *cadena){
 }
 
 //Leer una cadena de caracteres del largo que se le pasa por parametro
-char *leer_campo(int largo, char *titulo){
+char *leer_campoU(int largo, char *titulo){
     char *campo;
     campo = (char*)calloc(largo+1,sizeof(char));
     printf("%s (%d):",titulo,largo);
@@ -55,7 +56,7 @@ usuarios* Carga_Usuario(){
 
 void menu_usuarios(usuarios * arr_usuarios){
     int op;
-    
+
     system("cls");
     printf("1. Alta usuario\n");
     printf("2. Baja usuario\n");
@@ -124,7 +125,7 @@ void Anadir_Usuario(usuarios *List_Usuario){
         List_Usuario[cont].id_usuario[0] = List_Usuario[cont].id_usuario[2];
         List_Usuario[cont].id_usuario[2] = aux;
     }
-    strcpy(List_Usuario[cont].nomb_usuario,leer_campo(20,"Nombre"));
+    strcpy(List_Usuario[cont].nomb_usuario,leer_campoU(20,"Nombre"));
     do{
         printf("Perfil: 1.Administrador 2.Profesor ");
         scanf("%i",&op);
@@ -137,8 +138,8 @@ void Anadir_Usuario(usuarios *List_Usuario){
             strcpy(List_Usuario[cont].perfil_usuario,"Profesor");
         break;
     }
-    strcpy(List_Usuario[cont].usuario,leer_campo(20,"Usser"));
-    strcpy(List_Usuario[cont].contrasena,leer_campo(8,"Password"));
+    strcpy(List_Usuario[cont].usuario,leer_campoU(20,"Usser"));
+    strcpy(List_Usuario[cont].contrasena,leer_campoU(8,"Password"));
     cont++;
 }
 
@@ -151,7 +152,7 @@ void Listar_Usuarios(usuarios *List_Usuario){
 void Modificar_Usuario(usuarios *List_Usuario){
     int i=0, pos_mod, op;
     char us[20];
-    strcpy(us,leer_campo(20,"Introduce el Usser a modificar"));
+    strcpy(us,leer_campoU(20,"Introduce el Usser a modificar"));
     while(i<cont){
         if(!strcmp(List_Usuario[i].usuario,us)) pos_mod = i;
         i++;
@@ -159,7 +160,7 @@ void Modificar_Usuario(usuarios *List_Usuario){
     if(i<cont){
     printf("\n%s-%s-%s-%s-%s\n",List_Usuario[pos_mod].id_usuario,List_Usuario[pos_mod].nomb_usuario,List_Usuario[pos_mod].perfil_usuario,List_Usuario[pos_mod].usuario,List_Usuario[pos_mod].contrasena);
     printf("\n----INTRODUCIR NUEVOS VALORES----\n");
-    strcpy(List_Usuario[pos_mod].nomb_usuario,leer_campo(20,"Nombre"));
+    strcpy(List_Usuario[pos_mod].nomb_usuario,leer_campoU(20,"Nombre"));
     do{
         printf("Perfil: 1.Administrador 2.Profesor ");
         scanf("%i",&op);
@@ -172,15 +173,15 @@ void Modificar_Usuario(usuarios *List_Usuario){
             strcpy(List_Usuario[pos_mod].perfil_usuario,"Profesor");
         break;
     }
-    strcpy(List_Usuario[pos_mod].usuario,leer_campo(20,"Usser"));
-    strcpy(List_Usuario[pos_mod].contrasena,leer_campo(8,"Password"));
+    strcpy(List_Usuario[pos_mod].usuario,leer_campoU(20,"Usser"));
+    strcpy(List_Usuario[pos_mod].contrasena,leer_campoU(8,"Password"));
     } else { printf("\nEl Usser introducido no se corresponde con ningun usuario del sistema.\n"); }
 }
 
 void Baja_Usuario(usuarios *List_Usuario){
     int j = 0, posi = -1, i;
     char cod[3], resp=' ';
-    strcpy(cod,leer_campo(3,"Codigo del usuario a eliminar "));
+    strcpy(cod,leer_campoU(3,"Codigo del usuario a eliminar "));
     while(j<cont && posi == -1){
         if(!strcmp(List_Usuario[j].id_usuario,cod)) posi = j;
         j++;
