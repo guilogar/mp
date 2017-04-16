@@ -23,8 +23,8 @@ void menu_principal();
 void menu_admin();
 void menu_prof();
 void guardar();
-
 void quitar_saltos(char *cadena);
+
 // Variables globales
 //Contadores de lineas de .txt
 //Si sobra o falta alguno añadir o eliminar
@@ -33,16 +33,11 @@ int n_horarios, n_alumnos, n_usuarios;
 int n_materias, n_matriculas, n_faltas, n_calificaciones;
 
 
-/*
-	Proposición de hacer globales los vectores que
-	apuntan a una estructura con los datos de cada
-	archivo .txt. Ej:
-*/
-
-  horarios **arr_horario;
-  usuarios *arr_usuarios;
-  alumnos *arr_alumnos;
-
+ horarios **arr_horario;
+ usuarios *arr_usuarios;
+ alumnos *arr_alumnos;
+ materias *arr_materias;
+ matriculas *arr_matriculas;
 
 
 int main() {
@@ -280,5 +275,5 @@ void guardar(){
     //Estas tres últimas no se cómo pasarle todos los parámetros que me pide pasarles
     volcado_calificaciones();
     volcado_faltas();
-    volcado_horarios();
+    volcado_horarios(arr_horario, &n_horarios);
 }
