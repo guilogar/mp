@@ -41,16 +41,12 @@ int n_materias, n_matriculas;
 	archivo .txt. Ej:
 */
 
-  horarios **arr_horario;
   usuarios *arr_usuarios;
   alumnos *arr_alumnos;
   materias *arr_materias;
   matriculas *arr_matriculas;
   faltas *arr_faltas;
   calificaciones *arr_calificaciones;
-
-
-
 
 int main() {
     FILE *f;
@@ -63,20 +59,12 @@ int main() {
 	n_usuarios = cuenta_lineas("usuarios.txt");
 	n_materias = cuenta_lineas("materias.txt");
 	n_matriculas = cuenta_lineas("matriculas.txt");
-
-
-    /*
-     *arr_horario = malloc(n_horarios * sizeof(horarios*));
-     *leer_horarios(arr_horario);
-     */
     
-    /*
-     *arr_materias = malloc(n_materias * sizeof(materias*));
-     *cargar_materias(arr_materias);
-     *
-     *arr_matriculas = malloc(n_matriculas * sizeof(matriculas*));
-     *cargar_matriculas(arr_matriculas);
-     */
+    arr_materias = malloc(n_materias * sizeof(materias*));
+    cargar_materias(arr_materias);
+    
+    arr_matriculas = malloc(n_matriculas * sizeof(matriculas*));
+    cargar_matriculas(arr_matriculas);
     
     arr_usuarios = Carga_Usuario();
     arr_alumnos = Carga_Alumno();
@@ -87,7 +75,6 @@ int main() {
 
 	return 0;
 }
-
 
 /*
 	Cabecera: ninguna
@@ -135,6 +122,8 @@ void menu_principal(){
 
 void menu_admin(){
     int op;
+    horarios arr_horario[cuenta_lineas("horarios.txt")];
+    leer_horario(arr_horario);
 
     system("cls");
     printf("1. Usuarios\n");
@@ -184,7 +173,7 @@ void menu_prof(int i){
     int op, al;
     char cod[7];
     char id_p[4];
-
+    
     FILE * f;
 
     int size_calif = cuenta_lineas("calificaciones.txt");
@@ -198,6 +187,9 @@ void menu_prof(int i){
 
     cargar_calificaciones(f, list_calif);
     cargar_faltas(f, list_faltas);
+    
+    horarios arr_horario[cuenta_lineas("horarios.txt")];
+    leer_horario(arr_horario);
 
     int array_datos[2];
     array_datos[0] = 123456;
@@ -295,5 +287,5 @@ void guardar(){
     Guardar_Usuario(arr_usuarios);
     guardar_materias(arr_materias);
     guardar_matriculas(arr_matriculas);
-    volcado_horarios(arr_horario, &n_horarios);
+    /*volcado_horarios(arr_horario, &n_horarios);*/
 }
