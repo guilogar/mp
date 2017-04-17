@@ -93,6 +93,7 @@ void menu_principal(){
 
     printf("Opcion-> ");
     scanf("%d",&op_log);
+    fflush(stdin);
 
     while(op_log != 3){
         get_line("Usuario>", usser, 20);

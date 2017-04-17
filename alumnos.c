@@ -215,7 +215,7 @@ void Baja_Alumno(alumnos *List_Alumno){
 void Guardar_Alumno(alumnos *List_Alumno){
     int i=0;
     FILE *fichAlum;
-    fichAlum=fopen("Alumnos.txt","w"); //Abre el fichero en modo escritura
+    fichAlum=fopen("alumnos.txt","w"); //Abre el fichero en modo escritura
     if(fichAlum==NULL) printf("\nError al cargar el fichero\n");
     else{
         while(i<conta){
