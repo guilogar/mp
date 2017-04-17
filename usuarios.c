@@ -213,7 +213,7 @@ void Baja_Usuario(usuarios *List_Usuario){
 void Guardar_Usuario(usuarios *List_Usuario){
     int i=0;
     FILE *fich;
-    fich=fopen("Usuarios.txt","w"); //Abre el fichero en modo escritura
+    fich=fopen("usuarios.txt","w"); //Abre el fichero en modo escritura
     if(fich==NULL) printf("\nError al cargar el fichero\n");
     else{
         while(i<cont){
