@@ -10,7 +10,7 @@ void mostrar(char* idmateria, matriculas *mat, alumnos *alum);
 //Cabecera: char *leer_campo(int largo)
 //Precondición: Pasar por parametro el tamaño de la caden a leer.
 //Postcondición: Devuelve una cadena introducida por teclado.
-char *leer_campo(int largo);
+char *leer_campo_m(int largo);
 
 //Cabecera: void matriculas_alum(char *idalu, matriculas *mat, alumnos *alu)
 //Precondición: Estructura matriculas y alumnos creada, con todos los datos cargados, y un id de un alumno por parametro.
