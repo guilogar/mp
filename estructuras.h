@@ -60,7 +60,7 @@ typedef struct horarios{
 	int dia_clase;
 	int hora_clase;
 	char id_materia[5];
-	char grupo[11];
+	char grupo[500];
 } horarios;
 
 #endif

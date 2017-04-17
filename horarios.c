@@ -6,9 +6,9 @@
 #include "auxiliar.h"
 
 /*
-	Cabecera: ninguna
-	Precondición: ninguna
-	Postcondición: permite el manejo de la información de horarios
+  Cabecera: ninguna
+  PrecondiciÃ³n: ninguna
+  PostcondiciÃ³n: permite el manejo de la informaciÃ³n de horarios
 */
 void menu_horarios(horarios **arr_horarios, int* n_horarios) {
     int op;
@@ -58,68 +58,43 @@ void menu_horarios(horarios **arr_horarios, int* n_horarios) {
 }
 
 /*
-   Cabecera: char *, horario *
+   Cabecera: int , horario *
    Precondicion: vectores declarados e inicializados
    Postcondicion: lee una linea y guardo todos sus atributos en una
    estructura horario
 */
-void leer_horario (char * linea, horarios * h) {
-
-    if (linea == NULL) {
-      perror("Error: linea vacia.\n");
-    }
-
-    else {
-      strcpy(h->id_prof, strtok (linea,"-"));
-
-      h->dia_clase = atoi( strtok (NULL,"-"));
-
-      h->hora_clase = atoi( strtok (NULL,"-"));
-
-      strcpy(h->id_materia, strtok (NULL,"-"));
-
-      strcpy(h->grupo, strtok (NULL,"\n"));
-    }
-}
-
-/*
-	Cabecera: horario **
-	Precondición: puntero a vector de estructura declarado e inicializado
-	Postcondición: Lee todos los horarios que se encuetran en el fichero horarios.tt
-	y los guarda en un vector de punteros a estructura tipo horario
-*/
-int leer_horarios (horarios ** arr) {
+void leer_horario ( horarios * h) {
 
 int i = 0;
-char linea[MAX_LINEA];
-  FILE * fichero = fopen("horarios.txt", "r");
+char cadena[MAX_LINEA];
+FILE * f = fopen("horarios.txt", "r");
 
-  if (fichero == NULL){
-   /* exit(EXIT_FAILURE); Dejar para mas tarde y poner un mensaje de error simplemente */
-	   puts(ANSI_COLOR_RED);
-        puts("Error fatal: El fichero con la informacion no existe.\n\n");
-        puts(ANSI_COLOR_RESET);
-        return 0;
-      }
+if (f == NULL){
+  /* exit(EXIT_FAILURE); Dejar para mas tarde y poner un mensaje de error simplemente */
+  puts(ANSI_COLOR_RED);
+  puts("Error fatal: El fichero con la informacion no existe.\n\n");
+  puts(ANSI_COLOR_RESET);
+}
 
-	//Reserva progresiva de memoria para almacenar cada
-	//horario en el vector
-  while (fgets (linea, sizeof linea, fichero)) {
-    arr[i] = malloc (sizeof (horarios));
-    leer_horario(linea, arr[i]);
-    i++;
-  }
+ while (fgets(cadena, MAX_LINEA, f) != NULL) {
+   
+    strcpy(h[i].id_prof, strtok(cadena,"-"));
+    h[i].dia_clase = atoi ( strtok (NULL,"-"));
+        h[i].hora_clase = atoi ( strtok (NULL,"-"));
+        strcpy(h[i].id_materia,  strtok(NULL,"-"));
+        strcpy(h[i].grupo, strtok(NULL,"\n"));
 
-  fclose(fichero);
-
-  return i;
+        i++;
+    }
+ 
+ fclose(f);
 }
 
 
 /*
   Cabecera: horario ** arr, int n, usuarios id
-  Precondición: vector que apunta a estructura inicializado
-  Postcondición: lista todos los horarios de un profesor
+  PrecondiciÃ³n: vector que apunta a estructura inicializado
+  PostcondiciÃ³n: lista todos los horarios de un profesor
 */
 void listar_horarios_prof (horarios **arr, int *n, char id_p) {
   int i = 0, num= *n;
@@ -135,8 +110,8 @@ void listar_horarios_prof (horarios **arr, int *n, char id_p) {
 
 /*
   Cabecera: horario ** arr, int n, usuarios id
-  Precondición: vector que apunta a estructura inicializado
-  Postcondición: lista todos los horarios de un profesor
+  PrecondiciÃ³n: vector que apunta a estructura inicializado
+  PostcondiciÃ³n: lista todos los horarios de un profesor
 */
 void listar_horarios_admin (horarios ** arr, int *n) {
   int i = 0, num = *n;
@@ -149,8 +124,8 @@ void listar_horarios_admin (horarios ** arr, int *n) {
 
 /*
   Cabecera: horarios **arr_horarios, int n
-  Precondición: vector que apunta a estructuras inicializado, y nunero de datos contabilizado
-  Postcondición: Permite añadir un nuevo horario a un determinado usuario del sistema
+  PrecondiciÃ³n: vector que apunta a estructuras inicializado, y nunero de datos contabilizado
+  PostcondiciÃ³n: Permite aÃ±adir un nuevo horario a un determinado usuario del sistema
 */
 void aniadir_horario (horarios **arr_horarios, int *n) {
   int dia, hora, i, bol=1, num = *n;
@@ -189,8 +164,8 @@ void aniadir_horario (horarios **arr_horarios, int *n) {
 
 /*
   Cabecera: horarios **arr_horarios, int n
-  Precondición: vector de punteros a estructura inicializado
-  Postcondición: elimina un horario de la lista.
+  PrecondiciÃ³n: vector de punteros a estructura inicializado
+  PostcondiciÃ³n: elimina un horario de la lista.
 */
 void eliminar_horario(horarios **arr_horarios, int *n) {
 
@@ -230,8 +205,8 @@ arr_horarios = malloc (sizeof(horarios));
 
 /*
   Cabecera: horarios **arr_horarios, int *n
-  Precondición: vector de puntero a estructura incializado
-  Postcondición: modifica los parametros de un determinado horario
+  PrecondiciÃ³n: vector de puntero a estructura incializado
+  PostcondiciÃ³n: modifica los parametros de un determinado horario
 */
 void modificar_horario (horarios **arr_horarios, int *n) {
 
@@ -277,8 +252,8 @@ scanf("%s", arr_horarios[i]->grupo);
 
 /*
   Cabecera: horarios **arr_horarios, int *n
-  Precondición: vector de puntero a estructura inicializado
-  Postcondición: escribe toda la información del vector rn un fichero de texto
+  PrecondiciÃ³n: vector de puntero a estructura inicializado
+  PostcondiciÃ³n: escribe toda la informaciÃ³n del vector rn un fichero de texto
 */
 void volcado_horarios(horarios **arr_horarios, int *n) {
 
@@ -301,8 +276,8 @@ fclose(fichero);
 
 /*
   Cabecera: horarios **arr_horarios, int *n, materias **arr_materias, int n_materias, int arr_horas_mat
-  Precondición: arr_horarios, arr_materias y n inicializados
-  Postcondición: devuelve un vector con las horas en las que se imparta una determinada materia
+  PrecondiciÃ³n: arr_horarios, arr_materias y n inicializados
+  PostcondiciÃ³n: devuelve un vector con las horas en las que se imparta una determinada materia
 */
 void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, int n_materias, int arr_horas_mat[]) {
 
@@ -346,14 +321,13 @@ void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, in
     arr_horas_mat = malloc (sizeof(int));
 }
 
-
 /*
- *int main(){
- *
- *    int size = cuenta_lineas("horarios.txt");
- *    horarios * array_horarios[size];
- *
- *    menu_horarios(array_horarios, &size);
- *    return 0;
- *}
- */
+ int main(){
+ 
+     int size = cuenta_lineas("horarios.txt");
+     horarios array_horarios[size];
+  leer_horario( array_horarios);
+     //menu_horarios(array_horarios, &size);
+     return 0;
+ }
+*/ 

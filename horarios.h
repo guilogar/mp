@@ -6,7 +6,7 @@
 #define GRUPO 11
 #define IDP 4
 #define IDM 5
-#define MAX_LINEA 30
+#define MAX_LINEA 1024
 
 void menu_horarios(horarios **arr_horarios, int* n_horarios);
 
@@ -16,15 +16,7 @@ void menu_horarios(horarios **arr_horarios, int* n_horarios);
    Postcondicion: lee una linea y guardo todos sus atributos en una
    estructura horario
 */
-void leer_horario (char * linea, horarios * h);
-
-/*
-	Cabecera: horario **
-	Precondición: puntero a vector de estructura declarado e inicializado
-	Postcondición: Lee todos los horarios que se encuetran en el fichero horarios.tt
-	y los guarda en un vector de punteros a estructura tipo horario
-*/
-int leer_horarios (horarios ** arr);
+void leer_horario ( horarios * h);
 
 /*
   Cabecera: horario ** arr, int n, usuarios id
