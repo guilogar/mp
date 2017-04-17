@@ -59,13 +59,13 @@ int main() {
 	n_usuarios = cuenta_lineas("usuarios.txt");
 	n_materias = cuenta_lineas("materias.txt");
 	n_matriculas = cuenta_lineas("matriculas.txt");
-    
+
     arr_materias = malloc(n_materias * sizeof(materias*));
     cargar_materias(arr_materias);
-    
+
     arr_matriculas = malloc(n_matriculas * sizeof(matriculas*));
     cargar_matriculas(arr_matriculas);
-    
+
     arr_usuarios = Carga_Usuario();
     arr_alumnos = Carga_Alumno();
 
@@ -82,42 +82,59 @@ int main() {
 	Postcondición: permite el login de los usuarios del sistema
 */
 void menu_principal(){
-	int i = 0, sw = 1, op;
+	int i = 0, sw = 1, op, op_log;
 	char usser[21], pass[9];
 
-    get_line("Usuario>", usser, 20);
+    printf("BIENVENIDO AL CUADERNO DEL PROFESOR\n");
+    printf("Introduzca el perfil con el que desea loguearse:\n");
+    printf("1. Administrador\n");
+    printf("2. Profesor\n");
+    printf("3. Salir\n\n");
 
-	while(sw) {
-        if(i >= n_usuarios) sw = 0;
-        else if(strcmp(usser,arr_usuarios[i].usuario) == 0) sw = 0;
-        else i++;
-    }
-    if(i>=n_usuarios) {
-        printf("El usuario introducido no existe.");
-        i = 0;
-        system("pause");
-        system("cls");
-    } else {
-        do {
-            get_line("Contraseña>", pass, 9);
-            if(strcmp(arr_usuarios[i].contrasena,pass) != 0) {
-                printf("Contrasena erronea");
-            }
-        } while(strcmp(arr_usuarios[i].contrasena,pass)!=0);
+    printf("Opcion-> ");
+    scanf("%d",&op_log);
 
-        if(strcmp(arr_usuarios[i].perfil_usuario, "administrador") == 0) op = 1;
-        else op = 2;
+    while(op_log != 3){
+        get_line("Usuario>", usser, 20);
 
-        switch(op){
-            case 1:
-                menu_admin();
-            break;
-            case 2:
-                menu_prof(i);
-            break;
+        while(sw) {
+            if(i >= n_usuarios) sw = 0;
+            else if(strcmp(usser,arr_usuarios[i].usuario) == 0) sw = 0;
+            else i++;
         }
+        if(i >= n_usuarios) {
+            printf("El usuario introducido no existe.");
+            i = 0;
+            system("pause");
+            system("cls");
+            menu_principal();
+        } else {
+            do {
+                get_line("Contraseña>", pass, 9);
+                if(strcmp(arr_usuarios[i].contrasena,pass) != 0) {
+                    printf("Contrasena erronea");
+                }
+            } while(strcmp(arr_usuarios[i].contrasena,pass)!=0);
+
+            if(strcmp(arr_usuarios[i].perfil_usuario, "administrador") == 0 && op_log == 1) op = 1;
+            else if(strcmp(arr_usuarios[i].perfil_usuario, "profesor") == 0 && op_log == 2) op = 2;
+            else op = 3;
+
+            switch(op){
+                case 1:
+                    menu_admin();
+                break;
+                case 2:
+                    menu_prof(i);
+                break;
+                default:
+                    printf("\nNo ha introducido una cuenta con el perfil especificado\n");
+                    menu_principal();
+                break;
+            }
+        }
+        menu_principal();
     }
-    menu_principal();
 }
 
 void menu_admin(){
@@ -166,6 +183,8 @@ void menu_admin(){
             scanf("%d",&op);
         }
     }
+    system("cls");
+    menu_principal();
 }
 
 
@@ -173,7 +192,7 @@ void menu_prof(int i){
     int op, al;
     char cod[7];
     char id_p[4];
-    
+
     FILE * f;
 
     int size_calif = cuenta_lineas("calificaciones.txt");
@@ -187,7 +206,7 @@ void menu_prof(int i){
 
     cargar_calificaciones(f, list_calif);
     cargar_faltas(f, list_faltas);
-    
+
     horarios arr_horario[cuenta_lineas("horarios.txt")];
     leer_horario(arr_horario);
 
