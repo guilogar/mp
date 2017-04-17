@@ -23,24 +23,35 @@ void menu_principal();
 void menu_admin();
 void menu_prof();
 void guardar();
-void quitar_saltos(char *cadena);
 
+void quitar_saltos(char *cadena);
 // Variables globales
 //Contadores de lineas de .txt
 //Si sobra o falta alguno añadir o eliminar
 
 int n_horarios, n_alumnos, n_usuarios;
-int n_materias, n_matriculas, n_faltas, n_calificaciones;
+int n_materias, n_matriculas;
 
 
- horarios **arr_horario;
- usuarios *arr_usuarios;
- alumnos *arr_alumnos;
- materias *arr_materias;
- matriculas *arr_matriculas;
+/*
+	Proposición de hacer globales los vectores que
+	apuntan a una estructura con los datos de cada
+	archivo .txt. Ej:
+*/
+
+  horarios **arr_horario;
+  usuarios *arr_usuarios;
+  alumnos *arr_alumnos;
+  materias *arr_materias;
+  matriculas *arr_matriculas;
+  faltas *arr_faltas;
+  calificaciones *arr_calificaciones;
+
+
 
 
 int main() {
+    FILE *f;
 	printf("Cuaderno digital del profesor\n");
     //Calcula el numero de lineas de cada fichero de texto
     //Elminad los que os sobren
@@ -49,15 +60,18 @@ int main() {
     n_alumnos = cuenta_lineas("alumnos.txt");
 	n_usuarios = cuenta_lineas("usuarios.txt");
 	n_materias = cuenta_lineas("materias.txt");
-	n_matriculas = cuenta_lineas("materias.txt");
-	n_faltas = cuenta_lineas("faltas.txt");
-	n_calificaciones = cuenta_lineas("calificaciones.txt");
+	n_matriculas = cuenta_lineas("matriculas.txt");
+
 
     arr_horario = malloc(n_horarios * sizeof(horarios*));
+    leer_horarios(arr_horario);
+    arr_materias = malloc(contarmaterias() * sizeof(materias*));
+    cargar_materias(arr_materias);
+    arr_matriculas = malloc(n_matriculas * sizeof(matriculas*));
+    cargar_matriculas(arr_matriculas);
     arr_usuarios = Carga_Usuario();
     arr_alumnos = Carga_Alumno();
 
-    /*leer_horarios(arr_horario);*/
 
 	menu_principal();
 	guardar();
@@ -137,7 +151,7 @@ void menu_admin(){
             break;
             case 3:
                 system("cls");
-                /*menu_materias(); //Falta implementación*/
+                menu_materias(arr_materias);
                 op=5;
             break;
             case 4:
@@ -272,8 +286,5 @@ void guardar(){
     Guardar_Usuario(arr_usuarios);
     guardar_materias(arr_materias);
     guardar_matriculas(arr_matriculas);
-    //Estas tres últimas no se cómo pasarle todos los parámetros que me pide pasarles
-    volcado_calificaciones();
-    volcado_faltas();
     volcado_horarios(arr_horario, &n_horarios);
 }
