@@ -14,7 +14,7 @@ void cargar_materias(materias *mater) {
     if(f == NULL) {
         puts("Error fatal: El fichero con la información no existe.\n\n");     
     } else{
-        while (fgets(cadena, 60, f) != NULL) {
+        while (fgets(cadena, 100, f) != NULL) {
         
             strcpy(mater[i].id_materia, strtok(cadena,"-"));
             strcpy(mater[i].nombre_materia, strtok(NULL,"-"));
