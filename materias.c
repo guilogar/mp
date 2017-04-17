@@ -12,11 +12,8 @@ void cargar_materias(materias *mater) {
     FILE *f;
     f = fopen("materias.txt", "r");
     if(f == NULL) {
-        
         puts("Error fatal: El fichero con la información no existe.\n\n");     
-        
-    }else{
-    
+    } else{
         while (fgets(cadena, 60, f) != NULL) {
         
             strcpy(mater[i].id_materia, strtok(cadena,"-"));
@@ -47,8 +44,8 @@ char* nombre_id(char *idmateria, materias *mater){
 
 int contarmaterias(materias *mater){
     
-    int i;
-    while(strcmp(mater[i].id_materia, 0) != 0){
+    int i = 0;
+    while(strcmp(mater[i].id_materia, "0") != 0){
         i++;
     }
     return i;
@@ -137,9 +134,9 @@ void Eliminar_materia(materias *mater){
     strcpy(id_mater, leer_campo_m(4));
     for(i=0;i<contarmaterias(mater);i++){
         if(strcmp(id_mater, mater[i].id_materia) == 0){
-            strcpy(mater[i].id_materia, NULL);
-            strcpy(mater[i].nombre_materia, NULL);
-            strcpy(mater[i].abrev_materia, NULL);
+            strcpy(mater[i].id_materia, "NULL");
+            strcpy(mater[i].nombre_materia, "NULL");
+            strcpy(mater[i].abrev_materia, "NULL");
             for(j=i+1;j<contarmaterias(mater);j++){
                 strcpy(mater[j].id_materia, mater[j-1].id_materia);
                 strcpy(mater[j].nombre_materia, mater[j-1].nombre_materia);
@@ -197,7 +194,7 @@ void guardar_materias(materias *mater){
     fich=fopen("materias.txt","w"); //Abre el fichero en modo escritura
     if(fich==NULL) printf("\nError al cargar el fichero\n");
     else{
-        while(strcmp(mater[i].id_materia, 0) != 0){
+        while(strcmp(mater[i].id_materia, "0") != 0){
             fprintf(fich,"%s-%s-%s\n",mater[i].id_materia,mater[i].nombre_materia, mater[i].abrev_materia);
             i++;
         }

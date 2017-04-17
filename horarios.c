@@ -27,22 +27,22 @@ void menu_horarios(horarios **arr_horarios, int* n_horarios) {
         switch(op){
             case 1:
                 system("cls");
-                aniadir_horario(arr_horarios, &n_horarios);
+                aniadir_horario(arr_horarios, n_horarios);
                 op=5;
             break;
             case 2:
                 system("cls");
-                eliminar_horario(arr_horarios, &n_horarios);
+                eliminar_horario(arr_horarios, n_horarios);
                 op=5;
             break;
             case 3:
                 system("cls");
-                modificar_horario(arr_horarios, &n_horarios);
+                modificar_horario(arr_horarios, n_horarios);
                 op=5;
             break;
             case 4:
                 system("cls");
-                listar_horarios_admin(arr_horarios, &n_horarios);
+                listar_horarios_admin(arr_horarios, n_horarios);
                 op=5;
             break;
             default:
@@ -155,7 +155,7 @@ void listar_horarios_admin (horarios ** arr, int *n) {
 void aniadir_horario (horarios **arr_horarios, int *n) {
   int dia, hora, i, bol=1, num = *n;
   char id_p[IDP], id_m[IDM], gr[GRUPO];
-  listar_horarios_admin(arr_horarios, &n);
+  listar_horarios_admin(arr_horarios, n);
 
   arr_horarios = realloc(arr_horarios, (num+1) * sizeof (horarios*));
   arr_horarios = malloc (sizeof(horarios));
@@ -196,7 +196,7 @@ void eliminar_horario(horarios **arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
 char id_p[IDP], id_m[IDM], gr[GRUPO];
-listar_horarios_admin(arr_horarios, &n);
+listar_horarios_admin(arr_horarios, n);
 
 while (bol != 0) {
   printf("Introduzca identificador de profesor: \n");
@@ -237,7 +237,7 @@ void modificar_horario (horarios **arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
 char id_p[IDP], id_m[IDM], gr[GRUPO];
-listar_horarios_admin(arr_horarios, &n);
+listar_horarios_admin(arr_horarios, n);
 
 while (bol != 0) {
   printf("Escriba campo a campo el horario que quiera modificar\nIntroduzca identificador de profesor: \n");

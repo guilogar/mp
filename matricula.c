@@ -34,7 +34,7 @@ int contar_matriculas(matriculas *mat){
 
     int i;
     i=0;
-    while(strcmp(mat[i].id_materias, NULL) != 0){
+    while(strcmp(mat[i].id_materias, "NULL") != 0){
         i++;
     }
     return i;
@@ -46,9 +46,9 @@ void mostrar(char *idmatricula, matriculas *mat, alumnos *alu){
     n = contar_matriculas(mat);
     for(i=0;i<n;i++){
         if(strcmp(idmatricula, mat[i].id_materias) == 0){
-            while(strcmp(alu[j].id_alum, NULL) != 0){
+            while(strcmp(alu[j].id_alum, "NULL") != 0){
                 if(strcmp(mat[i].id_alum, alu[j].id_alum)){
-                    printf(alu[j].nombre_alum);
+                    puts(alu[j].nombre_alum);
                 }
             }
             
@@ -62,7 +62,7 @@ void matriculas_alum(char *idalu, matriculas *mat, alumnos *alu){
     char mensaje[50];
     for(i=0;i<contar_matriculas(mat);i++){
         if(strcmp(idalu, mat[i].id_alum) == 0){
-            while(strcmp(alu[j].id_alum, NULL) != 0){
+            while(strcmp(alu[j].id_alum, "NULL") != 0){
                 if(strcmp(mat[i].id_alum, alu[j].id_alum)){
                     sprintf("%s %s %s", alu[j].nombre_alum, alu[j].curso);
                     puts(mensaje);
@@ -78,7 +78,7 @@ void lista_matricula(char *id_alum, matriculas *mat, materias *mater){
     char mensaje[50];
     for(i=0;i<contar_matriculas(mat);i++){
         if(strcmp(id_alum, mat[i].id_alum) == 0){
-            for(j=0;j<contarmaterias(mater);j++){
+            for(j=0;j < contarmaterias(mater);j++){
                 if(strcmp(mat[i].id_materias, mater[j].id_materia) == 0){
                     sprintf(mensaje, "%s-%s", mat[i].id_materias, mater[j].nombre_materia);
                     puts(mensaje);
@@ -158,8 +158,8 @@ void Eliminar_matricula(matriculas *mat, char *id_alum, materias *mater){
     strcpy(id_materia, leer_campo_m(4));
     for(k=0;k<contar_matriculas(mat);k++){
         if((strcmp(id_materia, mat[k].id_materias) == 0) && (strcmp(id_alum, mat[k].id_alum) == 0)){
-            strcpy(mat[k].id_alum, NULL);
-            strcpy(mat[k].id_materias, NULL);
+            strcpy(mat[k].id_alum, "NULL");
+            strcpy(mat[k].id_materias, "NULL");
             for(l=k+1;l<contar_matriculas(mat);l++){
                 strcpy(mat[l].id_alum, mat[l-1].id_alum);
                 strcpy(mat[l].id_materias, mat[l-1].id_materias);
@@ -216,7 +216,7 @@ void guardar_matriculas(matriculas *mat){
     fich=fopen("matriculas.txt","w"); //Abre el fichero en modo escritura
     if(fich==NULL) printf("\nError al cargar el fichero\n");
     else{
-        while(strcmp(mat[i].id_materias, NULL) != 0){
+        while(strcmp(mat[i].id_materias, "NULL") != 0){
             fprintf(fich,"%s-%s\n",mat[i].id_materias,mat[i].id_alum);
             i++;
         }

@@ -7,7 +7,9 @@
 
 #include "estructuras.h"
 #include "auxiliar.c"
-/*#include "matricula.c"*/
+
+#include "matricula.c"
+#include "materias.c"
 
 #include "alumnos.c"
 #include "usuarios.c"
@@ -63,12 +65,19 @@ int main() {
 	n_matriculas = cuenta_lineas("matriculas.txt");
 
 
-    arr_horario = malloc(n_horarios * sizeof(horarios*));
-    leer_horarios(arr_horario);
-    arr_materias = malloc(contarmaterias() * sizeof(materias*));
-    cargar_materias(arr_materias);
-    arr_matriculas = malloc(n_matriculas * sizeof(matriculas*));
-    cargar_matriculas(arr_matriculas);
+    /*
+     *arr_horario = malloc(n_horarios * sizeof(horarios*));
+     *leer_horarios(arr_horario);
+     */
+    
+    /*
+     *arr_materias = malloc(n_materias * sizeof(materias*));
+     *cargar_materias(arr_materias);
+     *
+     *arr_matriculas = malloc(n_matriculas * sizeof(matriculas*));
+     *cargar_matriculas(arr_matriculas);
+     */
+    
     arr_usuarios = Carga_Usuario();
     arr_alumnos = Carga_Alumno();
 
@@ -199,7 +208,7 @@ void menu_prof(int i){
 
     strcpy(id_p, arr_usuarios[i].id_usuario);
 
-    listar_horarios_prof(arr_horario, &n_horarios, id_p);
+    /*listar_horarios_prof(arr_horario, &n_horarios, *id_p);*/
 
     /*system("cls");*/
 
