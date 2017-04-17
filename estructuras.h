@@ -22,8 +22,8 @@ typedef struct alumnos{
 
 typedef struct materias{
 	char id_materia[5];
-	char nombre_materia[51];
-	char abrev_materia[4];
+	char nombre_materia[100];
+	char abrev_materia[10];
 } materias;
 
 //Depende de alumnos

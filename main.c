@@ -60,10 +60,8 @@ int main() {
 	n_materias = cuenta_lineas("materias.txt");
 	n_matriculas = cuenta_lineas("matriculas.txt");
     
-    /*
-     *arr_materias = malloc(n_materias * sizeof(materias*));
-     *cargar_materias(arr_materias);
-     */
+    arr_materias = malloc(n_materias * sizeof(materias*));
+    cargar_materias(arr_materias);
     
     arr_matriculas = malloc(n_matriculas * sizeof(matriculas*));
     cargar_matriculas(arr_matriculas);
