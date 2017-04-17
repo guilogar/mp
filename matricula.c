@@ -22,9 +22,6 @@ void cargar_matriculas(matriculas *mat) {
             strcpy(mat[i].id_materias, strtok(cadena,"-"));
             strcpy(mat[i].id_alum, strtok(NULL,"-"));
         
-            puts(mat[i].id_materias);
-            puts(mat[i].id_alum);
-        
             i++;
         }
     }

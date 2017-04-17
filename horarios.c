@@ -10,7 +10,7 @@
   PrecondiciÃ³n: ninguna
   PostcondiciÃ³n: permite el manejo de la informaciÃ³n de horarios
 */
-void menu_horarios(horarios **arr_horarios, int* n_horarios) {
+void menu_horarios(horarios *arr_horarios, int* n_horarios) {
     int op;
 
     system("cls");
@@ -27,22 +27,22 @@ void menu_horarios(horarios **arr_horarios, int* n_horarios) {
         switch(op){
             case 1:
                 system("cls");
-                aniadir_horario(arr_horarios, n_horarios);
+                aniadir_horario(&arr_horarios, n_horarios);
                 op=5;
             break;
             case 2:
                 system("cls");
-                eliminar_horario(arr_horarios, n_horarios);
+                eliminar_horario(&arr_horarios, n_horarios);
                 op=5;
             break;
             case 3:
                 system("cls");
-                modificar_horario(arr_horarios, n_horarios);
+                modificar_horario(&arr_horarios, n_horarios);
                 op=5;
             break;
             case 4:
                 system("cls");
-                listar_horarios_admin(arr_horarios, n_horarios);
+                listar_horarios_admin(&arr_horarios, n_horarios);
                 op=5;
             break;
             default:

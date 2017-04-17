@@ -8,7 +8,7 @@
 #define IDM 5
 #define MAX_LINEA 1024
 
-void menu_horarios(horarios **arr_horarios, int* n_horarios);
+void menu_horarios(horarios *arr_horarios, int* n_horarios);
 
 /*
    Cabecera: char *, horario *
