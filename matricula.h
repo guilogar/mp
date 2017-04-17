@@ -21,7 +21,13 @@ void matriculas_alum(char *idalu, matriculas *mat, alumnos *alu);
 //Precondición: Estructura matriculas y materias creada, con todos los datos cargados y un id de un alumno por parametro
 //Postcondición: Menu con todas las funciones pedidas para este modulo.
 void menu_matriculas(char *id_alum, matriculas *mat, materias *mater);
-
+void cargar_matriculas(matriculas *mat);
+int contar_matriculas(matriculas *mat);
+void lista_matricula(char *id_alum, matriculas *mat, materias *mater);
+void Anadir_Matricula(matriculas *mat, char *id_alum);
+void Modificar_matricula(matriculas *mat, char *id_alum, materias *mater);
+void Eliminar_matricula(matriculas *mat, char *id_alum, materias *mater);
+void guardar_matriculas(matriculas *mat);
 
 #endif /* MATRICULA_H */
 

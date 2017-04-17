@@ -18,5 +18,12 @@ char* nombre_id(char *idmateria, materias *mater);
 //Postcondición: Menu con todas las funciones pedias para este modulo.
 void menu_materias(materias *mater);
 
+void cargar_materias(materias *mater);
+void listar_materias(materias *mater);
+void Modificar_materia(materias *mater);
+void Eliminar_materia(materias *mater);
+void guardar_materias(materias *mater);
+
+
 #endif /* MATERIAS_H */
 
