@@ -103,3 +103,12 @@ int cuenta_lineas(char * nombre_fichero) {
     
     return n_lineas;
 }
+
+char *leer_campo_m(int largo){
+	char *campo;
+	campo = (char*)calloc(largo+1,sizeof(char));
+	fflush(stdin);
+	fgets(campo,largo+1,stdin);
+	fflush(stdin);
+	return campo;
+}

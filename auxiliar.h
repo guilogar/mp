@@ -21,5 +21,5 @@ int fecha_correcta(char * fecha);
 void str_replace(char *target, const char *needle, const char *replacement);
 void convertir_digito_cadena(char * target, char * longitud_cadena, int numero);
 int get_line(char *prmpt, char *buff, size_t sz);
-
+char *leer_campo_m(int largo);
 #endif

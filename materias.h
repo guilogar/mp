@@ -2,10 +2,10 @@
 #define MATERIAS_H
 #include "estructuras.h"
 
-//Cabecera: int contarmaterias(materias *mater)
+//Cabecera: int get_tam_array_materias()
 //Precondición: Estructura materias creada, con todos los datos cargados.
 //Postcondición: Devuelve el numero de materias de la estructura.
-int contarmaterias(materias *mater);
+int get_tam_array_materias();
 
 
 //Cabecera: char* nombre_id(char *idmateria, materias *mater)

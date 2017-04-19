@@ -4,6 +4,13 @@
 #include "matricula.h"
 #include "estructuras.h"
 #include "materias.h"
+#include "auxiliar.h"
+
+int tam_array;
+
+int get_tam_array_matriculas(){
+    return tam_array;
+}
 
 void cargar_matriculas(matriculas *mat) {
     
@@ -25,30 +32,21 @@ void cargar_matriculas(matriculas *mat) {
             i++;
         }
     }
+    tam_array = i;
 }
 
-int contar_matriculas(matriculas *mat){
-
-    int i;
-    i=0;
-    while(strcmp(mat[i].id_materias, "NULL") != 0){
-        i++;
-    }
-    return i;
-}
 
 void mostrar(char *idmatricula, matriculas *mat, alumnos *alu){
     
-    int i, n, j=0;
-    n = contar_matriculas(mat);
-    for(i=0;i<n;i++){
+    int i, j;
+
+    for(i=0;i<tam_array;i++){
         if(strcmp(idmatricula, mat[i].id_materias) == 0){
             while(strcmp(alu[j].id_alum, "NULL") != 0){
                 if(strcmp(mat[i].id_alum, alu[j].id_alum)){
                     puts(alu[j].nombre_alum);
                 }
             }
-            
         } 
     }
 }
@@ -56,13 +54,12 @@ void mostrar(char *idmatricula, matriculas *mat, alumnos *alu){
 void matriculas_alum(char *idalu, matriculas *mat, alumnos *alu){
 
     int i, j=0;
-    char mensaje[50];
-    for(i=0;i<contar_matriculas(mat);i++){
+    
+    for(i=0;i<tam_array;i++){
         if(strcmp(idalu, mat[i].id_alum) == 0){
-            while(strcmp(alu[j].id_alum, "NULL") != 0){
+            while(strcmp(alu[j].id_alum, NULL) != 0){
                 if(strcmp(mat[i].id_alum, alu[j].id_alum)){
-                    sprintf("%s %s %s", alu[j].nombre_alum, alu[j].curso);
-                    puts(mensaje);
+                    printf("%s %s \n", alu[j].nombre_alum, alu[j].curso);
                 }
             }   
         } 
@@ -72,37 +69,28 @@ void matriculas_alum(char *idalu, matriculas *mat, alumnos *alu){
 void lista_matricula(char *id_alum, matriculas *mat, materias *mater){
     
     int i, j;
-    char mensaje[50];
-    for(i=0;i<contar_matriculas(mat);i++){
+ 
+    for(i=0;i<tam_array;i++){
         if(strcmp(id_alum, mat[i].id_alum) == 0){
-            for(j=0;j < contarmaterias(mater);j++){
+            for(j=0;j < get_tam_array_materias();j++){
                 if(strcmp(mat[i].id_materias, mater[j].id_materia) == 0){
-                    sprintf(mensaje, "%s-%s", mat[i].id_materias, mater[j].nombre_materia);
-                    puts(mensaje);
+                    printf("%s-%s\n", mat[i].id_materias, mater[j].nombre_materia);
                 }
             }
         }
     }
 }
 
-//Leer una cadena de caracteres del largo que se le pasa por parametro
-char *leer_campo_m(int largo){
-    char *campo;
-    campo = (char*)calloc(largo+1,sizeof(char));
-    fflush(stdin);
-    fgets(campo,largo+1,stdin);
-    fflush(stdin);
-    return campo;
-}
 
 void Anadir_Matricula(matriculas *mat, char *id_alum){
 
     int n;
-    n = 1+contar_matriculas(mat);
-    mat =(matriculas *)realloc(mat,(contar_matriculas(mat)+1)*sizeof(matriculas));
+    n = 1+tam_array;
+    mat =(matriculas *)realloc(mat,(n)*sizeof(matriculas));
     strcpy(mat[n].id_alum, id_alum);
     printf("Introduzca el id de la materia en la que matriculara al alumno. \n");
     strcpy(mat[n].id_materias, leer_campo_m(4));
+    tam_array = tam_array+1;
 }
 
 
@@ -110,27 +98,26 @@ void Anadir_Matricula(matriculas *mat, char *id_alum){
 void Modificar_matricula(matriculas *mat, char *id_alum, materias *mater){
     
     int i, n, k, j;
-    char mensaje[50], id_materia[6];
-    n=contar_matriculas(mat);
+    char id_materia[6];
+    n=tam_array;
     printf("Lista de asignaturas matriculadas: \n");
     for(i=0;i<n;i++){
         if(strcmp(id_alum, mat[i].id_alum) == 0){
-            for(j=0;j<contarmaterias(mater);j++){
+            for(j=0;j<get_tam_array_materias();j++){
                 if(strcmp(mat[i].id_materias, mater[j].id_materia) == 0){
-                    sprintf(mensaje, "%s-%s", mat[i].id_materias, mater[j].nombre_materia);
-                    puts(mensaje);
+                    sprintf("%s-%s\n", mat[i].id_materias, mater[j].nombre_materia);
+                   
                 }
             }
         }
     }
     printf("Introduzca el id de la materia que quiere modificar");
     strcpy(id_materia,leer_campo_m(4));
-    for(k=0;k<contarmaterias(mater);k++){
+    for(k=0;k<get_tam_array_materias();k++){
         if((strcmp(id_materia, mat[k].id_materias) == 0) && (strcmp(id_alum, mat[k].id_alum) == 0)){
             printf("Introduzca el id de la materia que desea matricular");
             strcpy(mat[k].id_materias, leer_campo_m(4));
-            sprintf(mensaje, "%s-%s", mat[k].id_alum, mat[k].id_materias);
-            puts(mensaje);
+            printf("%s-%s\n", mat[k].id_alum, mat[k].id_materias);
         }
     }
 }
@@ -141,27 +128,27 @@ void Eliminar_matricula(matriculas *mat, char *id_alum, materias *mater){
     char mensaje[50], id_materia[6];
     
     printf("Lista de asignaturas matriculadas: \n");
-    for(i=0;i<contar_matriculas(mat);i++){
+    for(i=0;i<tam_array;i++){
         if(strcmp(id_alum, mat[i].id_alum) == 0){
-            for(j=0;j<contarmaterias(mater);j++){
+            for(j=0;j<get_tam_array_materias();j++){
                 if(strcmp(mat[i].id_materias, mater[j].id_materia) == 0){
-                    sprintf(mensaje, "%s-%s", mat[i].id_materias, mater[j].nombre_materia);
-                    puts(mensaje);
+                    printf("%s-%s\n", mat[i].id_materias, mater[j].nombre_materia);
                 }
             }
         }
     }
     printf("Introduzca el id de la materia que quiere eliminar");
     strcpy(id_materia, leer_campo_m(4));
-    for(k=0;k<contar_matriculas(mat);k++){
+    for(k=0;k<tam_array;k++){
         if((strcmp(id_materia, mat[k].id_materias) == 0) && (strcmp(id_alum, mat[k].id_alum) == 0)){
             strcpy(mat[k].id_alum, "NULL");
             strcpy(mat[k].id_materias, "NULL");
-            for(l=k+1;l<contar_matriculas(mat);l++){
+            for(l=k+1;l<tam_array;l++){
                 strcpy(mat[l].id_alum, mat[l-1].id_alum);
                 strcpy(mat[l].id_materias, mat[l-1].id_materias);
             }
             printf("Matricula eliminada.");
+            tam_array = tam_array - 1;
         }
     }
 }
