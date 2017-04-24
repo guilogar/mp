@@ -13,32 +13,34 @@ int get_tam_array_matriculas(){
 }
 
 void cargar_matriculas(matriculas *mat) {
-    
+
     char cadena[60];
-    int i = 0;
+    int i, n;
     FILE *f;
     f = fopen("matriculas.txt", "r");
+    n = cuenta_lineas("matriculas.txt");
     if(f == NULL) {
-        
-        puts("Error fatal: El fichero con la información no existe.\n\n");     
-        
+
+        puts("Error fatal: El fichero con la información no existe.\n\n");
+
     }else{
-    
-        while (fgets(cadena, 60, f) != NULL) {
-        
+
+         for(i=0;i<n;i++) {
+
+            fgets(cadena, 60, f);
             strcpy(mat[i].id_materias, strtok(cadena,"-"));
             strcpy(mat[i].id_alum, strtok(NULL,"-"));
-        
-            i++;
+
         }
     }
     tam_array = i;
+    fclose(f);
 }
 
-
+/*
 void mostrar(char *idmatricula, matriculas *mat, alumnos *alu){
-    
-    int i, j;
+
+    int i, j=0;
 
     for(i=0;i<tam_array;i++){
         if(strcmp(idmatricula, mat[i].id_materias) == 0){
@@ -47,29 +49,29 @@ void mostrar(char *idmatricula, matriculas *mat, alumnos *alu){
                     puts(alu[j].nombre_alum);
                 }
             }
-        } 
+        }
     }
 }
 
 void matriculas_alum(char *idalu, matriculas *mat, alumnos *alu){
 
     int i, j=0;
-    
+
     for(i=0;i<tam_array;i++){
         if(strcmp(idalu, mat[i].id_alum) == 0){
             while(strcmp(alu[j].id_alum, NULL) != 0){
                 if(strcmp(mat[i].id_alum, alu[j].id_alum)){
                     printf("%s %s \n", alu[j].nombre_alum, alu[j].curso);
                 }
-            }   
-        } 
-    }    
+            }
+        }
+    }
 }
-
+*/
 void lista_matricula(char *id_alum, matriculas *mat, materias *mater){
-    
+
     int i, j;
- 
+
     for(i=0;i<tam_array;i++){
         if(strcmp(id_alum, mat[i].id_alum) == 0){
             for(j=0;j < get_tam_array_materias();j++){
@@ -96,7 +98,7 @@ void Anadir_Matricula(matriculas *mat, char *id_alum){
 
 
 void Modificar_matricula(matriculas *mat, char *id_alum, materias *mater){
-    
+
     int i, n, k, j;
     char id_materia[6];
     n=tam_array;
@@ -106,7 +108,7 @@ void Modificar_matricula(matriculas *mat, char *id_alum, materias *mater){
             for(j=0;j<get_tam_array_materias();j++){
                 if(strcmp(mat[i].id_materias, mater[j].id_materia) == 0){
                     sprintf("%s-%s\n", mat[i].id_materias, mater[j].nombre_materia);
-                   
+
                 }
             }
         }
@@ -123,10 +125,10 @@ void Modificar_matricula(matriculas *mat, char *id_alum, materias *mater){
 }
 
 void Eliminar_matricula(matriculas *mat, char *id_alum, materias *mater){
-    
+
     int i, j, k, l;
-    char mensaje[50], id_materia[6];
-    
+    char id_materia[6];
+
     printf("Lista de asignaturas matriculadas: \n");
     for(i=0;i<tam_array;i++){
         if(strcmp(id_alum, mat[i].id_alum) == 0){
@@ -155,10 +157,10 @@ void Eliminar_matricula(matriculas *mat, char *id_alum, materias *mater){
 
 
 void menu_matriculas(char *id_alum, matriculas *mat, materias *mater){
-    
+
     int op;
-    
-    system("cls");
+
+
     printf("1. Listar asignaturas matriculadas\n");
     printf("2. Modificar matricula\n");
     printf("3. Eliminar matricula\n");
@@ -171,19 +173,19 @@ void menu_matriculas(char *id_alum, matriculas *mat, materias *mater){
     while(op !=5){
 
         switch(op){
-            case 1: 
+            case 1:
                 lista_matricula(id_alum, mat, mater);
                 break;
-            case 2: 
+            case 2:
                 Modificar_matricula(mat, id_alum, mater);
                 break;
-            case 3: 
+            case 3:
                 Eliminar_matricula(mat, id_alum, mater);
                 break;
-            case 4: 
+            case 4:
                 Anadir_Matricula(mat, id_alum);
                 break;
-            default: 
+            default:
                 printf("ERROR");
                 break;
         }

@@ -13,102 +13,103 @@ int get_tam_array_materias(){
 }
 
 void cargar_materias(materias *mater) {
-    
+
     char cadena[100];
-    int i = 0;
+    int i, n;
     FILE *f;
     f = fopen("materias.txt", "r");
+    n = cuenta_lineas("materias.txt");
     if(f == NULL) {
-        puts("Error fatal: El fichero con la información no existe.\n\n");     
+        puts("Error fatal: El fichero con la información no existe.\n\n");
     } else{
-        while (fgets(cadena, 100, f) != NULL) {
-        
+        for(i=0;i<n;i++) {
+
+            fgets(cadena, 100, f);
             strcpy(mater[i].id_materia, strtok(cadena,"-"));
             strcpy(mater[i].nombre_materia, strtok(NULL,"-"));
             strcpy(mater[i].abrev_materia, strtok(NULL,"-"));
 
-            i++;
         }
     }
     tam_array = i;
     printf("%d", tam_array);
     fclose(f);
 }
-
+/*
 char* nombre_id(char *idmateria, materias *mater){
-    
+
     int i;
-    
+
     for(i=0;i<tam_array;i++){
-        
+
         if(strcmp(idmateria, mater[i].id_materia) != 0){
             return mater[i].nombre_materia;
         }
-        
+
     }
 }
-
+*/
 
 void listar_materias(materias *mater){
-    
+
     int i;
-    
+
     for(i=0;i<tam_array;i++){
         printf("%s-%s-%s\n", mater[i].id_materia, mater[i].nombre_materia, mater[i].abrev_materia);
-        
+
     }
 }
 
 void Anadir_materia(materias *mater){
-    
-    int i, n;
-    
+
+    int  n;
     n = 1+tam_array;
-    mater = realloc(mater, n*sizeof(materias));
-    printf("Introduzca el id de la nueva materia: ");
+    mater = (materias *)realloc(mater, n*sizeof(materias *));
+    printf("Introduzca el id de la nueva materia: \n");
     strcpy(mater[n].id_materia, leer_campo_m(5));
-    printf("Introduzca el nombre de la materia: ");
+    printf("Introduzca el nombre de la materia: \n");
     strcpy(mater[n].nombre_materia, leer_campo_m(51));
-    printf("Introduzca la abreviatura de la materia: ");
+    printf("Introduzca la abreviatura de la materia: \n");
     strcpy(mater[n].abrev_materia, leer_campo_m(4));
-    printf("%s-%s-%s\n", mater[n].id_materia, mater[n].nombre_materia, mater[n].abrev_materia);
+    printf("%s-%s-%s", mater[n].id_materia, mater[n].nombre_materia, mater[n].abrev_materia);
     tam_array = tam_array + 1;
 }
 
 void Modificar_materia(materias *mater){
-    
+
     int i, op;
     char id_mater[4];
     listar_materias(mater);
+
     printf("Introduzca el id de la materia que desea modificar: ");
     strcpy(id_mater, leer_campo_m(4));
     for(i=0;i<tam_array;i++){
         if(strcmp(id_mater, mater[i].id_materia) == 0){
-            
+
             printf("1. Modificar el id de la materia.\n");
             printf("2. Modificar el nombre de la materia.\n");
             printf("3. Modificar la abreviatura de la materia.\n");
             printf("4. Salir\n\n");
-            
+
             printf("Op: ");
             scanf("%d", &op);
-            
+
             while(op !=4){
 
                 switch(op){
-                    case 1: 
+                    case 1:
                         printf("Introduzca el nuevo id de la materia: ");
                         strcpy(mater[i].id_materia, leer_campo_m(4));
                         break;
-                    case 2: 
+                    case 2:
                         printf("Introduzca el nuevo nombre de la materia: ");
                         strcpy(mater[i].nombre_materia, leer_campo_m(50));
                         break;
-                    case 3: 
+                    case 3:
                         printf("Introduzca la nueva abreviatura de la materia: ");
                         strcpy(mater[i].abrev_materia, leer_campo_m(3));
                         break;
-                    default: 
+                    default:
                         printf("ERROR");
                         break;
                 }
@@ -118,13 +119,13 @@ void Modificar_materia(materias *mater){
                 }
             }
             printf("La materia modificada: %s-%s-%s", mater[i].id_materia, mater[i].nombre_materia, mater[i].abrev_materia);
-            
+
         }
-    } 
+    }
 }
 
 void Eliminar_materia(materias *mater){
-    
+
     int i, j;
     char id_mater[4];
     printf("Introduzca el id de la materia que quiere eliminar");
@@ -143,13 +144,13 @@ void Eliminar_materia(materias *mater){
             printf("Matricula eliminada.");
             tam_array = tam_array-1;
         }
-    }   
+    }
 }
 
 void menu_materias(materias *mater){
-    
+
     int op;
-    
+
     printf("1. Listar materias\n");
     printf("2. Añadir materia\n");
     printf("3. Eliminar materia\n");
@@ -162,33 +163,37 @@ void menu_materias(materias *mater){
     while(op !=5){
 
         switch(op){
-            case 1: 
+            case 1:
                 listar_materias(mater);
                 break;
-            case 2: 
+            case 2:
                 Anadir_materia(mater);
                 break;
-            case 3: 
+            case 3:
                 Eliminar_materia(mater);
                 break;
-            case 4: 
+            case 4:
                 Modificar_materia(mater);
                 break;
-            default: 
+            default:
                 printf("ERROR");
                 break;
         }
+        /*
         if(op!=5){
+            
             printf("1. Listar materias\n");
             printf("2. Añadir materia\n");
             printf("3. Eliminar materia\n");
             printf("4. Modificar materia\n");
-            printf("5. Salir\n\n");
+            printf("5. Salir\n");
+
             printf("Op: ");
             scanf("%d", &op);
+            */
         }
     }
-}
+//}
 
 void guardar_materias(materias *mater){
     int i=0;
