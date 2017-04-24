@@ -16,7 +16,7 @@ void menu_horarios(horarios *arr_horarios, int* n_horarios);
    Postcondicion: lee una linea y guardo todos sus atributos en una
    estructura horario
 */
-void leer_horario ( horarios * h);
+void leer_horario ( horarios * h, int n_horario);
 
 /*
   Cabecera: horario ** arr, int n, usuarios id
@@ -30,28 +30,28 @@ void listar_horarios_prof (horarios ** arr, int *n, char id_p);
   Precondición: vector que apunta a estructura inicializado
   Postcondición: lista todos los horarios de todos los profesores
 */
-void listar_horarios_admin (horarios ** arr, int *n);
+void listar_horarios_admin (horarios * arr, int *n);
 
 /*
   Cabecera: horarios **arr_horarios, int n
   Precondición: vector que apunta a estructuras inicializado, y nunero de datos contabilizado
   Postcondición: Permite añadir un nuevo horario a un determinado usuario del sistema
 */
-void aniadir_horario (horarios **arr_horarios, int *n);
+void aniadir_horario (horarios *arr_horarios, int *n);
 
 /*
   Cabecera: horarios **arr_horarios, int n
   Precondición: vector de punteros a estructura inicializado
   Postcondición: elimina un horario de la lista.
 */
-void eliminar_horario (horarios **arr_horarios, int *n);
+void eliminar_horario (horarios *arr_horarios, int *n);
 
 /*
   Cabecera: horarios **arr_horarios, int *n
   Precondición: vector de puntero a estructura incializado
   Postcondición: modifica los parametros de un determinado horario
 */
-void modificar_horario (horarios **arr_horarios, int *n);
+void modificar_horario (horarios *arr_horarios, int *n);
 
 /*
   Cabecera: horarios **arr_horarios, int *n

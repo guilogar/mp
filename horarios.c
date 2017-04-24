@@ -3,7 +3,7 @@
 #include <string.h>
 #include "estructuras.h"
 #include "horarios.h"
-#include "auxiliar.h"
+#include "auxiliar.c"
 
 /*
   Cabecera: ninguna
@@ -13,6 +13,8 @@
 void menu_horarios(horarios *arr_horarios, int* n_horarios) {
     int op;
 
+	leer_horario(arr_horarios);
+	
     system("cls");
     printf("1. Aniadir horas\n");
     printf("2. Eliminar horas\n");
@@ -27,22 +29,22 @@ void menu_horarios(horarios *arr_horarios, int* n_horarios) {
         switch(op){
             case 1:
                 system("cls");
-                aniadir_horario(&arr_horarios, n_horarios);
+                aniadir_horario(arr_horarios, n_horarios);
                 op=5;
             break;
             case 2:
                 system("cls");
-                eliminar_horario(&arr_horarios, n_horarios);
+                eliminar_horario(arr_horarios, n_horarios);
                 op=5;
             break;
             case 3:
                 system("cls");
-                modificar_horario(&arr_horarios, n_horarios);
+                modificar_horario(arr_horarios, n_horarios);
                 op=5;
             break;
             case 4:
                 system("cls");
-                listar_horarios_admin(&arr_horarios, n_horarios);
+                listar_horarios_admin(arr_horarios, n_horarios);
                 op=5;
             break;
             default:
@@ -65,7 +67,7 @@ void menu_horarios(horarios *arr_horarios, int* n_horarios) {
 */
 void leer_horario ( horarios * h) {
 
-int i = 0;
+int i = 0, lin = 0;
 char cadena[MAX_LINEA];
 FILE * f = fopen("horarios.txt", "r");
 
@@ -76,17 +78,24 @@ if (f == NULL){
   puts(ANSI_COLOR_RESET);
 }
 
- while (fgets(cadena, MAX_LINEA, f) != NULL) {
-   
-    strcpy(h[i].id_prof, strtok(cadena,"-"));
-    h[i].dia_clase = atoi ( strtok (NULL,"-"));
-        h[i].hora_clase = atoi ( strtok (NULL,"-"));
-        strcpy(h[i].id_materia,  strtok(NULL,"-"));
-        strcpy(h[i].grupo, strtok(NULL,"\n"));
+/*while ( fgetc(cadena, sizeof(horarios), f) != '\n')
+	lin++;
+*/
 
-        i++;
+ while (fgets(cadena, MAX_LINEA, f) != NULL) {
+	printf("\n");
+    strcpy(h[i].id_prof, strtok(cadena,"-"));
+	puts(h[i].id_prof);
+    h[i].dia_clase = atoi ( strtok (NULL,"-"));
+	printf("%d", h[i].dia_clase);
+	h[i].hora_clase = atoi ( strtok (NULL,"-"));
+	printf("%d", h[i].hora_clase);
+	strcpy(h[i].id_materia,  strtok(NULL,"-"));
+	puts(h[i].id_materia);
+	strcpy(h[i].grupo, strtok(NULL,"\n"));
+	puts(h[i].grupo);
+	i++;
     }
- 
  fclose(f);
 }
 
@@ -113,13 +122,15 @@ void listar_horarios_prof (horarios **arr, int *n, char id_p) {
   PrecondiciÃ³n: vector que apunta a estructura inicializado
   PostcondiciÃ³n: lista todos los horarios de un profesor
 */
-void listar_horarios_admin (horarios ** arr, int *n) {
+void listar_horarios_admin (horarios * arr, int *n) {
   int i = 0, num = *n;
+  printf("Horarios");
   for (i; i<num; i++) {
-    printf("Horarios\n=========================================================\n");
-    printf("%s-%d-%d-%s-%s\n", arr[i]->id_prof, arr[i]->dia_clase, arr[i]->hora_clase, arr[i]->id_materia, arr[i]->grupo );
+    printf("\n=========================================================\n");
+    printf("%s-%d-%d-%s-%s\n", arr[i].id_prof, arr[i].dia_clase, arr[i].hora_clase, arr[i].id_materia, arr[i].grupo );
     printf("=========================================================\n");
   }
+
 }
 
 /*
@@ -127,7 +138,7 @@ void listar_horarios_admin (horarios ** arr, int *n) {
   PrecondiciÃ³n: vector que apunta a estructuras inicializado, y nunero de datos contabilizado
   PostcondiciÃ³n: Permite aÃ±adir un nuevo horario a un determinado usuario del sistema
 */
-void aniadir_horario (horarios **arr_horarios, int *n) {
+void aniadir_horario (horarios *arr_horarios, int *n) {
   int dia, hora, i, bol=1, num = *n;
   char id_p[IDP], id_m[IDM], gr[GRUPO];
   listar_horarios_admin(arr_horarios, n);
@@ -142,7 +153,7 @@ void aniadir_horario (horarios **arr_horarios, int *n) {
     printf("Id_prof: \n");
     scanf("%s", id_p);
     for(i=0; i<num-1; i++) {
-      if (strcmp (arr_horarios[num]->id_prof, id_p) == 0 )
+      if (strcmp (arr_horarios[num].id_prof, id_p) == 0 )
         bol = 0;
     }
   }
@@ -154,11 +165,11 @@ void aniadir_horario (horarios **arr_horarios, int *n) {
   scanf("%s", id_m);
   printf("Introduzca grupo: \n");
   scanf("%s", gr);
-  strcpy(arr_horarios[num]->id_prof, id_p);
-  strcpy(arr_horarios[num]->id_materia, id_m);
-  strcpy(arr_horarios[num]->grupo, gr);
-  arr_horarios[num]->dia_clase = dia;
-  arr_horarios[num]->hora_clase = hora;
+  strcpy(arr_horarios[num].id_prof, id_p);
+  strcpy(arr_horarios[num].id_materia, id_m);
+  strcpy(arr_horarios[num].grupo, gr);
+  arr_horarios[num].dia_clase = dia;
+  arr_horarios[num].hora_clase = hora;
   *n = num;
 }
 
@@ -167,7 +178,7 @@ void aniadir_horario (horarios **arr_horarios, int *n) {
   PrecondiciÃ³n: vector de punteros a estructura inicializado
   PostcondiciÃ³n: elimina un horario de la lista.
 */
-void eliminar_horario(horarios **arr_horarios, int *n) {
+void eliminar_horario(horarios *arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
 char id_p[IDP], id_m[IDM], gr[GRUPO];
@@ -185,7 +196,11 @@ while (bol != 0) {
   printf("Introduzcamateria: \n");
   scanf("%s", gr);
   for(i=0; i<num; i++) {
-    if (strcmp (arr_horarios[i]->id_prof, id_p) == 0 && arr_horarios[i]->dia_clase == dia && arr_horarios[i]->hora_clase == hora && strcmp(arr_horarios[i]->id_materia, id_m) && strcmp(arr_horarios[i]->grupo, gr)) {
+    if (strcmp (arr_horarios[i].id_prof, id_p) == 0 &&
+		arr_horarios[i].dia_clase == dia &&
+		arr_horarios[i].hora_clase == hora &&
+		strcmp(arr_horarios[i].id_materia, id_m)
+		&& strcmp(arr_horarios[i].grupo, gr)) {
       bol--;
       break;
     }
@@ -208,7 +223,7 @@ arr_horarios = malloc (sizeof(horarios));
   PrecondiciÃ³n: vector de puntero a estructura incializado
   PostcondiciÃ³n: modifica los parametros de un determinado horario
 */
-void modificar_horario (horarios **arr_horarios, int *n) {
+void modificar_horario (horarios *arr_horarios, int *n) {
 
 int dia, hora, i, bol=1, num = *n;
 char id_p[IDP], id_m[IDM], gr[GRUPO];
@@ -221,32 +236,36 @@ while (bol != 0) {
   scanf("%d", &dia);
   printf("Introduzca hora: \n");
   scanf("%d", &hora);
-  printf("Introduzca hora: \n");
+  printf("Introduzca materia: \n");
   scanf("%s", id_m);
-  printf("Introduzcamateria: \n");
+  printf("Introduzca grupo: \n");
   scanf("%s", gr);
   for(i=0; i<num; i++) {
-    if (strcmp (arr_horarios[i]->id_prof, id_p) == 0 && arr_horarios[i]->dia_clase == dia && arr_horarios[i]->hora_clase == hora && strcmp(arr_horarios[i]->id_materia, id_m) && strcmp(arr_horarios[i]->grupo, gr)) {
+    if (strcmp (arr_horarios[i].id_prof, id_p) == 0 &&
+		arr_horarios[i].dia_clase == dia &&
+		arr_horarios[i].hora_clase == hora &&
+		strcmp(arr_horarios[i].id_materia, id_m) &&
+		strcmp(arr_horarios[i].grupo, gr)) {
       bol--;
       break;
     }
   }
 }
 
-memset(arr_horarios[i]->id_prof,'\0', IDP);
-memset(arr_horarios[i]->id_materia, '\0', IDM);
-memset(arr_horarios[i]->grupo, '\0', GRUPO);
+memset(arr_horarios[i].id_prof,'\0', IDP);
+memset(arr_horarios[i].id_materia, '\0', IDM);
+memset(arr_horarios[i].grupo, '\0', GRUPO);
 
 printf("Introduzca los nuevos campos del horario\nIntroduzca identificador del profesor: \n");
-scanf("%s", arr_horarios[i]->id_prof);
+scanf("%s", arr_horarios[i].id_prof);
 printf("Introduzca dia: \n");
-scanf("%d", &arr_horarios[i]->dia_clase);
+scanf("%d", &arr_horarios[i].dia_clase);
 printf("Introduzca hora: \n");
-scanf("%d", &arr_horarios[i]->hora_clase);
+scanf("%d", &arr_horarios[i].hora_clase);
 printf("Introduzca nombre de la materia: \n");
-scanf("%s", arr_horarios[i]->id_materia);
+scanf("%s", arr_horarios[i].id_materia);
 printf("Introduzca grupo: \n");
-scanf("%s", arr_horarios[i]->grupo);
+scanf("%s", arr_horarios[i].grupo);
 
 }
 
@@ -321,13 +340,13 @@ void horas_materia (horarios **arr_horarios, int *n, materias **arr_materias, in
     arr_horas_mat = malloc (sizeof(int));
 }
 
-/*
+
  int main(){
  
      int size = cuenta_lineas("horarios.txt");
-     horarios array_horarios[size];
-  leer_horario( array_horarios);
-     //menu_horarios(array_horarios, &size);
-     return 0;
+     horarios array_horarios[size];     
+	 menu_horarios(array_horarios, &size);
+     
+	 return 0;
  }
-*/ 
+ 
