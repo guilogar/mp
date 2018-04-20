@@ -1,0 +1,10 @@
+<map id="listar_horarios_admin" name="listar_horarios_admin">
+<area shape="rect" id="node2" href="$horarios_8h.html#ab08f695fa8e14341384848dd641f4592" title="menu_horarios" alt="" coords="368,52,475,78"/>
+<area shape="rect" id="node7" href="$horarios_8h.html#a5e071188464de33f89bcb54b22eab053" title="aniadir_horario" alt="" coords="206,26,313,53"/>
+<area shape="rect" id="node8" href="$horarios_8h.html#a931440f9d3ab7ab98222ae8addeb32a6" title="eliminar_horario" alt="" coords="203,77,316,104"/>
+<area shape="rect" id="node9" href="$horarios_8h.html#a874a30aa61f0a34947c17c08bf43abe3" title="modificar_horario" alt="" coords="199,128,320,154"/>
+<area shape="rect" id="node3" href="$horarios_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="545,26,596,53"/>
+<area shape="rect" id="node4" href="$main_8c.html#a00990449875fc238baa27ecdb95d24b6" title="menu_admin" alt="" coords="523,77,619,104"/>
+<area shape="rect" id="node5" href="$main_8c.html#ae3a600065cfe3e0105b6209e35d20264" title="menu_principal" alt="" coords="667,77,776,104"/>
+<area shape="rect" id="node6" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="824,77,875,104"/>
+</map>

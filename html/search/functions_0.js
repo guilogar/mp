@@ -1,0 +1,10 @@
+var searchData=
+[
+  ['anadir_5falumno',['Anadir_Alumno',['../alumnos_8c.html#afe7aba672f2872504eb20064e4d3fa8f',1,'Anadir_Alumno(alumnos *List_Alumno):&#160;alumnos.c'],['../alumnos_8h.html#a700183d8a00b761d4a6dc613a1526725',1,'Anadir_Alumno(alumnos *):&#160;alumnos.c']]],
+  ['anadir_5fcalificacion',['anadir_calificacion',['../calificaciones_8c.html#acca13e62fda4252c798b061adbf1c3b7',1,'anadir_calificacion(calificaciones **list_calificaciones, char datos[][100], int *longitud_array):&#160;calificaciones.c'],['../calificaciones_8h.html#acca13e62fda4252c798b061adbf1c3b7',1,'anadir_calificacion(calificaciones **list_calificaciones, char datos[][100], int *longitud_array):&#160;calificaciones.c']]],
+  ['anadir_5ffalta',['anadir_falta',['../faltas_8c.html#a01a96410c572c0a52d82e74c97dbc76f',1,'anadir_falta(faltas **list_faltas, char datos[][100], int *longitud_array):&#160;faltas.c'],['../faltas_8h.html#a01a96410c572c0a52d82e74c97dbc76f',1,'anadir_falta(faltas **list_faltas, char datos[][100], int *longitud_array):&#160;faltas.c']]],
+  ['anadir_5fmateria',['Anadir_materia',['../materias_8c.html#a2c50a24fd4c5f2b05724046dfcc04b84',1,'materias.c']]],
+  ['anadir_5fmatricula',['Anadir_Matricula',['../matricula_8c.html#a663b94e4000e5b4e56290730b8526e97',1,'Anadir_Matricula(matriculas *mat, char *id_alum):&#160;matricula.c'],['../matricula_8h.html#a663b94e4000e5b4e56290730b8526e97',1,'Anadir_Matricula(matriculas *mat, char *id_alum):&#160;matricula.c']]],
+  ['anadir_5fusuario',['Anadir_Usuario',['../usuarios_8c.html#acf277affdedec2c348e7b8703b4bbd59',1,'Anadir_Usuario(usuarios *List_Usuario):&#160;usuarios.c'],['../usuarios_8h.html#ab97876f49896a572b3229f68c3ae074d',1,'Anadir_Usuario(usuarios *):&#160;usuarios.c']]],
+  ['aniadir_5fhorario',['aniadir_horario',['../horarios_8c.html#a5e071188464de33f89bcb54b22eab053',1,'aniadir_horario(horarios *arr_horarios, int *n):&#160;horarios.c'],['../horarios_8h.html#a5e071188464de33f89bcb54b22eab053',1,'aniadir_horario(horarios *arr_horarios, int *n):&#160;horarios.c']]]
+];

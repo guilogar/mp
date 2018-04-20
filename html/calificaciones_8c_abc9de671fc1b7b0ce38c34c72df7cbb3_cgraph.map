@@ -1,0 +1,10 @@
+<map id="menu_calificaciones" name="menu_calificaciones">
+<area shape="rect" id="node2" href="$auxiliar_8c.html#a32079d110eb0a5afff6f9e6a7b04068f" title="get_line" alt="" coords="409,123,475,149"/>
+<area shape="rect" id="node3" href="$calificaciones_8c.html#a2cec64ccdfe397e356898dc36c38c113" title="print_calificaciones\l_criba" alt="" coords="200,363,333,405"/>
+<area shape="rect" id="node4" href="$auxiliar_8c.html#a81c76a28dc198558e047094b3b54e446" title="str_replace" alt="" coords="399,287,485,313"/>
+<area shape="rect" id="node5" href="$calificaciones_8c.html#a02a7c0ebe5e1312deb40cc4e481f82b6" title="modificar_calificacion" alt="" coords="193,59,340,85"/>
+<area shape="rect" id="node6" href="$calificaciones_8c.html#a9483b8ffdfbb64b41447e365a3beb949" title="nota_valida" alt="" coords="398,47,486,73"/>
+<area shape="rect" id="node7" href="$calificaciones_8c.html#a881cebfd4a7e933bbf2f4b878b11f0aa" title="borrar_calificacion" alt="" coords="203,160,330,187"/>
+<area shape="rect" id="node8" href="$auxiliar_8c.html#af563356e908679d2838195c29ffaa5b3" title="fecha_correcta" alt="" coords="388,211,496,237"/>
+<area shape="rect" id="node9" href="$calificaciones_8c.html#acca13e62fda4252c798b061adbf1c3b7" title="anadir_calificacion" alt="" coords="202,261,331,288"/>
+</map>

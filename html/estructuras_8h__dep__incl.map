@@ -1,0 +1,12 @@
+<map id="estructuras.h" name="estructuras.h">
+<area shape="rect" id="node2" href="$alumnos_8c.html" title="alumnos.c" alt="" coords="33,155,116,181"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="main.c" alt="" coords="312,229,373,256"/>
+<area shape="rect" id="node4" href="$calificaciones_8c.html" title="calificaciones.c" alt="" coords="140,155,252,181"/>
+<area shape="rect" id="node5" href="$faltas_8c.html" title="faltas.c" alt="" coords="275,155,341,181"/>
+<area shape="rect" id="node6" href="$horarios_8c.html" title="horarios.c" alt="" coords="262,80,341,107"/>
+<area shape="rect" id="node7" href="$matricula_8h.html" title="matricula.h" alt="" coords="417,80,503,107"/>
+<area shape="rect" id="node8" href="$matricula_8c.html" title="matricula.c" alt="" coords="417,155,503,181"/>
+<area shape="rect" id="node9" href="$materias_8c.html" title="materias.c" alt="" coords="528,155,611,181"/>
+<area shape="rect" id="node10" href="$materias_8h.html" title="materias.h" alt="" coords="528,80,611,107"/>
+<area shape="rect" id="node11" href="$usuarios_8c.html" title="usuarios.c" alt="" coords="685,80,768,107"/>
+</map>

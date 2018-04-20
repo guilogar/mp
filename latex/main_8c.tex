@@ -1,0 +1,240 @@
+\hypertarget{main_8c}{}\section{main.\+c File Reference}
+\label{main_8c}\index{main.\+c@{main.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}estructuras.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}auxiliar.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}matricula.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}materias.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}alumnos.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usuarios.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}horarios.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}calificaciones.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}faltas.\+c\char`\"{}}\newline
+Include dependency graph for main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_ae3a600065cfe3e0105b6209e35d20264}{menu\+\_\+principal}} ()
+\item 
+void \mbox{\hyperlink{main_8c_a00990449875fc238baa27ecdb95d24b6}{menu\+\_\+admin}} ()
+\item 
+void \mbox{\hyperlink{main_8c_ade4384e5d3b90666d589f36e8595733f}{menu\+\_\+prof}} ()
+\item 
+void \mbox{\hyperlink{main_8c_aabd987f505a7231f4a3d29035af68824}{guardar}} ()
+\item 
+void \mbox{\hyperlink{main_8c_a240562414c587dcfa7ec0c8709fb6ce7}{quitar\+\_\+saltos}} (char $\ast$cadena)
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\item 
+void \mbox{\hyperlink{main_8c_aebadd3ec973ef036b430aea530af2b45}{menu\+\_\+prof}} (int i)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_abd4dc5792bcde09bf93e3a6aa8dfd582}{n\+\_\+horarios}}
+\item 
+int \mbox{\hyperlink{main_8c_a11901021bff789e60f4d3d79c10f45cf}{n\+\_\+alumnos}}
+\item 
+int \mbox{\hyperlink{main_8c_a562cd15f76d3156345731db6002f858c}{n\+\_\+usuarios}}
+\item 
+int \mbox{\hyperlink{main_8c_a86ac3b2a0e794ffacc8e97143a2064e5}{n\+\_\+materias}}
+\item 
+int \mbox{\hyperlink{main_8c_adf189e6e9522871e22938623c2921327}{n\+\_\+matriculas}}
+\item 
+\mbox{\hyperlink{structusuarios}{usuarios}} $\ast$ \mbox{\hyperlink{main_8c_ac7805827cab37db51d34ce2843c3162c}{arr\+\_\+usuarios}}
+\item 
+\mbox{\hyperlink{structalumnos}{alumnos}} $\ast$ \mbox{\hyperlink{main_8c_a074bcb9e388f87c39fbb2fba8788bd46}{arr\+\_\+alumnos}}
+\item 
+\mbox{\hyperlink{structmaterias}{materias}} $\ast$ \mbox{\hyperlink{main_8c_a5f4e23eeb96920de9f2c3da74c182862}{arr\+\_\+materias}}
+\item 
+\mbox{\hyperlink{structmatriculas}{matriculas}} $\ast$ \mbox{\hyperlink{main_8c_ae207dd266a971d998d0c281f5f966a54}{arr\+\_\+matriculas}}
+\item 
+\mbox{\hyperlink{structfaltas}{faltas}} $\ast$ \mbox{\hyperlink{main_8c_a999689a9c581b07917053128655feeaa}{arr\+\_\+faltas}}
+\item 
+\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$ \mbox{\hyperlink{main_8c_a2e7fa03196fe719a471a4079ba8d0468}{arr\+\_\+calificaciones}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_aabd987f505a7231f4a3d29035af68824}\label{main_8c_aabd987f505a7231f4a3d29035af68824}} 
+\index{main.\+c@{main.\+c}!guardar@{guardar}}
+\index{guardar@{guardar}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{guardar()}{guardar()}}
+{\footnotesize\ttfamily void guardar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{main_8c_aabd987f505a7231f4a3d29035af68824_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{main_8c_aabd987f505a7231f4a3d29035af68824_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_a00990449875fc238baa27ecdb95d24b6}\label{main_8c_a00990449875fc238baa27ecdb95d24b6}} 
+\index{main.\+c@{main.\+c}!menu\+\_\+admin@{menu\+\_\+admin}}
+\index{menu\+\_\+admin@{menu\+\_\+admin}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+admin()}{menu\_admin()}}
+{\footnotesize\ttfamily void menu\+\_\+admin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_a00990449875fc238baa27ecdb95d24b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{main_8c_a00990449875fc238baa27ecdb95d24b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_ae3a600065cfe3e0105b6209e35d20264}\label{main_8c_ae3a600065cfe3e0105b6209e35d20264}} 
+\index{main.\+c@{main.\+c}!menu\+\_\+principal@{menu\+\_\+principal}}
+\index{menu\+\_\+principal@{menu\+\_\+principal}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+principal()}{menu\_principal()}}
+{\footnotesize\ttfamily void menu\+\_\+principal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_ae3a600065cfe3e0105b6209e35d20264_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{main_8c_ae3a600065cfe3e0105b6209e35d20264_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_ade4384e5d3b90666d589f36e8595733f}\label{main_8c_ade4384e5d3b90666d589f36e8595733f}} 
+\index{main.\+c@{main.\+c}!menu\+\_\+prof@{menu\+\_\+prof}}
+\index{menu\+\_\+prof@{menu\+\_\+prof}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+prof()}{menu\_prof()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void menu\+\_\+prof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_ade4384e5d3b90666d589f36e8595733f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_aebadd3ec973ef036b430aea530af2b45}\label{main_8c_aebadd3ec973ef036b430aea530af2b45}} 
+\index{main.\+c@{main.\+c}!menu\+\_\+prof@{menu\+\_\+prof}}
+\index{menu\+\_\+prof@{menu\+\_\+prof}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+prof()}{menu\_prof()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void menu\+\_\+prof (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_aebadd3ec973ef036b430aea530af2b45_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_a240562414c587dcfa7ec0c8709fb6ce7}\label{main_8c_a240562414c587dcfa7ec0c8709fb6ce7}} 
+\index{main.\+c@{main.\+c}!quitar\+\_\+saltos@{quitar\+\_\+saltos}}
+\index{quitar\+\_\+saltos@{quitar\+\_\+saltos}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{quitar\+\_\+saltos()}{quitar\_saltos()}}
+{\footnotesize\ttfamily void quitar\+\_\+saltos (\begin{DoxyParamCaption}\item[{char $\ast$}]{cadena }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_a074bcb9e388f87c39fbb2fba8788bd46}\label{main_8c_a074bcb9e388f87c39fbb2fba8788bd46}} 
+\index{main.\+c@{main.\+c}!arr\+\_\+alumnos@{arr\+\_\+alumnos}}
+\index{arr\+\_\+alumnos@{arr\+\_\+alumnos}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{arr\+\_\+alumnos}{arr\_alumnos}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structalumnos}{alumnos}}$\ast$ arr\+\_\+alumnos}
+
+\mbox{\Hypertarget{main_8c_a2e7fa03196fe719a471a4079ba8d0468}\label{main_8c_a2e7fa03196fe719a471a4079ba8d0468}} 
+\index{main.\+c@{main.\+c}!arr\+\_\+calificaciones@{arr\+\_\+calificaciones}}
+\index{arr\+\_\+calificaciones@{arr\+\_\+calificaciones}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{arr\+\_\+calificaciones}{arr\_calificaciones}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcalificaciones}{calificaciones}}$\ast$ arr\+\_\+calificaciones}
+
+\mbox{\Hypertarget{main_8c_a999689a9c581b07917053128655feeaa}\label{main_8c_a999689a9c581b07917053128655feeaa}} 
+\index{main.\+c@{main.\+c}!arr\+\_\+faltas@{arr\+\_\+faltas}}
+\index{arr\+\_\+faltas@{arr\+\_\+faltas}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{arr\+\_\+faltas}{arr\_faltas}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfaltas}{faltas}}$\ast$ arr\+\_\+faltas}
+
+\mbox{\Hypertarget{main_8c_a5f4e23eeb96920de9f2c3da74c182862}\label{main_8c_a5f4e23eeb96920de9f2c3da74c182862}} 
+\index{main.\+c@{main.\+c}!arr\+\_\+materias@{arr\+\_\+materias}}
+\index{arr\+\_\+materias@{arr\+\_\+materias}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{arr\+\_\+materias}{arr\_materias}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmaterias}{materias}}$\ast$ arr\+\_\+materias}
+
+\mbox{\Hypertarget{main_8c_ae207dd266a971d998d0c281f5f966a54}\label{main_8c_ae207dd266a971d998d0c281f5f966a54}} 
+\index{main.\+c@{main.\+c}!arr\+\_\+matriculas@{arr\+\_\+matriculas}}
+\index{arr\+\_\+matriculas@{arr\+\_\+matriculas}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{arr\+\_\+matriculas}{arr\_matriculas}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmatriculas}{matriculas}}$\ast$ arr\+\_\+matriculas}
+
+\mbox{\Hypertarget{main_8c_ac7805827cab37db51d34ce2843c3162c}\label{main_8c_ac7805827cab37db51d34ce2843c3162c}} 
+\index{main.\+c@{main.\+c}!arr\+\_\+usuarios@{arr\+\_\+usuarios}}
+\index{arr\+\_\+usuarios@{arr\+\_\+usuarios}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{arr\+\_\+usuarios}{arr\_usuarios}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structusuarios}{usuarios}}$\ast$ arr\+\_\+usuarios}
+
+\mbox{\Hypertarget{main_8c_a11901021bff789e60f4d3d79c10f45cf}\label{main_8c_a11901021bff789e60f4d3d79c10f45cf}} 
+\index{main.\+c@{main.\+c}!n\+\_\+alumnos@{n\+\_\+alumnos}}
+\index{n\+\_\+alumnos@{n\+\_\+alumnos}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{n\+\_\+alumnos}{n\_alumnos}}
+{\footnotesize\ttfamily int n\+\_\+alumnos}
+
+\mbox{\Hypertarget{main_8c_abd4dc5792bcde09bf93e3a6aa8dfd582}\label{main_8c_abd4dc5792bcde09bf93e3a6aa8dfd582}} 
+\index{main.\+c@{main.\+c}!n\+\_\+horarios@{n\+\_\+horarios}}
+\index{n\+\_\+horarios@{n\+\_\+horarios}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{n\+\_\+horarios}{n\_horarios}}
+{\footnotesize\ttfamily int n\+\_\+horarios}
+
+\mbox{\Hypertarget{main_8c_a86ac3b2a0e794ffacc8e97143a2064e5}\label{main_8c_a86ac3b2a0e794ffacc8e97143a2064e5}} 
+\index{main.\+c@{main.\+c}!n\+\_\+materias@{n\+\_\+materias}}
+\index{n\+\_\+materias@{n\+\_\+materias}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{n\+\_\+materias}{n\_materias}}
+{\footnotesize\ttfamily int n\+\_\+materias}
+
+\mbox{\Hypertarget{main_8c_adf189e6e9522871e22938623c2921327}\label{main_8c_adf189e6e9522871e22938623c2921327}} 
+\index{main.\+c@{main.\+c}!n\+\_\+matriculas@{n\+\_\+matriculas}}
+\index{n\+\_\+matriculas@{n\+\_\+matriculas}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{n\+\_\+matriculas}{n\_matriculas}}
+{\footnotesize\ttfamily int n\+\_\+matriculas}
+
+\mbox{\Hypertarget{main_8c_a562cd15f76d3156345731db6002f858c}\label{main_8c_a562cd15f76d3156345731db6002f858c}} 
+\index{main.\+c@{main.\+c}!n\+\_\+usuarios@{n\+\_\+usuarios}}
+\index{n\+\_\+usuarios@{n\+\_\+usuarios}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{n\+\_\+usuarios}{n\_usuarios}}
+{\footnotesize\ttfamily int n\+\_\+usuarios}
+

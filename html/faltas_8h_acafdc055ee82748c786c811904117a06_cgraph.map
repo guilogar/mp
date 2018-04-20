@@ -1,0 +1,10 @@
+<map id="menu_faltas" name="menu_faltas">
+<area shape="rect" id="node2" href="$auxiliar_8c.html#a32079d110eb0a5afff6f9e6a7b04068f" title="get_line" alt="" coords="337,57,403,83"/>
+<area shape="rect" id="node3" href="$faltas_8c.html#af1bf30907229947ac141b92448141222" title="print_faltas_criba" alt="" coords="147,285,268,311"/>
+<area shape="rect" id="node4" href="$auxiliar_8c.html#a81c76a28dc198558e047094b3b54e446" title="str_replace" alt="" coords="327,209,413,235"/>
+<area shape="rect" id="node5" href="$faltas_8c.html#a021333cfe33a8b13ad5b411a36b78312" title="modificar_falta" alt="" coords="154,31,261,58"/>
+<area shape="rect" id="node6" href="$faltas_8c.html#a22106337e44c31837464d1d6629f569b" title="borrar_falta" alt="" coords="164,82,251,109"/>
+<area shape="rect" id="node7" href="$auxiliar_8c.html#af563356e908679d2838195c29ffaa5b3" title="fecha_correcta" alt="" coords="316,133,424,159"/>
+<area shape="rect" id="node8" href="$faltas_8c.html#a8c8131544bd5c7f4372e96b1e62a1ae7" title="hora_valida" alt="" coords="163,335,251,362"/>
+<area shape="rect" id="node9" href="$faltas_8c.html#a01a96410c572c0a52d82e74c97dbc76f" title="anadir_falta" alt="" coords="163,133,252,159"/>
+</map>

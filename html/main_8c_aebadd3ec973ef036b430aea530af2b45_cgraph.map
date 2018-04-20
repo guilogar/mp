@@ -1,0 +1,30 @@
+<map id="menu_prof" name="menu_prof">
+<area shape="rect" id="node2" href="$auxiliar_8c.html#aa0b5b35c3b50e4f533a31f5e98cd4a1a" title="cuenta_lineas" alt="" coords="157,197,259,224"/>
+<area shape="rect" id="node3" href="$calificaciones_8c.html#a1392a5533577ef7383e5a9aeafe4dad4" title="cargar_calificaciones" alt="" coords="136,248,280,275"/>
+<area shape="rect" id="node4" href="$faltas_8c.html#a61c7994d3e4978ac726efe93b5bbb51a" title="cargar_faltas" alt="" coords="159,299,257,325"/>
+<area shape="rect" id="node5" href="$horarios_8c.html#afcdea4dd153979e26b04721f8789e318" title="leer_horario" alt="" coords="163,349,253,376"/>
+<area shape="rect" id="node6" href="$alumnos_8c.html#a8fd4a049c61775b5008c0644d3125c1a" title="ficha_alum" alt="" coords="165,400,251,427"/>
+<area shape="rect" id="node10" href="$calificaciones_8c.html#abc9de671fc1b7b0ce38c34c72df7cbb3" title="menu_calificaciones" alt="" coords="138,451,278,477"/>
+<area shape="rect" id="node19" href="$calificaciones_8c.html#aea947664e70772081dfa8ca1c52deb8d" title="get_longitud_array\l_calificaciones" alt="" coords="144,654,272,695"/>
+<area shape="rect" id="node20" href="$calificaciones_8c.html#a8252b1da04b93917487275be8a584210" title="volcado_calificaciones" alt="" coords="332,957,485,984"/>
+<area shape="rect" id="node21" href="$faltas_8c.html#acafdc055ee82748c786c811904117a06" title="menu_faltas" alt="" coords="161,501,255,528"/>
+<area shape="rect" id="node27" href="$faltas_8c.html#af8b62d8e2db2950af22e85431bf928e3" title="get_longitud_array\l_faltas" alt="" coords="144,719,272,761"/>
+<area shape="rect" id="node28" href="$faltas_8c.html#ac19bf7dc52746d3dd441301befd2fdd7" title="volcado_faltas" alt="" coords="155,552,261,579"/>
+<area shape="rect" id="node29" href="$main_8c.html#ade4384e5d3b90666d589f36e8595733f" title="menu_prof" alt="" coords="167,785,249,812"/>
+<area shape="rect" id="node7" href="$alumnos_8c.html#a23b200c89a3f9cd634292b6badc924bc" title="Modificar_Alumno_ficha" alt="" coords="328,5,489,32"/>
+<area shape="rect" id="node8" href="$alumnos_8c.html#abac62976847524d39299f3c5cb0f7bec" title="leer_campo_A" alt="" coords="539,5,644,32"/>
+<area shape="rect" id="node9" href="$alumnos_8c.html#aa0ecdc5d299fcbde0eb715eb564f026f" title="quitar_saltosA" alt="" coords="693,5,799,32"/>
+<area shape="rect" id="node11" href="$auxiliar_8c.html#a32079d110eb0a5afff6f9e6a7b04068f" title="get_line" alt="" coords="558,476,625,503"/>
+<area shape="rect" id="node12" href="$calificaciones_8c.html#a2cec64ccdfe397e356898dc36c38c113" title="print_calificaciones\l_criba" alt="" coords="342,233,475,274"/>
+<area shape="rect" id="node13" href="$auxiliar_8c.html#a81c76a28dc198558e047094b3b54e446" title="str_replace" alt="" coords="548,375,635,401"/>
+<area shape="rect" id="node14" href="$calificaciones_8c.html#a02a7c0ebe5e1312deb40cc4e481f82b6" title="modificar_calificacion" alt="" coords="335,181,482,208"/>
+<area shape="rect" id="node15" href="$calificaciones_8c.html#a9483b8ffdfbb64b41447e365a3beb949" title="nota_valida" alt="" coords="547,119,635,145"/>
+<area shape="rect" id="node16" href="$calificaciones_8c.html#a881cebfd4a7e933bbf2f4b878b11f0aa" title="borrar_calificacion" alt="" coords="345,603,472,629"/>
+<area shape="rect" id="node17" href="$auxiliar_8c.html#af563356e908679d2838195c29ffaa5b3" title="fecha_correcta" alt="" coords="537,679,645,705"/>
+<area shape="rect" id="node18" href="$calificaciones_8c.html#acca13e62fda4252c798b061adbf1c3b7" title="anadir_calificacion" alt="" coords="344,400,473,427"/>
+<area shape="rect" id="node22" href="$faltas_8c.html#af1bf30907229947ac141b92448141222" title="print_faltas_criba" alt="" coords="348,805,469,832"/>
+<area shape="rect" id="node23" href="$faltas_8c.html#a021333cfe33a8b13ad5b411a36b78312" title="modificar_falta" alt="" coords="355,552,462,579"/>
+<area shape="rect" id="node24" href="$faltas_8c.html#a22106337e44c31837464d1d6629f569b" title="borrar_falta" alt="" coords="365,653,452,680"/>
+<area shape="rect" id="node25" href="$faltas_8c.html#a8c8131544bd5c7f4372e96b1e62a1ae7" title="hora_valida" alt="" coords="365,755,453,781"/>
+<area shape="rect" id="node26" href="$faltas_8c.html#a01a96410c572c0a52d82e74c97dbc76f" title="anadir_falta" alt="" coords="364,501,453,528"/>
+</map>

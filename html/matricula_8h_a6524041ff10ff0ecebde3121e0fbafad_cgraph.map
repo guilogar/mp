@@ -1,0 +1,8 @@
+<map id="menu_matriculas" name="menu_matriculas">
+<area shape="rect" id="node2" href="$matricula_8c.html#af201c1b12c632b86fb2a9763015d4ccf" title="lista_matricula" alt="" coords="189,5,295,32"/>
+<area shape="rect" id="node4" href="$matricula_8c.html#a304328dddc27e29abb05b1d588295b7b" title="Modificar_matricula" alt="" coords="175,56,309,83"/>
+<area shape="rect" id="node6" href="$matricula_8c.html#a2f96f2beb289695c52b0aa244e1c1b8d" title="Eliminar_matricula" alt="" coords="177,107,307,133"/>
+<area shape="rect" id="node7" href="$matricula_8c.html#a663b94e4000e5b4e56290730b8526e97" title="Anadir_Matricula" alt="" coords="183,157,301,184"/>
+<area shape="rect" id="node3" href="$materias_8c.html#ac5dcc9dd31d0d9ba611ebef28ca0bef8" title="get_tam_array_materias" alt="" coords="357,56,520,83"/>
+<area shape="rect" id="node5" href="$auxiliar_8c.html#abdbe3a8a14ee84bfc7d3f33a4a327979" title="leer_campo_m" alt="" coords="385,107,492,133"/>
+</map>

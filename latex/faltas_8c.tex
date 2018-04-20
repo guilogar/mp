@@ -1,0 +1,234 @@
+\hypertarget{faltas_8c}{}\section{faltas.\+c File Reference}
+\label{faltas_8c}\index{faltas.\+c@{faltas.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}estructuras.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}auxiliar.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}faltas.\+h\char`\"{}}\newline
+Include dependency graph for faltas.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{faltas_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=129pt]{faltas_8c__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{faltas_8c_ad1eb77a1e2be51e7dac4a76491f20db0}{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+R\+A\+M\+O\+\_\+\+H\+O\+R\+A\+R\+IO}}~\char`\"{}No se admite un tramo horario inferior a 1 o superior a 6. Vuelva a intentarlo.\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{faltas_8c_af8b62d8e2db2950af22e85431bf928e3}{get\+\_\+longitud\+\_\+array\+\_\+faltas}} ()
+\item 
+int \mbox{\hyperlink{faltas_8c_a8c8131544bd5c7f4372e96b1e62a1ae7}{hora\+\_\+valida}} (int hora, char $\ast$msg\+\_\+error)
+\item 
+void \mbox{\hyperlink{faltas_8c_ac25e8a7370334c266ef15677a4d5bd78}{print\+\_\+faltas\+\_\+por\+\_\+alumno}} (\mbox{\hyperlink{structfaltas}{faltas}} $\ast$list\+\_\+faltas, int id\+\_\+alumno, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{faltas_8c_af1bf30907229947ac141b92448141222}{print\+\_\+faltas\+\_\+criba}} (\mbox{\hyperlink{structfaltas}{faltas}} $\ast$list\+\_\+faltas, int $\ast$array\+\_\+datos, int longitud\+\_\+array)
+\item 
+\mbox{\hyperlink{structfaltas}{faltas}} $\ast$ \mbox{\hyperlink{faltas_8c_a01a96410c572c0a52d82e74c97dbc76f}{anadir\+\_\+falta}} (\mbox{\hyperlink{structfaltas}{faltas}} $\ast$$\ast$list\+\_\+faltas, char datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]}, int $\ast$longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{faltas_8c_a021333cfe33a8b13ad5b411a36b78312}{modificar\+\_\+falta}} (\mbox{\hyperlink{structfaltas}{faltas}} $\ast$list\+\_\+faltas, char datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]}, int longitud\+\_\+array)
+\item 
+\mbox{\hyperlink{structfaltas}{faltas}} $\ast$ \mbox{\hyperlink{faltas_8c_a22106337e44c31837464d1d6629f569b}{borrar\+\_\+falta}} (\mbox{\hyperlink{structfaltas}{faltas}} $\ast$$\ast$list\+\_\+faltas, char datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]}, int $\ast$longitud\+\_\+array)
+\item 
+\mbox{\hyperlink{structfaltas}{faltas}} $\ast$ \mbox{\hyperlink{faltas_8c_acafdc055ee82748c786c811904117a06}{menu\+\_\+faltas}} (\mbox{\hyperlink{structfaltas}{faltas}} $\ast$list\+\_\+faltas, int $\ast$array\+\_\+datos, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{faltas_8c_ac19bf7dc52746d3dd441301befd2fdd7}{volcado\+\_\+faltas}} (F\+I\+LE $\ast$f, \mbox{\hyperlink{structfaltas}{faltas}} $\ast$list\+\_\+faltas, char $\ast$nom\+\_\+file, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{faltas_8c_a61c7994d3e4978ac726efe93b5bbb51a}{cargar\+\_\+faltas}} (F\+I\+LE $\ast$f, \mbox{\hyperlink{structfaltas}{faltas}} $\ast$list\+\_\+faltas)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{faltas_8c_acaee99e213d9815c81df0c5c61eed566}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+F\+A\+L\+T\+AS}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{faltas_8c_ad1eb77a1e2be51e7dac4a76491f20db0}\label{faltas_8c_ad1eb77a1e2be51e7dac4a76491f20db0}} 
+\index{faltas.\+c@{faltas.\+c}!M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+R\+A\+M\+O\+\_\+\+H\+O\+R\+A\+R\+IO@{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+R\+A\+M\+O\+\_\+\+H\+O\+R\+A\+R\+IO}}
+\index{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+R\+A\+M\+O\+\_\+\+H\+O\+R\+A\+R\+IO@{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+R\+A\+M\+O\+\_\+\+H\+O\+R\+A\+R\+IO}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+R\+A\+M\+O\+\_\+\+H\+O\+R\+A\+R\+IO}{MSG\_ERROR\_TRAMO\_HORARIO}}
+{\footnotesize\ttfamily \#define M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+R\+A\+M\+O\+\_\+\+H\+O\+R\+A\+R\+IO~\char`\"{}No se admite un tramo horario inferior a 1 o superior a 6. Vuelva a intentarlo.\char`\"{}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{faltas_8c_a01a96410c572c0a52d82e74c97dbc76f}\label{faltas_8c_a01a96410c572c0a52d82e74c97dbc76f}} 
+\index{faltas.\+c@{faltas.\+c}!anadir\+\_\+falta@{anadir\+\_\+falta}}
+\index{anadir\+\_\+falta@{anadir\+\_\+falta}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{anadir\+\_\+falta()}{anadir\_falta()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfaltas}{faltas}}$\ast$ anadir\+\_\+falta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfaltas}{faltas}} $\ast$$\ast$}]{list\+\_\+faltas,  }\item[{char}]{datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]},  }\item[{int $\ast$}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{faltas_8c_a01a96410c572c0a52d82e74c97dbc76f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{faltas_8c_a01a96410c572c0a52d82e74c97dbc76f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{faltas_8c_a22106337e44c31837464d1d6629f569b}\label{faltas_8c_a22106337e44c31837464d1d6629f569b}} 
+\index{faltas.\+c@{faltas.\+c}!borrar\+\_\+falta@{borrar\+\_\+falta}}
+\index{borrar\+\_\+falta@{borrar\+\_\+falta}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{borrar\+\_\+falta()}{borrar\_falta()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfaltas}{faltas}}$\ast$ borrar\+\_\+falta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfaltas}{faltas}} $\ast$$\ast$}]{list\+\_\+faltas,  }\item[{char}]{datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]},  }\item[{int $\ast$}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{faltas_8c_a22106337e44c31837464d1d6629f569b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{faltas_8c_a22106337e44c31837464d1d6629f569b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{faltas_8c_a61c7994d3e4978ac726efe93b5bbb51a}\label{faltas_8c_a61c7994d3e4978ac726efe93b5bbb51a}} 
+\index{faltas.\+c@{faltas.\+c}!cargar\+\_\+faltas@{cargar\+\_\+faltas}}
+\index{cargar\+\_\+faltas@{cargar\+\_\+faltas}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{cargar\+\_\+faltas()}{cargar\_faltas()}}
+{\footnotesize\ttfamily void cargar\+\_\+faltas (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f,  }\item[{\mbox{\hyperlink{structfaltas}{faltas}} $\ast$}]{list\+\_\+faltas }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{faltas_8c_a61c7994d3e4978ac726efe93b5bbb51a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{faltas_8c_af8b62d8e2db2950af22e85431bf928e3}\label{faltas_8c_af8b62d8e2db2950af22e85431bf928e3}} 
+\index{faltas.\+c@{faltas.\+c}!get\+\_\+longitud\+\_\+array\+\_\+faltas@{get\+\_\+longitud\+\_\+array\+\_\+faltas}}
+\index{get\+\_\+longitud\+\_\+array\+\_\+faltas@{get\+\_\+longitud\+\_\+array\+\_\+faltas}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+longitud\+\_\+array\+\_\+faltas()}{get\_longitud\_array\_faltas()}}
+{\footnotesize\ttfamily int get\+\_\+longitud\+\_\+array\+\_\+faltas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{faltas_8c_af8b62d8e2db2950af22e85431bf928e3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{faltas_8c_a8c8131544bd5c7f4372e96b1e62a1ae7}\label{faltas_8c_a8c8131544bd5c7f4372e96b1e62a1ae7}} 
+\index{faltas.\+c@{faltas.\+c}!hora\+\_\+valida@{hora\+\_\+valida}}
+\index{hora\+\_\+valida@{hora\+\_\+valida}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{hora\+\_\+valida()}{hora\_valida()}}
+{\footnotesize\ttfamily int hora\+\_\+valida (\begin{DoxyParamCaption}\item[{int}]{hora,  }\item[{char $\ast$}]{msg\+\_\+error }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{faltas_8c_a8c8131544bd5c7f4372e96b1e62a1ae7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{faltas_8c_acafdc055ee82748c786c811904117a06}\label{faltas_8c_acafdc055ee82748c786c811904117a06}} 
+\index{faltas.\+c@{faltas.\+c}!menu\+\_\+faltas@{menu\+\_\+faltas}}
+\index{menu\+\_\+faltas@{menu\+\_\+faltas}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+faltas()}{menu\_faltas()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfaltas}{faltas}}$\ast$ menu\+\_\+faltas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfaltas}{faltas}} $\ast$}]{list\+\_\+faltas,  }\item[{int $\ast$}]{array\+\_\+datos,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{faltas_8c_acafdc055ee82748c786c811904117a06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{faltas_8c_acafdc055ee82748c786c811904117a06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{faltas_8c_a021333cfe33a8b13ad5b411a36b78312}\label{faltas_8c_a021333cfe33a8b13ad5b411a36b78312}} 
+\index{faltas.\+c@{faltas.\+c}!modificar\+\_\+falta@{modificar\+\_\+falta}}
+\index{modificar\+\_\+falta@{modificar\+\_\+falta}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{modificar\+\_\+falta()}{modificar\_falta()}}
+{\footnotesize\ttfamily void modificar\+\_\+falta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfaltas}{faltas}} $\ast$}]{list\+\_\+faltas,  }\item[{char}]{datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]},  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{faltas_8c_a021333cfe33a8b13ad5b411a36b78312_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{faltas_8c_a021333cfe33a8b13ad5b411a36b78312_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{faltas_8c_af1bf30907229947ac141b92448141222}\label{faltas_8c_af1bf30907229947ac141b92448141222}} 
+\index{faltas.\+c@{faltas.\+c}!print\+\_\+faltas\+\_\+criba@{print\+\_\+faltas\+\_\+criba}}
+\index{print\+\_\+faltas\+\_\+criba@{print\+\_\+faltas\+\_\+criba}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{print\+\_\+faltas\+\_\+criba()}{print\_faltas\_criba()}}
+{\footnotesize\ttfamily void print\+\_\+faltas\+\_\+criba (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfaltas}{faltas}} $\ast$}]{list\+\_\+faltas,  }\item[{int $\ast$}]{array\+\_\+datos,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{faltas_8c_af1bf30907229947ac141b92448141222_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{faltas_8c_ac25e8a7370334c266ef15677a4d5bd78}\label{faltas_8c_ac25e8a7370334c266ef15677a4d5bd78}} 
+\index{faltas.\+c@{faltas.\+c}!print\+\_\+faltas\+\_\+por\+\_\+alumno@{print\+\_\+faltas\+\_\+por\+\_\+alumno}}
+\index{print\+\_\+faltas\+\_\+por\+\_\+alumno@{print\+\_\+faltas\+\_\+por\+\_\+alumno}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{print\+\_\+faltas\+\_\+por\+\_\+alumno()}{print\_faltas\_por\_alumno()}}
+{\footnotesize\ttfamily void print\+\_\+faltas\+\_\+por\+\_\+alumno (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfaltas}{faltas}} $\ast$}]{list\+\_\+faltas,  }\item[{int}]{id\+\_\+alumno,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{faltas_8c_ac19bf7dc52746d3dd441301befd2fdd7}\label{faltas_8c_ac19bf7dc52746d3dd441301befd2fdd7}} 
+\index{faltas.\+c@{faltas.\+c}!volcado\+\_\+faltas@{volcado\+\_\+faltas}}
+\index{volcado\+\_\+faltas@{volcado\+\_\+faltas}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{volcado\+\_\+faltas()}{volcado\_faltas()}}
+{\footnotesize\ttfamily void volcado\+\_\+faltas (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f,  }\item[{\mbox{\hyperlink{structfaltas}{faltas}} $\ast$}]{list\+\_\+faltas,  }\item[{char $\ast$}]{nom\+\_\+file,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=277pt]{faltas_8c_ac19bf7dc52746d3dd441301befd2fdd7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{faltas_8c_ac19bf7dc52746d3dd441301befd2fdd7_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{faltas_8c_acaee99e213d9815c81df0c5c61eed566}\label{faltas_8c_acaee99e213d9815c81df0c5c61eed566}} 
+\index{faltas.\+c@{faltas.\+c}!L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+F\+A\+L\+T\+AS@{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+F\+A\+L\+T\+AS}}
+\index{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+F\+A\+L\+T\+AS@{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+F\+A\+L\+T\+AS}!faltas.\+c@{faltas.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+F\+A\+L\+T\+AS}{LONGITUD\_ARRAY\_FALTAS}}
+{\footnotesize\ttfamily int L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+F\+A\+L\+T\+AS}
+

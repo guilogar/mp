@@ -1,0 +1,8 @@
+<map id="leer_horario" name="leer_horario">
+<area shape="rect" id="node2" href="$horarios_8h.html#ab08f695fa8e14341384848dd641f4592" title="menu_horarios" alt="" coords="143,5,249,32"/>
+<area shape="rect" id="node4" href="$main_8c.html#a00990449875fc238baa27ecdb95d24b6" title="menu_admin" alt="" coords="297,56,393,83"/>
+<area shape="rect" id="node7" href="$main_8c.html#aebadd3ec973ef036b430aea530af2b45" title="menu_prof" alt="" coords="155,107,237,133"/>
+<area shape="rect" id="node3" href="$horarios_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="320,5,371,32"/>
+<area shape="rect" id="node5" href="$main_8c.html#ae3a600065cfe3e0105b6209e35d20264" title="menu_principal" alt="" coords="441,56,551,83"/>
+<area shape="rect" id="node6" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="599,56,649,83"/>
+</map>

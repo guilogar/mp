@@ -1,0 +1,8 @@
+<map id="menu_alumnos" name="menu_alumnos">
+<area shape="rect" id="node2" href="$alumnos_8c.html#afe7aba672f2872504eb20064e4d3fa8f" title="Anadir_Alumno" alt="" coords="172,5,283,32"/>
+<area shape="rect" id="node5" href="$alumnos_8c.html#ae9eedadeae49bfc6516ff6b4bb1b1e71" title="Baja_Alumno" alt="" coords="178,56,277,83"/>
+<area shape="rect" id="node6" href="$alumnos_8c.html#a8dcb4e8881eb636706040c9e73d79ba4" title="Modificar_Alumno" alt="" coords="164,107,291,133"/>
+<area shape="rect" id="node7" href="$alumnos_8c.html#ac1b962c53e14b0375e64a44ebdcc38fa" title="Listar_Alumno" alt="" coords="175,157,280,184"/>
+<area shape="rect" id="node3" href="$alumnos_8c.html#abac62976847524d39299f3c5cb0f7bec" title="leer_campo_A" alt="" coords="339,56,444,83"/>
+<area shape="rect" id="node4" href="$alumnos_8c.html#aa0ecdc5d299fcbde0eb715eb564f026f" title="quitar_saltosA" alt="" coords="492,56,597,83"/>
+</map>

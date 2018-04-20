@@ -1,0 +1,258 @@
+\hypertarget{calificaciones_8c}{}\section{calificaciones.\+c File Reference}
+\label{calificaciones_8c}\index{calificaciones.\+c@{calificaciones.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}estructuras.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}auxiliar.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}calificaciones.\+h\char`\"{}}\newline
+Include dependency graph for calificaciones.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{calificaciones_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{calificaciones_8c__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{calificaciones_8c_a5e7b25d6d6af977a017f9c93795ddb42}{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+TA}}~\char`\"{}No se admite como nota un valor inferior a 0 o superior a 10. Vuelva a intentarlo.\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{calificaciones_8c_aea947664e70772081dfa8ca1c52deb8d}{get\+\_\+longitud\+\_\+array\+\_\+calificaciones}} ()
+\item 
+int \mbox{\hyperlink{calificaciones_8c_a9483b8ffdfbb64b41447e365a3beb949}{nota\+\_\+valida}} (int nota, char $\ast$msg\+\_\+error)
+\item 
+void \mbox{\hyperlink{calificaciones_8c_a8499c1b281ab61f888cc659c3ea4a467}{buscar\+\_\+por\+\_\+materia}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones, int id\+\_\+materia, \mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$new\+\_\+list\+\_\+calificaciones, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{calificaciones_8c_a42463725127809cf3a21e41cab0a3b87}{buscar\+\_\+por\+\_\+alumno}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones, int id\+\_\+alumno, \mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$new\+\_\+list\+\_\+calificaciones, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{calificaciones_8c_a21abc134b66a3519979b8874b1d5973f}{print\+\_\+calificaciones\+\_\+por\+\_\+materia}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones, int id\+\_\+materia, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{calificaciones_8c_ac715ee6871bcf139f60f3e3856f9d52f}{print\+\_\+calificaciones\+\_\+por\+\_\+alumno}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones, int id\+\_\+alumno, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{calificaciones_8c_a2cec64ccdfe397e356898dc36c38c113}{print\+\_\+calificaciones\+\_\+criba}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones, int $\ast$array\+\_\+datos, int longitud\+\_\+array)
+\item 
+\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$ \mbox{\hyperlink{calificaciones_8c_acca13e62fda4252c798b061adbf1c3b7}{anadir\+\_\+calificacion}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$$\ast$list\+\_\+calificaciones, char datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]}, int $\ast$longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{calificaciones_8c_a02a7c0ebe5e1312deb40cc4e481f82b6}{modificar\+\_\+calificacion}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones, char datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]}, int longitud\+\_\+array)
+\item 
+\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$ \mbox{\hyperlink{calificaciones_8c_a881cebfd4a7e933bbf2f4b878b11f0aa}{borrar\+\_\+calificacion}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$$\ast$list\+\_\+calificaciones, char datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]}, int $\ast$longitud\+\_\+array)
+\item 
+\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$ \mbox{\hyperlink{calificaciones_8c_abc9de671fc1b7b0ce38c34c72df7cbb3}{menu\+\_\+calificaciones}} (\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones, int $\ast$array\+\_\+datos, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{calificaciones_8c_a8252b1da04b93917487275be8a584210}{volcado\+\_\+calificaciones}} (F\+I\+LE $\ast$f, \mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones, char $\ast$nom\+\_\+file, int longitud\+\_\+array)
+\item 
+void \mbox{\hyperlink{calificaciones_8c_a1392a5533577ef7383e5a9aeafe4dad4}{cargar\+\_\+calificaciones}} (F\+I\+LE $\ast$f, \mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$list\+\_\+calificaciones)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{calificaciones_8c_aa7c327e827ac42d133740dd1a4ffbc33}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+C\+A\+L\+I\+F\+I\+C\+A\+C\+I\+O\+N\+ES}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{calificaciones_8c_a5e7b25d6d6af977a017f9c93795ddb42}\label{calificaciones_8c_a5e7b25d6d6af977a017f9c93795ddb42}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+TA@{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+TA}}
+\index{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+TA@{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+TA}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+TA}{MSG\_ERROR\_NOTA}}
+{\footnotesize\ttfamily \#define M\+S\+G\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+TA~\char`\"{}No se admite como nota un valor inferior a 0 o superior a 10. Vuelva a intentarlo.\char`\"{}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{calificaciones_8c_acca13e62fda4252c798b061adbf1c3b7}\label{calificaciones_8c_acca13e62fda4252c798b061adbf1c3b7}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!anadir\+\_\+calificacion@{anadir\+\_\+calificacion}}
+\index{anadir\+\_\+calificacion@{anadir\+\_\+calificacion}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{anadir\+\_\+calificacion()}{anadir\_calificacion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcalificaciones}{calificaciones}}$\ast$ anadir\+\_\+calificacion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$$\ast$}]{list\+\_\+calificaciones,  }\item[{char}]{datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]},  }\item[{int $\ast$}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{calificaciones_8c_acca13e62fda4252c798b061adbf1c3b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{calificaciones_8c_acca13e62fda4252c798b061adbf1c3b7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{calificaciones_8c_a881cebfd4a7e933bbf2f4b878b11f0aa}\label{calificaciones_8c_a881cebfd4a7e933bbf2f4b878b11f0aa}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!borrar\+\_\+calificacion@{borrar\+\_\+calificacion}}
+\index{borrar\+\_\+calificacion@{borrar\+\_\+calificacion}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{borrar\+\_\+calificacion()}{borrar\_calificacion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcalificaciones}{calificaciones}}$\ast$ borrar\+\_\+calificacion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$$\ast$}]{list\+\_\+calificaciones,  }\item[{char}]{datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]},  }\item[{int $\ast$}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{calificaciones_8c_a881cebfd4a7e933bbf2f4b878b11f0aa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{calificaciones_8c_a881cebfd4a7e933bbf2f4b878b11f0aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{calificaciones_8c_a42463725127809cf3a21e41cab0a3b87}\label{calificaciones_8c_a42463725127809cf3a21e41cab0a3b87}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!buscar\+\_\+por\+\_\+alumno@{buscar\+\_\+por\+\_\+alumno}}
+\index{buscar\+\_\+por\+\_\+alumno@{buscar\+\_\+por\+\_\+alumno}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{buscar\+\_\+por\+\_\+alumno()}{buscar\_por\_alumno()}}
+{\footnotesize\ttfamily void buscar\+\_\+por\+\_\+alumno (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones,  }\item[{int}]{id\+\_\+alumno,  }\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{new\+\_\+list\+\_\+calificaciones,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{calificaciones_8c_a8499c1b281ab61f888cc659c3ea4a467}\label{calificaciones_8c_a8499c1b281ab61f888cc659c3ea4a467}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!buscar\+\_\+por\+\_\+materia@{buscar\+\_\+por\+\_\+materia}}
+\index{buscar\+\_\+por\+\_\+materia@{buscar\+\_\+por\+\_\+materia}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{buscar\+\_\+por\+\_\+materia()}{buscar\_por\_materia()}}
+{\footnotesize\ttfamily void buscar\+\_\+por\+\_\+materia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones,  }\item[{int}]{id\+\_\+materia,  }\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{new\+\_\+list\+\_\+calificaciones,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{calificaciones_8c_a1392a5533577ef7383e5a9aeafe4dad4}\label{calificaciones_8c_a1392a5533577ef7383e5a9aeafe4dad4}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!cargar\+\_\+calificaciones@{cargar\+\_\+calificaciones}}
+\index{cargar\+\_\+calificaciones@{cargar\+\_\+calificaciones}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{cargar\+\_\+calificaciones()}{cargar\_calificaciones()}}
+{\footnotesize\ttfamily void cargar\+\_\+calificaciones (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f,  }\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{calificaciones_8c_a1392a5533577ef7383e5a9aeafe4dad4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{calificaciones_8c_aea947664e70772081dfa8ca1c52deb8d}\label{calificaciones_8c_aea947664e70772081dfa8ca1c52deb8d}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!get\+\_\+longitud\+\_\+array\+\_\+calificaciones@{get\+\_\+longitud\+\_\+array\+\_\+calificaciones}}
+\index{get\+\_\+longitud\+\_\+array\+\_\+calificaciones@{get\+\_\+longitud\+\_\+array\+\_\+calificaciones}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+longitud\+\_\+array\+\_\+calificaciones()}{get\_longitud\_array\_calificaciones()}}
+{\footnotesize\ttfamily int get\+\_\+longitud\+\_\+array\+\_\+calificaciones (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{calificaciones_8c_aea947664e70772081dfa8ca1c52deb8d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{calificaciones_8c_abc9de671fc1b7b0ce38c34c72df7cbb3}\label{calificaciones_8c_abc9de671fc1b7b0ce38c34c72df7cbb3}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!menu\+\_\+calificaciones@{menu\+\_\+calificaciones}}
+\index{menu\+\_\+calificaciones@{menu\+\_\+calificaciones}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+calificaciones()}{menu\_calificaciones()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcalificaciones}{calificaciones}}$\ast$ menu\+\_\+calificaciones (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones,  }\item[{int $\ast$}]{array\+\_\+datos,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{calificaciones_8c_abc9de671fc1b7b0ce38c34c72df7cbb3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{calificaciones_8c_abc9de671fc1b7b0ce38c34c72df7cbb3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{calificaciones_8c_a02a7c0ebe5e1312deb40cc4e481f82b6}\label{calificaciones_8c_a02a7c0ebe5e1312deb40cc4e481f82b6}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!modificar\+\_\+calificacion@{modificar\+\_\+calificacion}}
+\index{modificar\+\_\+calificacion@{modificar\+\_\+calificacion}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{modificar\+\_\+calificacion()}{modificar\_calificacion()}}
+{\footnotesize\ttfamily void modificar\+\_\+calificacion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones,  }\item[{char}]{datos\mbox{[}$\,$\mbox{]}\mbox{[}100\mbox{]},  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{calificaciones_8c_a02a7c0ebe5e1312deb40cc4e481f82b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{calificaciones_8c_a02a7c0ebe5e1312deb40cc4e481f82b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{calificaciones_8c_a9483b8ffdfbb64b41447e365a3beb949}\label{calificaciones_8c_a9483b8ffdfbb64b41447e365a3beb949}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!nota\+\_\+valida@{nota\+\_\+valida}}
+\index{nota\+\_\+valida@{nota\+\_\+valida}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{nota\+\_\+valida()}{nota\_valida()}}
+{\footnotesize\ttfamily int nota\+\_\+valida (\begin{DoxyParamCaption}\item[{int}]{nota,  }\item[{char $\ast$}]{msg\+\_\+error }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{calificaciones_8c_a9483b8ffdfbb64b41447e365a3beb949_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{calificaciones_8c_a2cec64ccdfe397e356898dc36c38c113}\label{calificaciones_8c_a2cec64ccdfe397e356898dc36c38c113}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!print\+\_\+calificaciones\+\_\+criba@{print\+\_\+calificaciones\+\_\+criba}}
+\index{print\+\_\+calificaciones\+\_\+criba@{print\+\_\+calificaciones\+\_\+criba}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{print\+\_\+calificaciones\+\_\+criba()}{print\_calificaciones\_criba()}}
+{\footnotesize\ttfamily void print\+\_\+calificaciones\+\_\+criba (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones,  }\item[{int $\ast$}]{array\+\_\+datos,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{calificaciones_8c_a2cec64ccdfe397e356898dc36c38c113_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{calificaciones_8c_ac715ee6871bcf139f60f3e3856f9d52f}\label{calificaciones_8c_ac715ee6871bcf139f60f3e3856f9d52f}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!print\+\_\+calificaciones\+\_\+por\+\_\+alumno@{print\+\_\+calificaciones\+\_\+por\+\_\+alumno}}
+\index{print\+\_\+calificaciones\+\_\+por\+\_\+alumno@{print\+\_\+calificaciones\+\_\+por\+\_\+alumno}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{print\+\_\+calificaciones\+\_\+por\+\_\+alumno()}{print\_calificaciones\_por\_alumno()}}
+{\footnotesize\ttfamily void print\+\_\+calificaciones\+\_\+por\+\_\+alumno (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones,  }\item[{int}]{id\+\_\+alumno,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{calificaciones_8c_a21abc134b66a3519979b8874b1d5973f}\label{calificaciones_8c_a21abc134b66a3519979b8874b1d5973f}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!print\+\_\+calificaciones\+\_\+por\+\_\+materia@{print\+\_\+calificaciones\+\_\+por\+\_\+materia}}
+\index{print\+\_\+calificaciones\+\_\+por\+\_\+materia@{print\+\_\+calificaciones\+\_\+por\+\_\+materia}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{print\+\_\+calificaciones\+\_\+por\+\_\+materia()}{print\_calificaciones\_por\_materia()}}
+{\footnotesize\ttfamily void print\+\_\+calificaciones\+\_\+por\+\_\+materia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones,  }\item[{int}]{id\+\_\+materia,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{calificaciones_8c_a8252b1da04b93917487275be8a584210}\label{calificaciones_8c_a8252b1da04b93917487275be8a584210}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!volcado\+\_\+calificaciones@{volcado\+\_\+calificaciones}}
+\index{volcado\+\_\+calificaciones@{volcado\+\_\+calificaciones}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{volcado\+\_\+calificaciones()}{volcado\_calificaciones()}}
+{\footnotesize\ttfamily void volcado\+\_\+calificaciones (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f,  }\item[{\mbox{\hyperlink{structcalificaciones}{calificaciones}} $\ast$}]{list\+\_\+calificaciones,  }\item[{char $\ast$}]{nom\+\_\+file,  }\item[{int}]{longitud\+\_\+array }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{calificaciones_8c_a8252b1da04b93917487275be8a584210_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{calificaciones_8c_a8252b1da04b93917487275be8a584210_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{calificaciones_8c_aa7c327e827ac42d133740dd1a4ffbc33}\label{calificaciones_8c_aa7c327e827ac42d133740dd1a4ffbc33}} 
+\index{calificaciones.\+c@{calificaciones.\+c}!L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+C\+A\+L\+I\+F\+I\+C\+A\+C\+I\+O\+N\+ES@{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+C\+A\+L\+I\+F\+I\+C\+A\+C\+I\+O\+N\+ES}}
+\index{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+C\+A\+L\+I\+F\+I\+C\+A\+C\+I\+O\+N\+ES@{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+C\+A\+L\+I\+F\+I\+C\+A\+C\+I\+O\+N\+ES}!calificaciones.\+c@{calificaciones.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+C\+A\+L\+I\+F\+I\+C\+A\+C\+I\+O\+N\+ES}{LONGITUD\_ARRAY\_CALIFICACIONES}}
+{\footnotesize\ttfamily int L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+C\+A\+L\+I\+F\+I\+C\+A\+C\+I\+O\+N\+ES}
+

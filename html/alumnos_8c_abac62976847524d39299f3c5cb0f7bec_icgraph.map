@@ -1,0 +1,12 @@
+<map id="leer_campo_A" name="leer_campo_A">
+<area shape="rect" id="node2" href="$alumnos_8c.html#a23b200c89a3f9cd634292b6badc924bc" title="Modificar_Alumno_ficha" alt="" coords="159,5,320,32"/>
+<area shape="rect" id="node5" href="$alumnos_8h.html#a700183d8a00b761d4a6dc613a1526725" title="Anadir_Alumno" alt="" coords="184,56,295,83"/>
+<area shape="rect" id="node10" href="$alumnos_8h.html#a2ae61b7c43491e9e07855dde716f778c" title="Modificar_Alumno" alt="" coords="176,107,303,133"/>
+<area shape="rect" id="node11" href="$alumnos_8h.html#ac061cc5688bada3f4407aab402aad01c" title="Baja_Alumno" alt="" coords="190,157,289,184"/>
+<area shape="rect" id="node3" href="$alumnos_8h.html#a12f661aaa137adb1b3efc1cc516ee3fd" title="ficha_alum" alt="" coords="381,5,466,32"/>
+<area shape="rect" id="node4" href="$main_8c.html#aebadd3ec973ef036b430aea530af2b45" title="menu_prof" alt="" coords="533,5,616,32"/>
+<area shape="rect" id="node6" href="$alumnos_8c.html#a78832a2b6a02da48d43240f1ae7a273e" title="menu_alumnos" alt="" coords="368,107,479,133"/>
+<area shape="rect" id="node7" href="$main_8c.html#a00990449875fc238baa27ecdb95d24b6" title="menu_admin" alt="" coords="527,107,623,133"/>
+<area shape="rect" id="node8" href="$main_8c.html#ae3a600065cfe3e0105b6209e35d20264" title="menu_principal" alt="" coords="671,107,780,133"/>
+<area shape="rect" id="node9" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="828,107,879,133"/>
+</map>

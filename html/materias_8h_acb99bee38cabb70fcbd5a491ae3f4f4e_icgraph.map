@@ -1,0 +1,7 @@
+<map id="listar_materias" name="listar_materias">
+<area shape="rect" id="node2" href="$materias_8h.html#a13ef60191f0a47e28ddf08ef93f1b495" title="Modificar_materia" alt="" coords="160,5,285,32"/>
+<area shape="rect" id="node3" href="$materias_8h.html#a1dcb38af4770522732f22d8fbdec2381" title="menu_materias" alt="" coords="333,31,444,57"/>
+<area shape="rect" id="node4" href="$main_8c.html#a00990449875fc238baa27ecdb95d24b6" title="menu_admin" alt="" coords="492,31,588,57"/>
+<area shape="rect" id="node5" href="$main_8c.html#ae3a600065cfe3e0105b6209e35d20264" title="menu_principal" alt="" coords="636,31,745,57"/>
+<area shape="rect" id="node6" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="793,31,844,57"/>
+</map>

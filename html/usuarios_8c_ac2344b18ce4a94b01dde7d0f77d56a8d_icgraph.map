@@ -1,0 +1,10 @@
+<map id="quitar_saltosU" name="quitar_saltosU">
+<area shape="rect" id="node2" href="$usuarios_8c.html#a907d1ef03ea70c21ce3cc73288a6edaa" title="leer_campoU" alt="" coords="160,56,259,83"/>
+<area shape="rect" id="node3" href="$usuarios_8h.html#ab97876f49896a572b3229f68c3ae074d" title="Anadir_Usuario" alt="" coords="315,5,425,32"/>
+<area shape="rect" id="node8" href="$usuarios_8h.html#aa2d316d162d916a528aa73af97753118" title="Modificar_Usuario" alt="" coords="307,56,433,83"/>
+<area shape="rect" id="node9" href="$usuarios_8h.html#a6db64704fbe4323cabb2a96cd656775c" title="Baja_Usuario" alt="" coords="320,107,420,133"/>
+<area shape="rect" id="node4" href="$usuarios_8c.html#a2208d3ef44b6e6c174c6381097b731e9" title="menu_usuarios" alt="" coords="481,56,592,83"/>
+<area shape="rect" id="node5" href="$main_8c.html#a00990449875fc238baa27ecdb95d24b6" title="menu_admin" alt="" coords="640,56,736,83"/>
+<area shape="rect" id="node6" href="$main_8c.html#ae3a600065cfe3e0105b6209e35d20264" title="menu_principal" alt="" coords="784,56,893,83"/>
+<area shape="rect" id="node7" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="941,56,992,83"/>
+</map>

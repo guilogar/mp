@@ -1,0 +1,13 @@
+<map id="leer_campo_m" name="leer_campo_m">
+<area shape="rect" id="node2" href="$materias_8c.html#a2c50a24fd4c5f2b05724046dfcc04b84" title="Anadir_materia" alt="" coords="173,5,282,32"/>
+<area shape="rect" id="node7" href="$materias_8h.html#a13ef60191f0a47e28ddf08ef93f1b495" title="Modificar_materia" alt="" coords="165,56,290,83"/>
+<area shape="rect" id="node8" href="$materias_8h.html#a637f8cef16be52a28fef5a6b43c9309b" title="Eliminar_materia" alt="" coords="168,107,287,133"/>
+<area shape="rect" id="node9" href="$matricula_8h.html#a663b94e4000e5b4e56290730b8526e97" title="Anadir_Matricula" alt="" coords="168,157,287,184"/>
+<area shape="rect" id="node11" href="$matricula_8h.html#a304328dddc27e29abb05b1d588295b7b" title="Modificar_matricula" alt="" coords="160,208,295,235"/>
+<area shape="rect" id="node12" href="$matricula_8h.html#a2f96f2beb289695c52b0aa244e1c1b8d" title="Eliminar_matricula" alt="" coords="163,259,292,285"/>
+<area shape="rect" id="node3" href="$materias_8h.html#a1dcb38af4770522732f22d8fbdec2381" title="menu_materias" alt="" coords="348,56,459,83"/>
+<area shape="rect" id="node4" href="$main_8c.html#a00990449875fc238baa27ecdb95d24b6" title="menu_admin" alt="" coords="512,56,608,83"/>
+<area shape="rect" id="node5" href="$main_8c.html#ae3a600065cfe3e0105b6209e35d20264" title="menu_principal" alt="" coords="656,56,765,83"/>
+<area shape="rect" id="node6" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="813,56,864,83"/>
+<area shape="rect" id="node10" href="$matricula_8h.html#a6524041ff10ff0ecebde3121e0fbafad" title="menu_matriculas" alt="" coords="343,208,464,235"/>
+</map>
