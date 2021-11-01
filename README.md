@@ -1,2 +1,4 @@
-# mp_cuaderno_profesorado
-Programa para Metodologia de la Programacion de Cuarderno de Profesorado.
+# MP
+Repositorio para la asignatura Metodologia de la Programacion.
+
+Software para controlar un Cuarderno de Profesorado, de la parte práctica de la asignatura.
